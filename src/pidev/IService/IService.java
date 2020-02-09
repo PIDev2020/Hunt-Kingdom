@@ -7,8 +7,20 @@ package pidev.IService;
 
 /**
  *
- * @author Testouri Mohamed
+ * @author elhak
  */
-public interface IService {
-    
+
+import java.sql.SQLException;
+import java.util.List;
+
+/**
+ *
+ * @author House
+ */
+public interface IService<T> {
+    void ajouter(T t) throws SQLException;
+    void delete(int id) throws SQLException;
+    void update(T t, int id) throws SQLException;
+    List<T> readAll() throws SQLException;
 }
+
