@@ -34,14 +34,14 @@ public class ServiceAnnonce implements IService<Annonce> {
     
     
     
-    @Override
     public void ajouter(Annonce t) throws SQLException {
         ste = con.createStatement();
         String requestInsert = "INSERT INTO `testannonces`.`annonce` (`nomAnnonce`, `descriptionAnnonce`) VALUES ('" + t.getNomAnnonce() + "', '" + t.getDescriptionAnnonce() + "');";
         ste.executeUpdate(requestInsert);
     } 
     
-    public void ajouter1(Annonce a) throws SQLException {
+    @Override
+    public void add(Annonce a) throws SQLException {
         PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonces`.`annonce` (`idAnnonce`,`nomAnnonce`, `descriptionAnnonce`, `idUser`) VALUES (?, ?, ?, ?);");
         PS.setInt(1,a.getIdAnnonce());
         PS.setString(2, a.getNomAnnonce());
