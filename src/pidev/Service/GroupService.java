@@ -5,10 +5,78 @@
  */
 package pidev.Service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import pidev.DataBase.DataBase;
+import pidev.Entite.Groups;
+import pidev.IService.IService;
+
 /**
  *
  * @author Testouri Mohamed
  */
-public class GroupService {
-    
+public class GroupService implements IService<Groups> {
+
+    private final Connection connexion;
+    private Statement state;
+
+    public GroupService() {
+        connexion = DataBase.getInstance().getConnection();
+    }
+
+    @Override
+    public void add(Groups g) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Groups (nameGroup,typeGroup) VALUES (?, ?);");
+        PrepState.setString(1, g.getNameGroup());
+        PrepState.setString(2, g.getTypeGroup());
+
+    }
+
+    @Override
+    public void delete(int idGroup) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Groups WHERE idGroup=?");
+        PrepState.setInt(1, idGroup);
+        PrepState.executeUpdate();
+    }
+
+    @Override
+    public void delete(String nameGroup) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Groups WHERE nameGroup=?");
+        PrepState.setString(1, nameGroup);
+        PrepState.executeUpdate();  //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Groups g) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Groups SET idGroup=? , nameGroup=? , typeGroup=?");
+        PrepState.setInt(1, g.getIdGroup());
+        PrepState.setString(2, g.getNameGroup());
+        PrepState.setString(3, g.getTypeGroup());
+    }
+
+    /**
+     *
+     * @return @throws SQLException
+     */
+    @Override
+    public List<Groups> readAll() throws SQLException {
+        List<Groups> arrayGroup = new ArrayList<>();
+        state = connexion.createStatement();
+        ResultSet rs = state.executeQuery("select * from Groups");
+        while (rs.next()) {
+            arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
+        }
+        return arrayGroup;
+    }
+
+    @Override
+    public void update(Groups t, int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

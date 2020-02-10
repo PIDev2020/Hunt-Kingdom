@@ -81,5 +81,15 @@ public class ServiceAnnonce implements IService<Annonce> {
         }
         return AL;
     }
+
+    @Override
+    public void delete(String email) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Annonce t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

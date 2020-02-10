@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Users;
+import pidev.IService.IService;
 
 /**
  *
  * @author Testouri Mohamed
  */
-public class UserService {
+public class UserService implements IService<Users>{
 
     private final Connection connexion;
     private Statement state;
@@ -28,6 +29,7 @@ public class UserService {
         connexion = DataBase.getInstance().getConnection();
     }
 
+    @Override
     public void add(Users u) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,roleUser,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
         PrepState.setString(1, u.getFnameUser());
@@ -39,18 +41,21 @@ public class UserService {
         PrepState.executeUpdate();
     }
 
+    @Override
     public void delete(int id) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE idUser=?");
         PrepState.setInt(1, id);
         PrepState.executeUpdate();
     }
 
+    @Override
     public void delete(String emailUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
         PrepState.setString(1, emailUser);
         PrepState.executeUpdate();
     }
 
+    @Override
     public void update(Users u) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET idUser=? , fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=?");
         PrepState.setInt(1, u.getIdUser());
@@ -62,6 +67,7 @@ public class UserService {
 
     }
 
+    @Override
     public List<Users> readAll() throws SQLException {
         List<Users> arrayUsers = new ArrayList<>();
         state = connexion.createStatement();
@@ -71,5 +77,10 @@ public class UserService {
             arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
         }
         return arrayUsers;
+    }
+
+    @Override
+    public void update(Users t, int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
