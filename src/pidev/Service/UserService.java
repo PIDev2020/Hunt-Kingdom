@@ -29,29 +29,36 @@ public class UserService {
     }
 
     public void add(Users u) throws SQLException {
-        PreparedStatement PerpState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,roleUser,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
-        PerpState.setString(1, u.getFnameUser());
-        PerpState.setString(2, u.getLnameUser());
-        PerpState.setInt(3, u.getPhoneUser());
-        PerpState.setInt(4, u.getRoleUser());
-        PerpState.setString(5, u.getEmailUser());
-        PerpState.setString(6, u.getPasswordUser());
-        PerpState.executeUpdate();
+        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,roleUser,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
+        PrepState.setString(1, u.getFnameUser());
+        PrepState.setString(2, u.getLnameUser());
+        PrepState.setInt(3, u.getPhoneUser());
+        PrepState.setInt(4, u.getRoleUser());
+        PrepState.setString(5, u.getEmailUser());
+        PrepState.setString(6, u.getPasswordUser());
+        PrepState.executeUpdate();
     }
 
     public void delete(int id) throws SQLException {
-        PreparedStatement PerpState = connexion.prepareStatement("DELETE FROM Users WHERE idUser=?");
-        PerpState.setInt(1, id);
-        PerpState.executeUpdate();
+        PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE idUser=?");
+        PrepState.setInt(1, id);
+        PrepState.executeUpdate();
     }
 
     public void delete(String emailUser) throws SQLException {
-        PreparedStatement PerpState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
-        PerpState.setString(1, emailUser);
-        PerpState.executeUpdate();
+        PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
+        PrepState.setString(1, emailUser);
+        PrepState.executeUpdate();
     }
 
     public void update(Users u) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET idUser=? , fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=?");
+        PrepState.setInt(1, u.getIdUser());
+        PrepState.setString(2, u.getFnameUser());
+        PrepState.setString(3, u.getLnameUser());
+        PrepState.setInt(4, u.getPhoneUser());
+        PrepState.setString(2, u.getFnameUser());
+        PrepState.setString(2, u.getFnameUser());
 
     }
 
@@ -61,7 +68,7 @@ public class UserService {
         ResultSet rs = state.executeQuery("select * from Users");
         while (rs.next()) {
 
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),rs.getString(6) ));
+            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
         }
         return arrayUsers;
     }
