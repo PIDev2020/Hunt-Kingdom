@@ -29,7 +29,7 @@ public class ServiceSponsor implements IService<Sponsor>{
     }
 
     @Override
-    public void ajouter(Sponsor t) throws SQLException {
+    public void add(Sponsor t) throws SQLException {
       ste= con.createStatement();
       String requeteInsert="INSERT INTO `testevent`.`sponsor` (`idSponsor`,`nom`,`idEvent`,`confirmation`)VALUES ('" +t.getIdSponsor() + "' ,'" +t.getNom() + "','" +t.getIdEvent() +"' ,'" +t.getConfirmation() + "' );";   
       ste.executeUpdate(requeteInsert);
@@ -85,6 +85,16 @@ public class ServiceSponsor implements IService<Sponsor>{
         }
         return AL;
     
+    }
+
+    @Override
+    public void delete(String email) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Sponsor> orderByName(int orderType) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -29,7 +29,7 @@ public class ServiceEvent implements IService<Event>{
     }
 
     @Override
-    public void ajouter(Event t) throws SQLException {
+    public void add(Event t) throws SQLException {
       ste= con.createStatement();
       String requeteInsert="INSERT INTO `testevent`.`event` (`idEvent`,`idUser`,`titre`,`nbrplaces`,`localisation`,`hdebut`,`hfin`,`prix`)VALUES ('" +t.getIdEvent() + "' ,'" +t.getIdUser() + "','" +t.getTitre() +"' ,'" +t.getNbrplaces() +"' ,'" +t.getLocalisation() + "' ,'" +t.getHdebut()+ "' ,'" +t.getHfin()+ "' ,'" +t.getPrix()+ "' );";   
       ste.executeUpdate(requeteInsert);
@@ -93,6 +93,16 @@ public class ServiceEvent implements IService<Event>{
         }
         return AL;
     
+    }
+
+    @Override
+    public void delete(String email) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Event> orderByName(int orderType) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
