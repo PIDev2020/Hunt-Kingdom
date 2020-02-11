@@ -12,8 +12,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Groups;
+import pidev.Entite.Users;
 import pidev.IService.IService;
 
 /**
@@ -34,7 +37,7 @@ public class GroupService implements IService<Groups> {
         PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Groups (nameGroup,typeGroup) VALUES (?, ?);");
         PrepState.setString(1, g.getNameGroup());
         PrepState.setString(2, g.getTypeGroup());
-
+        PrepState.executeUpdate();
     }
 
     @Override
@@ -49,14 +52,6 @@ public class GroupService implements IService<Groups> {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Groups WHERE nameGroup=?");
         PrepState.setString(1, nameGroup);
         PrepState.executeUpdate();  //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update(Groups g) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Groups SET idGroup=? , nameGroup=? , typeGroup=?");
-        PrepState.setInt(1, g.getIdGroup());
-        PrepState.setString(2, g.getNameGroup());
-        PrepState.setString(3, g.getTypeGroup());
     }
 
     /**
@@ -75,8 +70,38 @@ public class GroupService implements IService<Groups> {
     }
 
     @Override
-    public void update(Groups t, int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Groups g, int idGroup) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Groups SET nameGroup=? , typeGroup=? WHERE idGroup=? ");
+        PrepState.setString(2, g.getNameGroup());
+        PrepState.setString(3, g.getTypeGroup());
+        PrepState.executeUpdate();
     }
 
+    /**
+     *
+     * @param orderType 
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public List<Groups> orderByName( int orderType) throws SQLException {
+        List<Groups> arrayGroup = new ArrayList<>();
+        state = connexion.createStatement();
+        ResultSet rs = null;
+        switch (orderType) {
+            case 0:
+                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup ASC");
+                break;
+            case 1:
+                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup DESC");
+                break;
+            default:
+                System.out.println("Choose Sorting Type");
+                break;
+        }
+        while (rs.next()) {
+            arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
+        }
+        return arrayGroup;
+    }
 }

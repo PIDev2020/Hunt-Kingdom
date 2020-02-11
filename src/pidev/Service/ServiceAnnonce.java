@@ -5,8 +5,6 @@
  */
 package pidev.Service;
 
-import java.sql.SQLException;
-import java.util.List;
 import pidev.Entite.Annonce;
 import pidev.IService.IService;
 import pidev.DataBase.DataBase;
@@ -15,8 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import pidev.Entite.Users;
 
 
 /**
@@ -25,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class ServiceAnnonce implements IService<Annonce> {
 
-    private Connection con;
+    private final Connection con;
     private Statement ste;
 
     public ServiceAnnonce() {
@@ -88,8 +85,10 @@ public class ServiceAnnonce implements IService<Annonce> {
     }
 
     @Override
-    public void update(Annonce t) throws SQLException {
+    public List<Annonce> orderByName(int orderType) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }

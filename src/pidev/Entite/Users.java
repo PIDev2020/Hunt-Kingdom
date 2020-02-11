@@ -23,6 +23,14 @@ public class Users {
     public Users() {
     }
 
+    public Users(String fnameUser, String lnameUser, int phoneUser, String emailUser, String passwordUser) {
+        this.fnameUser = fnameUser;
+        this.lnameUser = lnameUser;
+        this.phoneUser = phoneUser;
+        this.emailUser = emailUser;
+        this.passwordUser = passwordUser;
+    }
+
     public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int roleUser, String emailUser, String passwordUser ) {
         this.idUser = idUser;
         this.fnameUser = fnameUser;

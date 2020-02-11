@@ -20,7 +20,7 @@ import pidev.IService.IService;
  *
  * @author Testouri Mohamed
  */
-public class UserService implements IService<Users>{
+public class UserService implements IService<Users> {
 
     private final Connection connexion;
     private Statement state;
@@ -42,9 +42,9 @@ public class UserService implements IService<Users>{
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public void delete(int idUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE idUser=?");
-        PrepState.setInt(1, id);
+        PrepState.setInt(1, idUser);
         PrepState.executeUpdate();
     }
 
@@ -53,18 +53,6 @@ public class UserService implements IService<Users>{
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
         PrepState.setString(1, emailUser);
         PrepState.executeUpdate();
-    }
-
-    @Override
-    public void update(Users u) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET idUser=? , fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=?");
-        PrepState.setInt(1, u.getIdUser());
-        PrepState.setString(2, u.getFnameUser());
-        PrepState.setString(3, u.getLnameUser());
-        PrepState.setInt(4, u.getPhoneUser());
-        PrepState.setString(2, u.getFnameUser());
-        PrepState.setString(2, u.getFnameUser());
-
     }
 
     @Override
@@ -78,9 +66,59 @@ public class UserService implements IService<Users>{
         }
         return arrayUsers;
     }
+//    @Override
+//    public List<Users> orderFname( int typeOrder) throws SQLException {
+//        List<Users> arrayUsers = new ArrayList<>();
+//        state = connexion.createStatement();
+//        ResultSet rs = null;
+//        
+//        if (typeOrder == 0 ){
+//       rs = state.executeQuery("select * from Users");
+//        } else if (typeOrder == 1){
+//            rs = state.executeQuery("select * from Users");
+//        } else {
+//            System.out.println("Choose Sorting Type");
+//        }
+//        while (rs.next()) {
+//
+//            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+//        }
+//        return arrayUsers;
+//    }
 
     @Override
-    public void update(Users t, int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Users u, int idUser) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=? WHERE idUser= ?");
+
+        PrepState.setString(1, u.getFnameUser());
+        PrepState.setString(2, u.getLnameUser());
+        PrepState.setInt(3, u.getPhoneUser());
+        PrepState.setString(4, u.getEmailUser());
+        PrepState.setString(5, u.getPasswordUser());
+        PrepState.setInt(6, idUser);
+        PrepState.executeUpdate();
+    }
+
+    @Override
+    public List<Users> orderByName(int orderType) throws SQLException{
+        List<Users> arrayUsers = new ArrayList<>();
+        state = connexion.createStatement();
+        ResultSet rs = null;
+        switch (orderType) {
+            case 0:
+                rs = state.executeQuery("SELECT * FROM Groups ORDER BY fnameUser ASC");
+                break;
+            case 1:
+                rs = state.executeQuery("SELECT * FROM Users ORDER BY fnameUser DESC");
+                break;
+            default:
+                System.out.println("Choose Sorting Type");
+                break;
+        }
+        while (rs.next()) {
+            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+        }
+        return arrayUsers;
+        
     }
 }

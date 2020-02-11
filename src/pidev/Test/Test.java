@@ -6,6 +6,7 @@
 package pidev.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
 import pidev.Service.GroupService;
@@ -25,15 +26,19 @@ public class Test {
 //        Annonce a2 = new Annonce(789, "Bon plan !! ", " voici une liste de bon plans qu'on a voulu partager avec vous ! ", 1011);
 //
 //        Annonce a4 = new Annonce(12, "updated ", "yeaaaaaas ! ", 1314);
-
+List <Groups> listGroup = GS.readAll();
+List <Users> listUser = US.readAll();
         Users u1 = new Users("Mohamed", "Testouri", 22222860, 1, "mohamed.testouri@esprit.tn", "HelloJava");
-        Users u2 = new Users("test2", "test", 860, 0, "mohamed@esprit.tn", "HelloJava");
+        Users u2 = new Users("test", "test", 0, "hello.world@0.1", "Hello Java");
         Groups g1 = new Groups("Test 1", "jaw");
         Groups g2 = new Groups("TEst", "teST");
-        US.add(u2);
-        US.add(u1);
+        //US.add(u2);
+        //US.add(u1);
+US.update(u2, 30);
         GS.add(g1);
-        GS.add(g2);
+        //GS.add(g2);
+        System.out.println(listUser);
+        System.out.println(listGroup);
         
         //US.delete("mohamed.testouri@esprit.tn");
 //        try {
