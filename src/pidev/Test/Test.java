@@ -83,5 +83,21 @@ US.update(u2, 30);
 //            System.out.println(ex);
 //        }
     }
+	ServiceEvent SE =new ServiceEvent();
+       Event e1 =new Event (123,7,"chasse lapin",25,"testour",8,18,90);
+       
+       try{
+           //SE.ajouter1(e1);
+           //SE.update(e1,123);
+           // SE.delete(123);
+          
+           
+           List<Event> list= SE.readAll();
+           System.out.println(list);
+           
+       }catch (SQLException ex){
+           System.out.println(ex);
+       }
+    }
 
 }
