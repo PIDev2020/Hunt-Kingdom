@@ -50,8 +50,8 @@ US.update(u2, 30);
         System.out.println(listUser);
         System.out.println(listGroup);
         GS.add(g2);
-        sera.ajouter(p1);
-        ser.ajouter(p2);
+        sera.add(p1);
+        ser.add(p2);
         
         //US.delete("mohamed.testouri@esprit.tn");
 //        try {
