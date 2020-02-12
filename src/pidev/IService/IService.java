@@ -12,7 +12,6 @@ package pidev.IService;
 
 import java.sql.SQLException;
 import java.util.List;
-import pidev.Entite.Users;
 
 /**
  *

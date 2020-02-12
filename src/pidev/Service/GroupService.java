@@ -65,6 +65,7 @@ public class GroupService implements IService<Groups> {
         ResultSet rs = state.executeQuery("select * from Groups");
         while (rs.next()) {
             arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
+            System.out.println(arrayGroup);
         }
         return arrayGroup;
     }
