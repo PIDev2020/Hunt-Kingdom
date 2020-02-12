@@ -52,7 +52,7 @@ public class Test {
         //GS.update(g2, 10);
         //GS.add(g2);
         US.delete(37);
-GS.delete(10);
+//GS.delete(10);
         System.out.println(listUser);
         System.out.println(listGroup);
 //      sera.add(p1);
