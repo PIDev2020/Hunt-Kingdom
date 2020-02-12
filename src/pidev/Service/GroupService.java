@@ -12,11 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Groups;
-import pidev.Entite.Users;
 import pidev.IService.IService;
 
 /**
@@ -73,8 +70,9 @@ public class GroupService implements IService<Groups> {
     @Override
     public void update(Groups g, int idGroup) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("UPDATE Groups SET nameGroup=? , typeGroup=? WHERE idGroup=? ");
-        PrepState.setString(2, g.getNameGroup());
-        PrepState.setString(3, g.getTypeGroup());
+        PrepState.setString(1, g.getNameGroup());
+        PrepState.setString(2, g.getTypeGroup());
+        PrepState.setInt(3, idGroup);
         PrepState.executeUpdate();
     }
 
