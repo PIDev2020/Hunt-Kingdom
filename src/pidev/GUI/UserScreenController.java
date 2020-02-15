@@ -5,6 +5,7 @@
  */
 package pidev.GUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -15,16 +16,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 
@@ -120,27 +124,22 @@ public class UserScreenController implements Initializable {
         // 5. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
     }
+    
     @FXML
-    private void handleMenuButtonAction (ActionEvent event) throws IOException {
+    private void navigateToAddUserScreen (ActionEvent event) throws IOException {
         Stage stage = null;
-        Parent myNewScene = null;
+        Parent addUserScene = null;
 
-        if (event.getSource() == sceneButton1){
-            stage = (Stage) sceneButton1.getScene().getWindow();
-            myNewScene = FXMLLoader.load(getClass().getResource("/mvc/view/scene1.fxml"));
-        } else if (event.getSource() == sceneButton2){
-            stage = (Stage) flightBtn.getScene().getWindow();
-            myNewScene = FXMLLoader.load(getClass().getResource("/mvc/view/scene2.fxml"));
-        } else if (event.getSource() == sceneButton3) {
-            stage=(Stage) staffBtn.getScene().getWindow();
-            myNewScene = FXMLLoader.load(getClass().getResource("/mvc/view/scene3.fxml"));
-        }
+            stage = (Stage) AddButton.getScene().getWindow();
+            addUserScene = FXMLLoader.load(getClass().getResource("AddUserScreen.fxml"));
+        
 
-        Scene scene = new Scene(myNewScene);
+        Scene scene = new Scene(addUserScene);
         stage.setScene(scene);
-        stage.setTitle("My New Scene");
+        stage.setTitle("Add User | Hunt Kingdom | Admin");
         stage.show();
 //FXMLLoader loader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
 //        Parent root = loader.load();
 //        AddButton.getScene().setRoot(root);
+}
 }
