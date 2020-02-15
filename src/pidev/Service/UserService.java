@@ -31,11 +31,11 @@ public class UserService implements IService<Users> {
 
     @Override
     public void add(Users u) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,roleUser,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
+        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,idRole,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
-        PrepState.setInt(4, u.getRoleUser());
+        PrepState.setInt(4, u.getidRole());
         PrepState.setString(5, u.getEmailUser());
         PrepState.setString(6, u.getPasswordUser());
         PrepState.executeUpdate();
@@ -59,10 +59,10 @@ public class UserService implements IService<Users> {
     public List<Users> readAll() throws SQLException {
         List<Users> arrayUsers = new ArrayList<>();
         state = connexion.createStatement();
-        ResultSet rs = state.executeQuery("select * from Users");
+        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, emailUser from Users WHERE idRole=0");
         while (rs.next()) {
 
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5)));
         }
         return arrayUsers;
     }
@@ -99,26 +99,4 @@ public class UserService implements IService<Users> {
         PrepState.executeUpdate();
     }
 
-    @Override
-    public List<Users> orderByName(int orderType) throws SQLException{
-        List<Users> arrayUsers = new ArrayList<>();
-        state = connexion.createStatement();
-        ResultSet rs = null;
-        switch (orderType) {
-            case 0:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY fnameUser ASC");
-                break;
-            case 1:
-                rs = state.executeQuery("SELECT * FROM Users ORDER BY fnameUser DESC");
-                break;
-            default:
-                System.out.println("Choose Sorting Type");
-                break;
-        }
-        while (rs.next()) {
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
-        }
-        return arrayUsers;
-        
-    }
 }

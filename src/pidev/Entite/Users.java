@@ -12,13 +12,14 @@ import java.util.Objects;
  * @author Testouri Mohamed
  */
 public class Users {
+
     private int idUser;
     private String fnameUser;
     private String lnameUser;
     private int phoneUser;
     private String emailUser;
     private String passwordUser;
-    private int roleUser;
+    private int idRole;
 
     public Users() {
     }
@@ -31,32 +32,40 @@ public class Users {
         this.passwordUser = passwordUser;
     }
 
-    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int roleUser, String emailUser, String passwordUser ) {
+    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser, String passwordUser) {
         this.idUser = idUser;
         this.fnameUser = fnameUser;
         this.lnameUser = lnameUser;
         this.phoneUser = phoneUser;
-        this.roleUser = roleUser;
+        this.idRole = idRole;
         this.emailUser = emailUser;
         this.passwordUser = passwordUser;
-        
+
     }
 
-    public Users(String fnameUser, String lnameUser, int phoneUser, int roleUser, String emailUser, String passwordUser) {
+    public Users(String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser, String passwordUser) {
         this.fnameUser = fnameUser;
         this.lnameUser = lnameUser;
         this.phoneUser = phoneUser;
-        this.roleUser = roleUser;
+        this.idRole = idRole;
         this.emailUser = emailUser;
         this.passwordUser = passwordUser;
     }
 
-    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int roleUser, String emailUser ) {
+    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser) {
         this.idUser = idUser;
         this.fnameUser = fnameUser;
         this.lnameUser = lnameUser;
         this.phoneUser = phoneUser;
-        this.roleUser = roleUser;
+        this.idRole = idRole;
+        this.emailUser = emailUser;
+    }
+
+    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, String emailUser) {
+        this.idUser = idUser;
+        this.fnameUser = fnameUser;
+        this.lnameUser = lnameUser;
+        this.phoneUser = phoneUser;
         this.emailUser = emailUser;
     }
 
@@ -84,8 +93,8 @@ public class Users {
         return passwordUser;
     }
 
-    public int getRoleUser() {
-        return roleUser;
+    public int getidRole() {
+        return idRole;
     }
 
     public void setIdUser(int idUser) {
@@ -112,13 +121,13 @@ public class Users {
         this.passwordUser = passwordUser;
     }
 
-    public void setRoleUser(int roleUser) {
-        this.roleUser = roleUser;
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
     }
 
     @Override
     public String toString() {
-        return "Users{" + "idUser=" + idUser + ", fnameUser=" + fnameUser + ", lnameUser=" + lnameUser + ", phoneUser=" + phoneUser + ", emailUser=" + emailUser + ", roleUser=" + roleUser +'}';
+        return "Users{" + "idUser=" + idUser + ", fnameUser=" + fnameUser + ", lnameUser=" + lnameUser + ", phoneUser=" + phoneUser + ", emailUser=" + emailUser + ", idRole=" + idRole + '}';
     }
 
     @Override
@@ -153,7 +162,5 @@ public class Users {
         }
         return true;
     }
-    
-    
-}
 
+}

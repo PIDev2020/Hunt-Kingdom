@@ -23,7 +23,6 @@ public interface IService<T> {
     void delete(int id) throws SQLException;
     void delete(String email) throws SQLException;
     void update(T t, int id) throws SQLException;
-    List<T> orderByName(int orderType) throws SQLException;
     List<T> readAll() throws SQLException;
 }
 

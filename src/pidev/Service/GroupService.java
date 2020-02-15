@@ -76,31 +76,4 @@ public class GroupService implements IService<Groups> {
         PrepState.executeUpdate();
     }
 
-    /**
-     *
-     * @param orderType 
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public List<Groups> orderByName( int orderType) throws SQLException {
-        List<Groups> arrayGroup = new ArrayList<>();
-        state = connexion.createStatement();
-        ResultSet rs = null;
-        switch (orderType) {
-            case 0:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup ASC");
-                break;
-            case 1:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup DESC");
-                break;
-            default:
-                System.out.println("Choose Sorting Type");
-                break;
-        }
-        while (rs.next()) {
-            arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
-        }
-        return arrayGroup;
-    }
 }

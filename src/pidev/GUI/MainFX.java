@@ -5,11 +5,12 @@
  */
 package pidev.GUI;
 
+import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -17,21 +18,13 @@ import javafx.stage.Stage;
  * @author Testouri Mohamed
  */
 public class MainFX extends Application {
-    
+
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction((ActionEvent event) -> {
-            System.out.println("Hello World!");
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(("UserScreen.fxml")));
+        Scene scene = new Scene(root);
+
+        primaryStage.setTitle("Hunt Kingdom | Admin");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -42,5 +35,5 @@ public class MainFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

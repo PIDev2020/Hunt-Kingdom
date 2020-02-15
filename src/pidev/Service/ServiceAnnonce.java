@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
-import pidev.Entite.Users;
 
 
 /**
@@ -84,10 +83,7 @@ public class ServiceAnnonce implements IService<Annonce> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<Annonce> orderByName(int orderType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
     
