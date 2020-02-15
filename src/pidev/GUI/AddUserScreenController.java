@@ -8,7 +8,11 @@ package pidev.GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +25,7 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import pidev.Entite.Role;
 import pidev.Entite.Users;
+import pidev.Service.RoleService;
 import pidev.Service.UserService;
 
 /**
@@ -51,8 +56,10 @@ public class AddUserScreenController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb){
+        
+        
+        
     }    
     private void add(ActionEvent event) throws SQLException, IOException {
         UserService US = new UserService();

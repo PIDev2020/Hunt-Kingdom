@@ -31,17 +31,17 @@
             <TableColumn fx:id="EmailUser" prefWidth="189.0" text="E-mail" />
         </columns>
       </TableView>
-      <Button fx:id="RemoveButton" layoutX="175.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #F26D3D;" text="Remove" textFill="#e4f1f2">
+      <Button fx:id="DeleteButton" layoutX="175.0" layoutY="351.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #F26D3D;" text="Delete" textFill="#e4f1f2">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="UpdateButton" layoutX="315.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #F26D3D;" text="Update" textFill="#e4f1f2">
+      <Button fx:id="UpdateButton" layoutX="315.0" layoutY="351.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #F26D3D;" text="Update" textFill="#e4f1f2">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="AddButton" layoutX="455.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #628E9B;" text="Add" textFill="#e4f1f2">
+      <Button fx:id="AddButton" layoutX="455.0" layoutY="351.0" mnemonicParsing="false" onAction="#addUser" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #628E9B;" text="Add" textFill="#e4f1f2">
          <font>
             <Font size="14.0" />
          </font>

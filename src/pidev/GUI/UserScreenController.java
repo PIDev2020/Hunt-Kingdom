@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -23,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,7 +31,7 @@ import pidev.Service.UserService;
  * @author Testouri Mohamed
  */
 public class UserScreenController implements Initializable {
-
+    
     @FXML
     private TextField SearchTermTextFiled;
     @FXML
@@ -53,8 +46,7 @@ public class UserScreenController implements Initializable {
     private TableColumn<Users, Integer> PhoneUser;
     @FXML
     private TableColumn<Users, String> EmailUser;
-    @FXML
-    private Button RemoveButton;
+    private Button DeleteButton;
     @FXML
     private Button UpdateButton;
     @FXML
@@ -67,13 +59,13 @@ public class UserScreenController implements Initializable {
      * @param rb
      */
     ObservableList<Users> listUsers = FXCollections.observableArrayList();
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         UserService US = new UserService();
         try {
             listUsers.addAll(US.readAll());
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(UserScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,7 +75,7 @@ public class UserScreenController implements Initializable {
         PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
         EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
         Table.setItems(listUsers);
-
+        
         FilteredList<Users> filteredData = new FilteredList<>(listUsers, lu -> true);
 
         // 2. Set the filter Predicate whenever the filter changes.
@@ -97,7 +89,7 @@ public class UserScreenController implements Initializable {
 
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-
+                
                 if (user.getFnameUser().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
                 } else if (user.getLnameUser().toLowerCase().contains(lowerCaseFilter)) {
@@ -123,23 +115,38 @@ public class UserScreenController implements Initializable {
 
         // 5. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
+        
     }
     
     @FXML
-    private void navigateToAddUserScreen (ActionEvent event) throws IOException {
-        Stage stage = null;
-        Parent addUserScene = null;
-
-            stage = (Stage) AddButton.getScene().getWindow();
-            addUserScene = FXMLLoader.load(getClass().getResource("AddUserScreen.fxml"));
+    void deleteUser(ActionEvent e) throws SQLException {
+        UserService US = new UserService();
+        US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+//        int selectedUser;
+//        selectedUser = Table.getSelectionModel().getSelectedIndex();
+//        int id = IDUser.getCellData(selectedUser);
+//        US.delete(id);
         
-
-        Scene scene = new Scene(addUserScene);
-        stage.setScene(scene);
-        stage.setTitle("Add User | Hunt Kingdom | Admin");
+    }
+    
+    @FXML
+    void updateUser(ActionEvent event) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+//        Parent root1 = (Parent) fxmlLoader.load();
+//        Stage stage = new Stage();
+//        stage.setTitle("Hunt Kingdom | Admin | Update User");
+//        stage.setScene(new Scene(root1));
+//        stage.show();
+    }
+    
+    @FXML
+    void addUser(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Add User");
+        stage.setScene(new Scene(root1));
         stage.show();
-//FXMLLoader loader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
-//        Parent root = loader.load();
-//        AddButton.getScene().setRoot(root);
-}
+    }
+    
 }

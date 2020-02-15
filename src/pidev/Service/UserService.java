@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.ObservableList;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Users;
 import pidev.IService.IService;
@@ -48,6 +49,11 @@ public class UserService implements IService<Users> {
         PrepState.executeUpdate();
     }
 
+    /**
+     *
+     * @param emailUser
+     * @throws SQLException
+     */
     @Override
     public void delete(String emailUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
@@ -59,7 +65,7 @@ public class UserService implements IService<Users> {
     public List<Users> readAll() throws SQLException {
         List<Users> arrayUsers = new ArrayList<>();
         state = connexion.createStatement();
-        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, emailUser from Users WHERE idRole=0");
+        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, emailUser from Users WHERE idRole=1");
         while (rs.next()) {
 
             arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5)));
@@ -97,6 +103,10 @@ public class UserService implements IService<Users> {
         PrepState.setString(5, u.getPasswordUser());
         PrepState.setInt(6, idUser);
         PrepState.executeUpdate();
+    }
+
+    public void delete(ObservableList<Users> User) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
