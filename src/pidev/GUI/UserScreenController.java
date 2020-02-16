@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
@@ -31,7 +32,9 @@ import pidev.Service.UserService;
  * @author Testouri Mohamed
  */
 public class UserScreenController implements Initializable {
-    
+
+    @FXML
+    private AnchorPane Pane;
     @FXML
     private TextField SearchTermTextFiled;
     @FXML
@@ -46,6 +49,7 @@ public class UserScreenController implements Initializable {
     private TableColumn<Users, Integer> PhoneUser;
     @FXML
     private TableColumn<Users, String> EmailUser;
+    @FXML
     private Button DeleteButton;
     @FXML
     private Button UpdateButton;
@@ -59,13 +63,13 @@ public class UserScreenController implements Initializable {
      * @param rb
      */
     ObservableList<Users> listUsers = FXCollections.observableArrayList();
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         UserService US = new UserService();
         try {
             listUsers.addAll(US.readAll());
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(UserScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -75,7 +79,7 @@ public class UserScreenController implements Initializable {
         PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
         EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
         Table.setItems(listUsers);
-        
+
         FilteredList<Users> filteredData = new FilteredList<>(listUsers, lu -> true);
 
         // 2. Set the filter Predicate whenever the filter changes.
@@ -89,7 +93,7 @@ public class UserScreenController implements Initializable {
 
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-                
+
                 if (user.getFnameUser().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
                 } else if (user.getLnameUser().toLowerCase().contains(lowerCaseFilter)) {
@@ -115,20 +119,17 @@ public class UserScreenController implements Initializable {
 
         // 5. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
-        
+
     }
-    
+
     @FXML
     void deleteUser(ActionEvent e) throws SQLException {
         UserService US = new UserService();
         US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-//        int selectedUser;
-//        selectedUser = Table.getSelectionModel().getSelectedIndex();
-//        int id = IDUser.getCellData(selectedUser);
-//        US.delete(id);
-        
+        Table.refresh();
+
     }
-    
+
     @FXML
     void updateUser(ActionEvent event) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
@@ -138,7 +139,7 @@ public class UserScreenController implements Initializable {
 //        stage.setScene(new Scene(root1));
 //        stage.show();
     }
-    
+
     @FXML
     void addUser(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
@@ -148,5 +149,7 @@ public class UserScreenController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     }
-    
+
 }
+
+   
