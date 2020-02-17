@@ -16,6 +16,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.API.SendMail;
+import pidev.Service.UserService;
 
 /**
  * FXML Controller class
@@ -74,7 +76,16 @@ public class UpdateUserScreenController implements Initializable {
     private void updateUser(ActionEvent event) {
         
         JOptionPane.showMessageDialog(null, "User Updated");
-                // close window after adding a user (it works dont ask because i dont know how 
+        UserService US = new UserService();
+        // mazzel el code mtaa update eli lezmni naadi les parametre selectionné men table view o nhothom fi textfiled 
+        
+        // API SMS
+        
+        
+        //sending mail
+        String mailReciver = EmailUser.getText();
+        SendMail.sendMail(mailReciver, "Updated", "your information has been updated");
+                        // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

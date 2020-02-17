@@ -7,15 +7,10 @@ package pidev.Test;
 
 import java.sql.SQLException;
 import java.util.List;
-import pidev.Entite.Animal;
-import pidev.Entite.Commande;
-import pidev.Entite.Event;
+import pidev.API.SendMail;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
 import pidev.Service.GroupService;
-import pidev.Service.ServiceAnimal;
-import pidev.Service.ServiceCommande;
-import pidev.Service.ServiceEvent;
 import pidev.Service.UserService;
 
 /**
@@ -25,6 +20,8 @@ import pidev.Service.UserService;
 public class Test {
 
     public static void main(String[] args) throws SQLException {
+//        SendMail.sendMail("m.testoury@outlook.fr", "ll ", "test");
+//        SendMail.sendMail("amel.khelifa@esprit.tn", "ll ", "test");
 //        ServiceAnnonce SA = new ServiceAnnonce();
         UserService US = new UserService();
         GroupService GS = new GroupService();

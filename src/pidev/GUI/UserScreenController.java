@@ -24,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.API.SendMail;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 
@@ -128,7 +129,12 @@ public class UserScreenController implements Initializable {
         UserService US = new UserService();
         US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
         Table.refresh();
-JOptionPane.showMessageDialog(null, "User Updated");
+        String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex()) ;
+        System.out.println(mailReciver);
+JOptionPane.showMessageDialog(null, "User Deleted");
+        SendMail.sendMail(mailReciver, "Deleted", "you have been deleted from HUNT Kingdom Community");
+        //API SMS
+
     }
 
     @FXML
