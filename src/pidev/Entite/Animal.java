@@ -12,12 +12,23 @@ package pidev.Entite;
 public class Animal {
     
     private int idAnimal ;
+    private int idA ;
     private String race ;
     private String saison ;
     private String place ;
 
-    public Animal(int idAnimal, String race, String saison, String place) {
+    public Animal(int idAnimal, int idA, String race, String saison, String place) {
         this.idAnimal = idAnimal;
+        this.idA = idA;
+        this.race = race;
+        this.saison = saison;
+        this.place = place;
+    }
+    
+    
+
+    public Animal(int idA, String race, String saison, String place) {
+        this.idA = idA;
         this.race = race;
         this.saison = saison;
         this.place = place;
@@ -55,10 +66,20 @@ public class Animal {
         this.place = place;
     }
 
+    public int getIdA() {
+        return idA;
+    }
+
+    public void setIdA(int idA) {
+        this.idA = idA;
+    }
+
     @Override
     public String toString() {
-        return "Animal{" + "idAnimal=" + idAnimal + ", race=" + race + ", saison=" + saison + ", place=" + place + '}';
+        return "Animal{" + "idAnimal=" + idAnimal + ", idA=" + idA + ", race=" + race + ", saison=" + saison + ", place=" + place + '}';
     }
+
+    
     
     
     

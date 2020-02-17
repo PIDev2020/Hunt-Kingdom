@@ -13,11 +13,21 @@ import java.sql.Date;
  */
 public class Commande {
     private int idCommande;
+    private String produit;
     private String date;
     private int idUser;
 
-    public Commande(int idCommande, String date, int idUser) {
+    public Commande(int idCommande, String produit, String date, int idUser) {
         this.idCommande = idCommande;
+        this.produit = produit;
+        this.date = date;
+        this.idUser = idUser;
+    }
+
+    
+    
+    public Commande(String produit, String date, int idUser) {
+        this.produit = produit;
         this.date = date;
         this.idUser = idUser;
     }
@@ -25,10 +35,14 @@ public class Commande {
     public Commande() {
     }
 
-    public Commande(int idCommande, int idUser) {
-        this.idCommande = idCommande;
-        this.idUser = idUser;
+    public String getProduit() {
+        return produit;
     }
+
+    public void setProduit(String produit) {
+        this.produit = produit;
+    }
+
 
     public int getIdCommande() {
         return idCommande;
@@ -56,8 +70,9 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "idCommande=" + idCommande + ", date=" + date + ", idUser=" + idUser + '}';
+        return "Commande{" + "idCommande=" + idCommande + ", produit=" + produit + ", date=" + date + ", idUser=" + idUser + '}';
     }
-     
+
+    
     
 }

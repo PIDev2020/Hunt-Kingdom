@@ -21,69 +21,62 @@ import pidev.IService.IService;
  *
  * @author hp
  */
-public class ServiceAnimal implements IService<Animal> {
-
-    private Connection con;
+public class ServiceAnimal implements IService<Animal>{
+    private Connection con; 
     private Statement ste;
-
-    public ServiceAnimal() {
+    
+    public ServiceAnimal(){
         con = DataBase.getInstance().getConnection();
-
+    
     }
 
-    public void add(Animal t) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("INSERT INTO `esprit`.`animal` ( `idAnimal`, `race`, `saison`, `place`) VALUES ( ?, ?, ?, ?);");
-        pre.setInt(1, t.getIdAnimal());
-        pre.setString(2, t.getRace());
-        pre.setString(3, t.getSaison());
-        pre.setString(4, t.getPlace());
-        pre.executeUpdate();
+    @Override
+    public void ajouter(Animal t) throws SQLException {
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`animal` ( `idA`, `race`, `saison`, `place`) VALUES ( ?, ?, ?, ?);");
+    pre.setInt(1, t.getIdA());
+    pre.setString(2, t.getRace());
+    pre.setString(3, t.getSaison());
+    pre.setString(4, t.getPlace());
+    pre.executeUpdate();
     }
 
     @Override
     public void delete(int id) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("DELETE FROM `esprit`.`animal` WHERE `idAnimal`=?;");
-        pre.setInt(1, id);
-        pre.executeUpdate();
+ 
+        PreparedStatement pre=con.prepareStatement("DELETE FROM `esprit`.`animal` WHERE `idA`=?;");
+    pre.setInt(1, id);
+    pre.executeUpdate();
     }
 
     @Override
     public void update(Animal t, int id) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("UPDATE  `esprit`.`animal` SET `idAnimal`=?, `race`=?, `saison`=?, `place`=?  WHERE `idAnimal`=?;");
-        pre.setInt(1, t.getIdAnimal());
-        pre.setString(2, t.getRace());
-        pre.setString(3, t.getSaison());
-        pre.setString(4, t.getPlace());
-        pre.setInt(5, id);
-        pre.executeUpdate();
+
+        PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`animal` SET `idA`=?, `race`=?, `saison`=?, `place`=?  WHERE `idA`=?;");
+    pre.setInt(1, t.getIdA());
+    pre.setString(2, t.getRace());
+    pre.setString(3, t.getSaison());
+    pre.setString(4, t.getPlace());
+    pre.setInt(5, id);
+    pre.executeUpdate();
     }
 
     @Override
     public List<Animal> readAll() throws SQLException {
-
-        List<Animal> arr = new ArrayList<>();
-        ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from animal");
-        while (rs.next()) {
-            int idAnimal = rs.getInt(1);
-            String race = rs.getString(2);
-            String saison = rs.getString(3);
-            String place = rs.getString(4);
-            Animal p = new Animal(idAnimal, race, saison, place);
-            arr.add(p);
-        }
-        return arr;
-
-    }
-
-    @Override
-    public void delete(String email) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Animal> orderByName(int orderType) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
+         List<Animal> arr=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select * from animal");
+     while (rs.next()) {    
+               int idAnimal=rs.getInt(1);
+               int idA=rs.getInt(2);
+               String race=rs.getString(3);
+               String saison=rs.getString(4);  
+               String place=rs.getString(5);
+               Animal p=new Animal(idAnimal, idA, race, saison, place);
+     arr.add(p);
+     }
+     return arr;
+    
     }
 
 }
