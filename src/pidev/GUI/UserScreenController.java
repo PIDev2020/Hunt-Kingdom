@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 
@@ -127,17 +128,24 @@ public class UserScreenController implements Initializable {
         UserService US = new UserService();
         US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
         Table.refresh();
-
+JOptionPane.showMessageDialog(null, "User Updated");
     }
 
     @FXML
     void updateUser(ActionEvent event) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
-//        Parent root1 = (Parent) fxmlLoader.load();
-//        Stage stage = new Stage();
-//        stage.setTitle("Hunt Kingdom | Admin | Update User");
-//        stage.setScene(new Scene(root1));
-//        stage.show();
+//        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
+//        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
+//        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
+//        LnameUser.setCellValueFactory(new PropertyValueFactory<>("lnameUser"));
+//        PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
+//        EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
+//        Table.setItems(listUsers);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Update User");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
     @FXML
@@ -151,5 +159,3 @@ public class UserScreenController implements Initializable {
     }
 
 }
-
-   

@@ -6,7 +6,6 @@
 package pidev.GUI;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,19 +14,15 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import pidev.API.SendMail;
-import pidev.Entite.Users;
-import pidev.Service.UserService;
 
 /**
  * FXML Controller class
  *
  * @author Testouri Mohamed
  */
-public class AddUserScreenController implements Initializable {
+public class UpdateUserScreenController implements Initializable {
 
     @FXML
     private TextField FnameUser;
@@ -42,9 +37,7 @@ public class AddUserScreenController implements Initializable {
     @FXML
     private TextField RoleUser;
     @FXML
-    private AnchorPane Pane;
-    @FXML
-    private Button AddUserButton;
+    private Button UpdateUserButton;
 
     /**
      * Initializes the controller class.
@@ -52,24 +45,39 @@ public class AddUserScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }    
+    public void setNomUL(String nomUL) {
+        this.FnameUser.setText(nomUL);
     }
 
-    @FXML
-    void addUser(ActionEvent event) throws SQLException {
+    public void setPnomUL(String pnomUL) {
+        this.LnameUser.setText(pnomUL);
+    }
 
-        UserService US = new UserService();
-        int phone = Integer.parseInt(PhoneUser.getText());
-        int role = Integer.parseInt(RoleUser.getText());
-        String mailReciver = EmailUser.getText();
-        US.add(new Users(FnameUser.getText(), LnameUser.getText(), phone, role, EmailUser.getText(), PasswordUser.getText()));
-       //sending mail 
-        SendMail mail = new SendMail();
-        mail.sendMail(mailReciver, "Added", "you are now a member of HUNT Kingdom Community");
-        JOptionPane.showMessageDialog(null, "User added");
+    public void setPhoneUL(int phoneUL) {
+        this.PhoneUser.setText(phoneUL+"");
+    }
+
+    public void setRoleUL(int roleUL) {
+        this.RoleUser.setText(roleUL+"");
+    }
+
+    public void setEmailUL(String emailUL) {
+        this.EmailUser.setText(emailUL);
+    }
+
+    public void setPsswdUL(String psswdUL) {
+        this.PasswordUser.setText(psswdUL);
+    }
+    
+    @FXML
+    private void updateUser(ActionEvent event) {
+        
+        JOptionPane.showMessageDialog(null, "User Updated");
                 // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-
+    
 }
