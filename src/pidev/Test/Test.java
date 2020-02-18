@@ -7,7 +7,6 @@ package pidev.Test;
 
 import java.sql.SQLException;
 import java.util.List;
-import pidev.API.SendMail;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
 import pidev.Service.GroupService;
@@ -15,7 +14,7 @@ import pidev.Service.UserService;
 
 /**
  *
- * @author elhak
+ * @author Testouri Mohamed
  */
 public class Test {
 

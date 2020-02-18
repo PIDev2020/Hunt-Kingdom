@@ -68,28 +68,27 @@ public class UpdateUserScreenController implements Initializable {
     public void setIDUser(int IDUser) {
         this.IDUser.setText(String.valueOf(IDUser));
     }
-   
-    
 
     public void setRoleUser(int RoleUser) {
         this.RoleUser.setText(String.valueOf(RoleUser));
     }
+
     @FXML
     void updateUser(ActionEvent event) throws SQLException {
 
         JOptionPane.showMessageDialog(null, "User Updated");
         UserService US = new UserService();
-        US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), Integer.parseInt(RoleUser.getText()), EmailUser.getText()), Integer.parseInt( IDUser.getText()));
-        System.out.println(IDUser);        
-// mazzel el code mtaa update eli lezmni naadi les parametre selectionné men table view o nhothom fi textfiled 
-
+        US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), Integer.parseInt(RoleUser.getText()), EmailUser.getText()), Integer.parseInt(IDUser.getText()));
+        System.out.println(IDUser);
         // API SMS
+        
         //sending mail
-//        String mailReciver = EmailUser.getText();
-//        SendMail.sendMail(mailReciver, "Updated", "your information has been updated");
+        String mailReciver = EmailUser.getText();
+        SendMail.sendMail(mailReciver, "Updated", "your information has been updated");
         // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
+        JOptionPane.showMessageDialog(null, "User Deleted");
         stage.close();
     }
 

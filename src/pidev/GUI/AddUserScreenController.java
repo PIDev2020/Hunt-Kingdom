@@ -64,12 +64,12 @@ public class AddUserScreenController implements Initializable {
         US.add(new Users(FnameUser.getText(), LnameUser.getText(), phone, role, EmailUser.getText(), PasswordUser.getText()));
         //sending mail 
         SendMail.sendMail(mailReciver, "Added", "you are now a member of HUNT Kingdom Community");
-        JOptionPane.showMessageDialog(null, "User added");
         //API SMS
         
         // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
+        JOptionPane.showMessageDialog(null, "User added");
         stage.close();
     }
 

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author elhak
+ * @author Testouri Mohamed
  */
 public class ServiceAnnonce implements IService<Annonce> {
 

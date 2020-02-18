@@ -5,7 +5,6 @@
  */
 package pidev.GUI;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -17,17 +16,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
 import pidev.Service.GroupService;
 
@@ -36,7 +30,7 @@ import pidev.Service.GroupService;
  *
  * @author Testouri Mohamed
  */
-public class GroupScreenController implements Initializable {
+public class AssignUserScreenController implements Initializable {
 
     @FXML
     private TableView<Groups> Table;
@@ -47,63 +41,28 @@ public class GroupScreenController implements Initializable {
     @FXML
     private TableColumn<Groups, String> TypeGroup;
     @FXML
-    private Button DeleteButton;
-    @FXML
     private TextField SearchTermTextFiled;
     @FXML
-    private Button UpdateButton;
-    @FXML
-    private Button AddButton;
+    private Button AssignButton;
     @FXML
     private Button refreshButton;
-    @FXML
-    private Button ShowUsersGroupButton;
+
     /**
      * initialises the controller class.
      */
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refresh();
-    }
+    }    
 
     @FXML
-    void deleteGroup(ActionEvent event) throws SQLException {
-        GroupService GS = new GroupService();
-        GS.delete(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        //System.out.println(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        JOptionPane.showMessageDialog(null, "Group Deleted");
-        refresh();
-    }
-
-    @FXML
-    void updateGroup(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateGroupScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Update User");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        UpdateGroupScreenController UGSC = fxmlLoader.getController();
-        UGSC.setIDGroup(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UGSC.setNameGroup(NameGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UGSC.setTypeGroup(TypeGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-    }
-
-    @FXML
-    void addGroup(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGroupScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Add Group");
-        stage.setScene(new Scene(root1));
-        stage.show();
+    void assignGroup(ActionEvent event) {
     }
 
     @FXML
     void refresh() {
-        GroupService GS = new GroupService();
+         GroupService GS = new GroupService();
         listGroups.clear();
         try {
             listGroups.addAll(GS.readAll());
@@ -146,15 +105,5 @@ public class GroupScreenController implements Initializable {
         // 3.3. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
     }
-
-    @FXML
-    void ShowUsersGroup(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowUserGroupScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Users per group");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
+    
 }
