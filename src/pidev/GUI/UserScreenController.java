@@ -129,9 +129,9 @@ public class UserScreenController implements Initializable {
         UserService US = new UserService();
         US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
         Table.refresh();
-        String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex()) ;
+        String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex());
         System.out.println(mailReciver);
-JOptionPane.showMessageDialog(null, "User Deleted");
+        JOptionPane.showMessageDialog(null, "User Deleted");
         SendMail.sendMail(mailReciver, "Deleted", "you have been deleted from HUNT Kingdom Community");
         //API SMS
 
@@ -139,6 +139,13 @@ JOptionPane.showMessageDialog(null, "User Deleted");
 
     @FXML
     void updateUser(ActionEvent event) throws IOException {
+        int phone = Integer.parseInt(PhoneUser.getText());
+        UpdateUserScreenController UUSC = FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+        UUSC.setNomUL(FnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setPnomUL(LnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setEmailUL(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setPhoneUL(phone);
+
 //        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
 //        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
 //        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
@@ -162,6 +169,10 @@ JOptionPane.showMessageDialog(null, "User Deleted");
         stage.setTitle("Hunt Kingdom | Admin | Add User");
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    private UpdateUserScreenController FXMLLoader(URL resource) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
