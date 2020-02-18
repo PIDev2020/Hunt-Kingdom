@@ -29,6 +29,14 @@ public class Users {
     public Users() {
     }
 
+    public Users(String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser) {
+        this.fnameUser = fnameUser;
+        this.lnameUser = lnameUser;
+        this.phoneUser = phoneUser;
+        this.emailUser = emailUser;
+        this.idRole = idRole;
+    }
+
     public Users(String fnameUser, String lnameUser, int phoneUser, String emailUser, String passwordUser) {
         this.fnameUser = fnameUser;
         this.lnameUser = lnameUser;

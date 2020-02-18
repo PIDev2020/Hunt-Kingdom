@@ -94,14 +94,13 @@ public class UserService implements IService<Users> {
 
     @Override
     public void update(Users u, int idUser) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=? WHERE idUser= ?");
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? WHERE idUser= ?");
 
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
         PrepState.setString(4, u.getEmailUser());
-        PrepState.setString(5, u.getPasswordUser());
-        PrepState.setInt(6, idUser);
+        PrepState.setInt(5, idUser);
         PrepState.executeUpdate();
     }
 

@@ -6,17 +6,20 @@
 package pidev.GUI;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
+import pidev.Entite.Users;
 import pidev.Service.UserService;
 
 /**
@@ -35,60 +38,59 @@ public class UpdateUserScreenController implements Initializable {
     @FXML
     private TextField EmailUser;
     @FXML
-    private PasswordField PasswordUser;
-    @FXML
     private TextField RoleUser;
     @FXML
     private Button UpdateUserButton;
+    @FXML
+    private Label IDUser;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void setNomUL(String nomUL) {
-        this.FnameUser.setText(nomUL);
     }
 
-    public void setPnomUL(String pnomUL) {
-        this.LnameUser.setText(pnomUL);
+    public void setFnameUser(String FnameUser) {
+        this.FnameUser.setText(FnameUser);
     }
 
-    public void setPhoneUL(int phoneUL) {
-        this.PhoneUser.setText(phoneUL+"");
+    public void setLnameUser(String LnameUser) {
+        this.LnameUser.setText(LnameUser);
     }
 
-    public void setRoleUL(int roleUL) {
-        this.RoleUser.setText(roleUL+"");
+    public void setPhoneUser(int PhoneUser) {
+        this.PhoneUser.setText(String.valueOf(PhoneUser));
     }
 
-    public void setEmailUL(String emailUL) {
-        this.EmailUser.setText(emailUL);
+    public void setEmailUser(String EmailUser) {
+        this.EmailUser.setText(EmailUser);
     }
 
-    public void setPsswdUL(String psswdUL) {
-        this.PasswordUser.setText(psswdUL);
+    public void setIDUser(int IDUser) {
+        this.IDUser.setText(String.valueOf(IDUser));
     }
+   
     
+
+    public void setRoleUser(int RoleUser) {
+        this.RoleUser.setText(String.valueOf(RoleUser));
+    }
     @FXML
-    private void updateUser(ActionEvent event) {
-        
+    void updateUser(ActionEvent event) throws SQLException {
+
         JOptionPane.showMessageDialog(null, "User Updated");
         UserService US = new UserService();
-        // mazzel el code mtaa update eli lezmni naadi les parametre selectionné men table view o nhothom fi textfiled 
-        
+        US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), Integer.parseInt(RoleUser.getText()), EmailUser.getText()), Integer.parseInt( IDUser.getText()));
+        System.out.println(IDUser);        
+// mazzel el code mtaa update eli lezmni naadi les parametre selectionné men table view o nhothom fi textfiled 
+
         // API SMS
-        
-        
         //sending mail
-        String mailReciver = EmailUser.getText();
-        SendMail.sendMail(mailReciver, "Updated", "your information has been updated");
-                        // close window after adding a user (it works dont ask because i dont know how 
+//        String mailReciver = EmailUser.getText();
+//        SendMail.sendMail(mailReciver, "Updated", "your information has been updated");
+        // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-    
+
 }

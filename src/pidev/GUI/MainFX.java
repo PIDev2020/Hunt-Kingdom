@@ -21,7 +21,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(("GroupScreen.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource(("UserScreen.fxml")));
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("Hunt Kingdom | Admin");

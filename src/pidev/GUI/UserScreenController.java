@@ -139,26 +139,29 @@ public class UserScreenController implements Initializable {
 
     @FXML
     void updateUser(ActionEvent event) throws IOException {
-        int phone = Integer.parseInt(PhoneUser.getText());
-        UpdateUserScreenController UUSC = FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
-        UUSC.setNomUL(FnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setPnomUL(LnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setEmailUL(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setPhoneUL(phone);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+       
 
 //        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
 //        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
 //        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
-//        LnameUser.setCellValueFactory(new PropertyValueFactory<>("lnameUser"));
+//        LnameUser.set CellValueFactory(new PropertyValueFactory<>("lnameUser"));
 //        PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
 //        EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
 //        Table.setItems(listUsers);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Admin | Update User");
         stage.setScene(new Scene(root1));
         stage.show();
+//      
+        UpdateUserScreenController UUSC = fxmlLoader.getController();
+        UUSC.setIDUser(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setFnameUser(FnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setLnameUser(LnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setPhoneUser(PhoneUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setEmailUser(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+       // 
     }
 
     @FXML
