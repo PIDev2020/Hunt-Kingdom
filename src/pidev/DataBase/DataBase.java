@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pidev.DataBase;
 
 
@@ -7,30 +12,38 @@ import java.sql.SQLException;
 
 
 
+/**
+ *
+ * @author House
+ */
+
 public class DataBase {
-    String url = "jdbc:mysql://127.0.0.1/hunt kingdom";
-    String login = "root";
-    String password = "";
-    
-    public static DataBase database;
-    public Connection connexion;
-    
+     String url = "jdbc:mysql://localhost:3306/esprit";
+     String login = "root";
+     String pwd = "";
+    public  static DataBase db;
+    public Connection con;
     private DataBase() {
          try {
-             connexion=DriverManager.getConnection(url, login, password);
+             con=DriverManager.getConnection(url, login, pwd);
              System.out.println("connexion etablie");
          } catch (SQLException ex) {
              System.out.println(ex);
          }
     }
     
-    public Connection  getConnection(){
-    return connexion;
+    public Connection  getConnection()
+    {
+    return con;
     }     
-    
-    public static DataBase getInstance(){
-        if(database==null)
-        database=new DataBase();
-    return database;
-    }         
+    public static DataBase getInstance()
+    {if(db==null)
+        db=new DataBase();
+    return db;
+    }     
+     
+     
+     
+     
 }
+

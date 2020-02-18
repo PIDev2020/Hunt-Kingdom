@@ -5,25 +5,18 @@
  */
 package pidev.IService;
 
-/**
- *
- * @author elhak
- */
-
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author House
- * @param <T>
+ * @author hp
  */
 public interface IService<T> {
-    void add(T t) throws SQLException;
+    void ajouter(T t) throws SQLException;
     void delete(int id) throws SQLException;
-    void delete(String email) throws SQLException;
-    void update(T t, int id) throws SQLException;
-    List<T> orderByName(int orderType) throws SQLException;
+    void update(T t,int id) throws SQLException;
     List<T> readAll() throws SQLException;
+
 }
 

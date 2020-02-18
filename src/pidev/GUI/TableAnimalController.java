@@ -62,6 +62,9 @@ public class TableAnimalController implements Initializable{
      ObservableList<Animal> listA = FXCollections.observableArrayList();
     @FXML
     private TextField tfsearch;
+    @FXML
+    private Button btnref;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -128,23 +131,18 @@ public class TableAnimalController implements Initializable{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutAnimal.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Add User");
+        stage.setTitle("Add Animal");
         stage.setScene(new Scene(root1));
         stage.show();
+        tablev.refresh();
     }
     @FXML
     void updateAnimal(ActionEvent event) throws IOException {
-//        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
-//        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
-//        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
-//        LnameUser.setCellValueFactory(new PropertyValueFactory<>("lnameUser"));
-//        PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
-//        EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
-//        Table.setItems(listUsers);
+        
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateAnimal.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Update User");
+        stage.setTitle("Update Animal");
         stage.setScene(new Scene(root1));
         stage.show();
         
@@ -163,13 +161,8 @@ public class TableAnimalController implements Initializable{
         tablev.refresh();
 JOptionPane.showMessageDialog(null, "Animal Deleted");
     }
-
+@FXML
+    void refresh(ActionEvent e){
+        tablev.refresh();
+    }
 }
-    
-        
-    
-    
-   
-    
-    
-

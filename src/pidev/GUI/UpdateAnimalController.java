@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,7 +30,7 @@ import pidev.Service.ServiceAnimal;
  *
  * @author hp
  */
-public class UpdateAnimalController implements Initializable {
+public class UpdateAnimalController implements Initializable{
 
     @FXML
     private ImageView img;
@@ -44,6 +45,7 @@ public class UpdateAnimalController implements Initializable {
     @FXML
     private Button btnaa;
 
+   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File file = new File("images/a.jpg");
@@ -72,18 +74,17 @@ public class UpdateAnimalController implements Initializable {
     private void updateAnimal(ActionEvent event) throws SQLException, IOException {
         
         ServiceAnimal sa=new ServiceAnimal();
-        sa.update(new Animal(Integer.parseInt(tfnumber.getText()),tfrace.getText(),tfseason.getText(),tfplace.getText()),1);
+        sa.update(new Animal(Integer.parseInt(tfnumber.getText()),tfrace.getText(),tfseason.getText(),tfplace.getText()),Integer.parseInt(tfnumber.getText()));
         
         FXMLLoader loader=new FXMLLoader(getClass().getResource("TableAnimal.fxml"));
         Parent root=loader.load();
         tfnumber.getScene().setRoot(root);
-        
-        
+
         JOptionPane.showMessageDialog(null, "Animal Updated");
-                // close window after adding a user (it works dont ask because i dont know how 
-        final Node source = (Node) event.getSource();
-        final Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+                // close window after adding
+                /*   final Node source = (Node) event.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();*/
     }
     
 }
