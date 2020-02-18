@@ -30,7 +30,6 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
 import pidev.Service.GroupService;
-import pidev.Service.UserService;
 
 /**
  * FXML Controller class
@@ -65,8 +64,45 @@ public class GroupScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // 1. fill in the table view
+        refresh();
+    }
+
+    @FXML
+    void deleteGroup(ActionEvent event) throws SQLException {
         GroupService GS = new GroupService();
+        GS.delete(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        //System.out.println(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        JOptionPane.showMessageDialog(null, "Group Deleted");
+        refresh();
+    }
+
+    @FXML
+    void updateGroup(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateGroupScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Update User");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        UpdateGroupScreenController UGSC = fxmlLoader.getController();
+        UGSC.setIDGroup(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UGSC.setNameGroup(NameGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UGSC.setTypeGroup(TypeGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+    }
+
+    @FXML
+    void addGroup(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGroupScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Add User");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+    
+    public void refresh(){
+        GroupService GS  = new GroupService();
+        listGroups.clear();
         try {
             listGroups.addAll(GS.readAll());
         } catch (SQLException e) {
@@ -76,8 +112,6 @@ public class GroupScreenController implements Initializable {
         NameGroup.setCellValueFactory(new PropertyValueFactory<>("nameGroup"));
         TypeGroup.setCellValueFactory(new PropertyValueFactory<>("typeGroup"));
         Table.setItems(listGroups);
-
-        // 2. search bar 
         FilteredList<Groups> filteredData = new FilteredList<>(listGroups, lu -> true);
         SearchTermTextFiled.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate((Groups group) -> {
@@ -109,39 +143,6 @@ public class GroupScreenController implements Initializable {
 
         // 3.3. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
-    }
-
-    @FXML
-    void deleteGroup(ActionEvent event) throws SQLException {
-        GroupService GS = new GroupService();
-        GS.delete(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        //System.out.println(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        JOptionPane.showMessageDialog(null, "Group Deleted");
-        Table.refresh();
-    }
-
-    @FXML
-    void updateGroup(ActionEvent event) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
-//        Parent root1 = (Parent) fxmlLoader.load();
-//        Stage stage = new Stage();
-//        stage.setTitle("Hunt Kingdom | Admin | Update User");
-//        stage.setScene(new Scene(root1));
-//        stage.show();
-//        UpdateGroupScreenController UGSC = fxmlLoader.getController();
-//        UGSC.setIDUser(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-//        UGSC.setFnameUser(NameGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-//        UGSC.setLnameUser(TypeGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
-    }
-
-    @FXML
-    void addGroup(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGroupScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Add User");
-        stage.setScene(new Scene(root1));
-        stage.show();
     }
 
 }

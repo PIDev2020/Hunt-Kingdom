@@ -38,15 +38,18 @@ public class AddGroupScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     void addGroup(ActionEvent event) throws SQLException {
+        GroupScreenController GSC = new GroupScreenController();
         GroupService GS = new GroupService();
         GS.add(new Groups(NameGroup.getText(), TypeGroup.getText()));
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+        //GSC.refresh();
+
     }
-    
+
 }

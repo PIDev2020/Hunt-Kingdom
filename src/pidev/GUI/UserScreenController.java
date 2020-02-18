@@ -68,7 +68,61 @@ public class UserScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        refresh();
+    }
+
+    @FXML
+    void deleteUser(ActionEvent e) throws SQLException {
         UserService US = new UserService();
+        US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        Table.refresh();
+        String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex());
+        System.out.println(mailReciver);
+        JOptionPane.showMessageDialog(null, "User Deleted");
+        SendMail.sendMail(mailReciver, "Deleted", "you have been deleted from HUNT Kingdom Community");
+        //API SMS
+
+    }
+
+    @FXML
+    void updateUser(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+
+//        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
+//        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
+//        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
+//        LnameUser.set CellValueFactory(new PropertyValueFactory<>("lnameUser"));
+//        PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
+//        EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
+//        Table.setItems(listUsers);
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Update User");
+        stage.setScene(new Scene(root1));
+        stage.show();
+//      
+        UpdateUserScreenController UUSC = fxmlLoader.getController();
+        UUSC.setIDUser(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setFnameUser(FnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setLnameUser(LnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setPhoneUser(PhoneUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setEmailUser(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        // 
+    }
+
+    @FXML
+    void addUser(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Add User");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    public void refresh() {
+        UserService US = new UserService();
+        listUsers.clear();
         try {
             listUsers.addAll(US.readAll());
 
@@ -123,57 +177,5 @@ public class UserScreenController implements Initializable {
         Table.setItems(sortedData);
 
     }
-
-    @FXML
-    void deleteUser(ActionEvent e) throws SQLException {
-        UserService US = new UserService();
-        US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        Table.refresh();
-        String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex());
-        System.out.println(mailReciver);
-        JOptionPane.showMessageDialog(null, "User Deleted");
-        SendMail.sendMail(mailReciver, "Deleted", "you have been deleted from HUNT Kingdom Community");
-        //API SMS
-
-    }
-
-    @FXML
-    void updateUser(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
-       
-
-//        Integer a = IDUser.getCellData(Table.getSelectionModel().getSelectedIndex());
-//        IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
-//        FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
-//        LnameUser.set CellValueFactory(new PropertyValueFactory<>("lnameUser"));
-//        PhoneUser.setCellValueFactory(new PropertyValueFactory<>("phoneUser"));
-//        EmailUser.setCellValueFactory(new PropertyValueFactory<>("emailUser"));
-//        Table.setItems(listUsers);
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Update User");
-        stage.setScene(new Scene(root1));
-        stage.show();
-//      
-        UpdateUserScreenController UUSC = fxmlLoader.getController();
-        UUSC.setIDUser(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setFnameUser(FnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setLnameUser(LnameUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setPhoneUser(PhoneUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        UUSC.setEmailUser(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-       // 
-    }
-
-    @FXML
-    void addUser(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddUserScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Add User");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
-    
 
 }
