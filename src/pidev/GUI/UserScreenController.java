@@ -57,7 +57,10 @@ public class UserScreenController implements Initializable {
     private Button UpdateButton;
     @FXML
     private Button AddButton;
-
+    @FXML
+    private Button AssignButton;
+    @FXML
+    private Button refreshButton;
     /**
      * the controller class.
      *
@@ -120,7 +123,8 @@ public class UserScreenController implements Initializable {
         stage.show();
     }
 
-    public void refresh() {
+    @FXML
+    void refresh() {
         UserService US = new UserService();
         listUsers.clear();
         try {
@@ -176,6 +180,10 @@ public class UserScreenController implements Initializable {
         // 5. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
 
+    }
+
+    @FXML
+    private void assignUser(ActionEvent event) {
     }
 
 }
