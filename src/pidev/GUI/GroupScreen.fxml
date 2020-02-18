@@ -17,7 +17,7 @@
             <Image url="@../img/group.jpg" />
          </image>
       </ImageView>
-      <TableView editable="true" layoutX="20.0" layoutY="100.0" opacity="0.75" prefHeight="241.0" prefWidth="560.0" AnchorPane.rightAnchor="20.0">
+      <TableView fx:id="Table" editable="true" layoutX="20.0" layoutY="100.0" opacity="0.75" prefHeight="241.0" prefWidth="560.0" AnchorPane.rightAnchor="20.0">
         <columns>
           <TableColumn fx:id="IDGroup" prefWidth="84.0" text="ID Group" />
           <TableColumn fx:id="NameGroup" prefWidth="260.0" text="Name" />
