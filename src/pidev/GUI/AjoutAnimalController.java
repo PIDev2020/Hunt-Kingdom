@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -62,7 +63,7 @@ public class AjoutAnimalController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-        
+  
 //        FXMLLoader loader=new FXMLLoader(getClass().getResource("DetailAnimal.fxml"));
 //        Parent root=loader.load();
 //        tfnumber.getScene().setRoot(root);
