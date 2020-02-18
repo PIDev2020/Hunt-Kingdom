@@ -174,8 +174,6 @@ public class UserScreenController implements Initializable {
         stage.show();
     }
 
-    private UpdateUserScreenController FXMLLoader(URL resource) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 }

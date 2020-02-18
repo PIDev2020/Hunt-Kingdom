@@ -29,7 +29,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
-import pidev.Entite.Users;
 import pidev.Service.GroupService;
 import pidev.Service.UserService;
 
@@ -114,14 +113,25 @@ public class GroupScreenController implements Initializable {
 
     @FXML
     void deleteGroup(ActionEvent event) throws SQLException {
-        UserService US = new UserService();
-        US.delete(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        GroupService GS = new GroupService();
+        GS.delete(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        //System.out.println(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
         JOptionPane.showMessageDialog(null, "Group Deleted");
         Table.refresh();
     }
 
     @FXML
-    void updateGroup(ActionEvent event) {
+    void updateGroup(ActionEvent event) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateUserScreen.fxml"));
+//        Parent root1 = (Parent) fxmlLoader.load();
+//        Stage stage = new Stage();
+//        stage.setTitle("Hunt Kingdom | Admin | Update User");
+//        stage.setScene(new Scene(root1));
+//        stage.show();
+//        UpdateGroupScreenController UGSC = fxmlLoader.getController();
+//        UGSC.setIDUser(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+//        UGSC.setFnameUser(NameGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+//        UGSC.setLnameUser(TypeGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
     }
 
     @FXML

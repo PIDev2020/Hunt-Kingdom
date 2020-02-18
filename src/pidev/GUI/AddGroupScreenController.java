@@ -41,7 +41,7 @@ public class AddGroupScreenController implements Initializable {
     }    
 
     @FXML
-    private void addGroup(ActionEvent event) throws SQLException {
+    void addGroup(ActionEvent event) throws SQLException {
         GroupService GS = new GroupService();
         GS.add(new Groups(NameGroup.getText(), TypeGroup.getText()));
         final Node source = (Node) event.getSource();
