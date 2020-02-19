@@ -10,6 +10,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.util.List;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
@@ -29,17 +30,27 @@ public class GeneratePdf {
     
     public static void main(String[] args) throws FileNotFoundException, DocumentException, SQLException{
     String file_name="C:\\Users\\hp\\Documents\\NetBeansProjects\\testcommande2\\test.pdf";
-    ObservableList<Commande> listC = FXCollections.observableArrayList();
+    ServiceCommande se= new ServiceCommande();
+    try{
+   List<Commande> listC = se.readAll();
+    
    Document document = new Document();
    
    PdfWriter.getInstance(document , new FileOutputStream(file_name));
    document.open();
    
-   Paragraph p = null;
+   Paragraph p = new Paragraph();
+   p.add(listC.toString());
 
    document.add(p);
    
    document.close();
+    }
+    catch(SQLException e)
+    {
+        System.out.println(e);
+    }
+    }
 
 
     }
