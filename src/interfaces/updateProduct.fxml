@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.UpdateProductController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@66380602_355190781841623_3579708190125719552_n.jpg" />
+         </image></ImageView>
+      <TextField fx:id="name" layoutX="213.0" layoutY="31.0" />
+      <TextField fx:id="desc" layoutX="213.0" layoutY="81.0" />
+      <TextField fx:id="url" layoutX="213.0" layoutY="138.0" />
+      <TextField fx:id="price" layoutX="213.0" layoutY="200.0" />
+      <Label layoutX="64.0" layoutY="35.0" text="Name" />
+      <Label layoutX="64.0" layoutY="85.0" text="description" />
+      <Label layoutX="64.0" layoutY="142.0" text="Photo" />
+      <Label layoutX="64.0" layoutY="204.0" text="Price" />
+      <Button fx:id="updateprod" layoutX="393.0" layoutY="325.0" mnemonicParsing="false" onAction="#Update" style="-fx-background-radius: 20; -fx-background-color: #628E9B;" text="Update product" textFill="#fdfafa" />
+   </children>
+</AnchorPane>
