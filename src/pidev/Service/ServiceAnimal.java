@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Animal;
-import pidev.Entite.Commande;
 import pidev.IService.IService;
 
 /**
@@ -78,6 +77,11 @@ public class ServiceAnimal implements IService<Animal> {
 
     @Override
     public void delete(String email) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Animal> readAll(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

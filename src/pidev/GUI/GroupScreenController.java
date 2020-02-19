@@ -149,12 +149,14 @@ public class GroupScreenController implements Initializable {
 
     @FXML
     void ShowUsersGroup(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowUserGroupScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowGUScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Admin | Users per group");
         stage.setScene(new Scene(root1));
         stage.show();
+        ShowGUScreenController SGUSC = fxmlLoader.getController();
+        SGUSC.setIDGroup(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
     }
 
 }
