@@ -75,8 +75,6 @@ public class UpdateUserScreenController implements Initializable {
 
     @FXML
     void updateUser(ActionEvent event) throws SQLException {
-
-        JOptionPane.showMessageDialog(null, "User Updated");
         UserService US = new UserService();
         US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), Integer.parseInt(RoleUser.getText()), EmailUser.getText()), Integer.parseInt(IDUser.getText()));
         System.out.println(IDUser);
@@ -88,7 +86,7 @@ public class UpdateUserScreenController implements Initializable {
         // close window after adding a user (it works dont ask because i dont know how 
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
-        JOptionPane.showMessageDialog(null, "User Deleted");
+        JOptionPane.showMessageDialog(null, "User Updated");
         stage.close();
     }
 

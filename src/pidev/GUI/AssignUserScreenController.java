@@ -17,13 +17,20 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import pidev.API.SendMail;
+import pidev.Entite.GroupUser;
 import pidev.Entite.Groups;
 import pidev.Service.GroupService;
+import pidev.Service.GroupUserService;
 
 /**
  * FXML Controller class
@@ -43,26 +50,50 @@ public class AssignUserScreenController implements Initializable {
     @FXML
     private TextField SearchTermTextFiled;
     @FXML
+    private Button refreshButton;
+    @FXML
     private Button AssignButton;
     @FXML
-    private Button refreshButton;
-
+    private Label IDUser;
+    @FXML
+    private Label EmailUser;
     /**
      * initialises the controller class.
      */
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
+
+    public void setIDUser(int IDUser) {
+        this.IDUser.setText(String.valueOf(IDUser));
+    }
+
+    public void setEmailUser(String EmailUser) {
+        this.EmailUser.setText(EmailUser);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refresh();
-    }    
+    }
 
     @FXML
-    void assignGroup(ActionEvent event) {
+    void assignGroup(ActionEvent event) throws SQLException {
+String mailReciver = EmailUser.getText();
+        GroupUserService GUS = new GroupUserService();
+        GUS.add(new GroupUser(Integer.parseInt(IDUser.getText()), IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex())));
+        //sending mail 
+        SendMail.sendMail(mailReciver, "New group", "you have been add to a new group");
+        //API SMS
+
+        // close window after adding a user (it works dont ask because i dont know how 
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        JOptionPane.showMessageDialog(null, "User added to new group");
+        stage.close();
     }
 
     @FXML
     void refresh() {
-         GroupService GS = new GroupService();
+        GroupService GS = new GroupService();
         listGroups.clear();
         try {
             listGroups.addAll(GS.readAll());
@@ -105,5 +136,5 @@ public class AssignUserScreenController implements Initializable {
         // 3.3. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
     }
-    
+
 }

@@ -18,9 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
-import pidev.Entite.Users;
 import pidev.Service.GroupService;
-import pidev.Service.UserService;
 
 /**
  * FXML Controller class
@@ -39,15 +37,11 @@ public class UpdateGroupScreenController implements Initializable {
     private Button UpdateGroupUser;
 
     /**
-     * Initializes the controller class.
+     * initialises the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    void addGroup(ActionEvent event) {
-        
     }
 
     public void setIDGroup(int IDGroup) {
@@ -63,11 +57,11 @@ public class UpdateGroupScreenController implements Initializable {
     }
 
     @FXML
-    private void UpdateGroup(ActionEvent event) throws SQLException {
+    void UpdateGroup(ActionEvent event) throws SQLException {
         JOptionPane.showMessageDialog(null, "User Updated");
         GroupService GS = new GroupService();
-        GS.update(new Groups(NameGroup.getText(), TypeGroup.getText()), Integer.parseInt( IDGroup.getText()));
-        System.out.println(IDGroup);        
+        GS.update(new Groups(NameGroup.getText(), TypeGroup.getText()), Integer.parseInt(IDGroup.getText()));
+        System.out.println(IDGroup);
 // mazzel el code mtaa update eli lezmni naadi les parametre selectionné men table view o nhothom fi textfiled 
 
         // API SMS

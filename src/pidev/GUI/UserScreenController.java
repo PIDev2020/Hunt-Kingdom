@@ -78,11 +78,11 @@ public class UserScreenController implements Initializable {
     void deleteUser(ActionEvent e) throws SQLException {
         UserService US = new UserService();
         US.delete(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
-        Table.refresh();
         String mailReciver = EmailUser.getCellData(Table.getSelectionModel().getFocusedIndex());
         System.out.println(mailReciver);
         SendMail.sendMail(mailReciver, "Deleted", "you have been deleted from HUNT Kingdom Community");
         JOptionPane.showMessageDialog(null, "User Deleted");
+        refresh();
         //API SMS
 
     }
@@ -183,15 +183,16 @@ public class UserScreenController implements Initializable {
     }
 
     @FXML
-    private void assignUser(ActionEvent event) throws IOException {
+    void assignUser(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AssignUserScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Admin | Assign User");
         stage.setScene(new Scene(root1));
         stage.show();
-        UpdateUserScreenController UUSC = fxmlLoader.getController();
+        AssignUserScreenController UUSC = fxmlLoader.getController();
         UUSC.setIDUser(IDUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        UUSC.setEmailUser(EmailUser.getCellData(Table.getSelectionModel().getSelectedIndex()));
     }
 
 }
