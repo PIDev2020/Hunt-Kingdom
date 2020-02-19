@@ -33,6 +33,8 @@ public class AjoutCommandeController {
     private TextField tfclient;
     @FXML
     private Button btnac;
+    @FXML
+    private TextField tfnumber;
 
     @FXML
     private void AjouterUneCommande(ActionEvent event) throws SQLException, IOException {

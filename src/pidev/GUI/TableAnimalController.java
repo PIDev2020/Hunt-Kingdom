@@ -70,44 +70,7 @@ public class TableAnimalController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         refresh();
     }
-    
     @FXML
-    void addanimal(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutAnimal.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Add Animal");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        refresh();
-    }
-    @FXML
-    void updateAnimal(ActionEvent event) throws IOException {
-        
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateAnimal.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Update Animal");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        
-        UpdateAnimalController uac=fxmlLoader.getController();
-        uac.setTfnumber(coln.getCellData(tablev.getSelectionModel().getSelectedIndex()));
-        uac.setTfrace(colr.getCellData(tablev.getSelectionModel().getSelectedIndex()));
-        uac.setTfseason(cols.getCellData(tablev.getSelectionModel().getSelectedIndex()));
-        uac.setTfplace(colp.getCellData(tablev.getSelectionModel().getSelectedIndex()));
-        
-    }
-
-@FXML
-    void deleteAnimal(ActionEvent e) throws SQLException {
-        ServiceAnimal sa = new ServiceAnimal();
-        sa.delete(coln.getCellData(tablev.getSelectionModel().getSelectedIndex()));
-        refresh();
-JOptionPane.showMessageDialog(null, "Animal Deleted");
-    }
-    
-@FXML
     void refresh(){
        
         ServiceAnimal sa = new ServiceAnimal();
@@ -169,4 +132,41 @@ JOptionPane.showMessageDialog(null, "Animal Deleted");
        
        
     }
+    
+    @FXML
+    void addanimal(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutAnimal.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add Animal");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        refresh();
+    }
+    @FXML
+    void updateAnimal(ActionEvent event) throws IOException {
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateAnimal.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Update Animal");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        
+        UpdateAnimalController uac=fxmlLoader.getController();
+        uac.setTfnumber(coln.getCellData(tablev.getSelectionModel().getSelectedIndex()));
+        uac.setTfrace(colr.getCellData(tablev.getSelectionModel().getSelectedIndex()));
+        uac.setTfseason(cols.getCellData(tablev.getSelectionModel().getSelectedIndex()));
+        uac.setTfplace(colp.getCellData(tablev.getSelectionModel().getSelectedIndex()));
+        
+    }
+
+@FXML
+    void deleteAnimal(ActionEvent e) throws SQLException {
+        ServiceAnimal sa = new ServiceAnimal();
+        sa.delete(coln.getCellData(tablev.getSelectionModel().getSelectedIndex()));
+        refresh();
+JOptionPane.showMessageDialog(null, "Animal Deleted");
+    }
+    
 }

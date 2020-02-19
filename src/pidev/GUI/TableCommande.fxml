@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.TableCommandeController">
+   <children>
+      <TableView fx:id="tablevc" layoutX="99.0" layoutY="72.0" prefHeight="200.0" prefWidth="404.0">
+        <columns>
+            <TableColumn fx:id="colnumber" prefWidth="75.0" text="Number" />
+          <TableColumn fx:id="colproduit" prefWidth="75.0" text="Produit" />
+          <TableColumn fx:id="coldate" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="colclient" prefWidth="77.0" text="Client" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnaddc" layoutX="492.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajoutCommande" text="Add" />
+      <Button fx:id="btnmc" layoutX="382.0" layoutY="337.0" mnemonicParsing="false" onAction="#updateCommande" text="Modify" />
+      <Button fx:id="btndc" layoutX="282.0" layoutY="337.0" mnemonicParsing="false" onAction="#deleteCommande" text="Delete" />
+      <Button fx:id="refc" layoutX="99.0" layoutY="337.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+      <TextField fx:id="searchc" layoutX="53.0" layoutY="28.0" />
+   </children>
+</AnchorPane>
