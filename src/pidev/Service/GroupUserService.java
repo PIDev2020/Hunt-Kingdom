@@ -56,7 +56,7 @@ public class GroupUserService implements IService<GroupUser>{
     public List<GroupUser> readAll(int id) throws SQLException {
      List<GroupUser> arrayGroupUser = new ArrayList<>();
             state = connexion.createStatement();
-        ResultSet rs = state.executeQuery("SELECT * FROM Groupuser WHERE idGroupUser="+String.valueOf(id));
+        ResultSet rs = state.executeQuery("SELECT * FROM Groupuser WHERE idGroup="+String.valueOf(id));
         while (rs.next()) {
             arrayGroupUser.add(new GroupUser(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             System.out.println(arrayGroupUser);
@@ -71,7 +71,14 @@ public class GroupUserService implements IService<GroupUser>{
 
     @Override
     public List<GroupUser> readAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    List<GroupUser> arrayGroupUser = new ArrayList<>();
+            state = connexion.createStatement();
+        ResultSet rs = state.executeQuery("SELECT * FROM Groupuser");
+        while (rs.next()) {
+            arrayGroupUser.add(new GroupUser(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+            System.out.println(arrayGroupUser);
+        }
+        return arrayGroupUser;        
     }
 
     

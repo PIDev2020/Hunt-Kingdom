@@ -56,13 +56,12 @@ public class ShowGUScreenController implements Initializable {
     /**
      * initialises the controller class.
      */
-    
     ObservableList<GroupUser> listGU = FXCollections.observableArrayList();
 
     public void setIDGroup(int IDGroup) {
-        this.IDGroup.setText(String.valueOf( IDGroup));
+        this.IDGroup.setText(String.valueOf(IDGroup));
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -71,13 +70,12 @@ public class ShowGUScreenController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(ShowGUScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-
+    }
     @FXML
     void refresh() throws SQLException {
         GroupUserService GUS = new GroupUserService();
         listGU.clear();
-        listGU.addAll(GUS.readAll(Integer.parseInt(IDGroup.getText())));
+        listGU.addAll(GUS.readAll(Integer.parseInt(this.IDGroup.getText())));
         IdGU.setCellValueFactory(new PropertyValueFactory<>("idGroupUser"));
         IdUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
         IdGroup.setCellValueFactory(new PropertyValueFactory<>("idGroup"));
@@ -114,7 +112,6 @@ public class ShowGUScreenController implements Initializable {
         // 3.3. Add sorted (and filtered) data to the table.
         Table.setItems(sortedData);
     }
-    
 
     @FXML
     void deleteGroup(ActionEvent event) throws SQLException {
@@ -128,5 +125,5 @@ public class ShowGUScreenController implements Initializable {
     @FXML
     void updateGroup(ActionEvent event) {
     }
-    
+
 }

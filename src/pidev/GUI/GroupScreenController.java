@@ -157,6 +157,8 @@ public class GroupScreenController implements Initializable {
         stage.show();
         ShowGUScreenController SGUSC = fxmlLoader.getController();
         SGUSC.setIDGroup(IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex()));
+        Integer a = IDGroup.getCellData(Table.getSelectionModel().getSelectedIndex());
+        System.out.println(a);
     }
 
 }
