@@ -4,23 +4,40 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.TableAnimalController">
    <children>
-      <TableView fx:id="tablev" layoutX="102.0" layoutY="46.0" prefHeight="264.0" prefWidth="377.0">
+      <ImageView fx:id="imga" fitHeight="408.0" fitWidth="606.0" layoutX="-2.0" layoutY="-2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/bow.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablev" layoutX="204.0" layoutY="54.0" opacity="0.82" prefHeight="282.0" prefWidth="393.0" style="-fx-background-color: #808080;">
         <columns>
-            <TableColumn fx:id="coln" prefWidth="75.0" text="Number" />
-          <TableColumn fx:id="colr" prefWidth="75.0" text="Race" />
-          <TableColumn fx:id="cols" prefWidth="75.0" text="Season" />
-            <TableColumn fx:id="colp" prefWidth="75.0" text="Place" />
-            <TableColumn fx:id="colref" prefWidth="75.0" text="Reference" />
+            <TableColumn fx:id="coln" prefWidth="55.0" text="Number" />
+          <TableColumn fx:id="colr" prefWidth="122.0" text="Race" />
+          <TableColumn fx:id="cols" prefWidth="72.0" text="Season" />
+            <TableColumn fx:id="colp" prefWidth="98.0" text="Place" />
+            <TableColumn fx:id="colref" prefWidth="45.0" text="Ref" />
         </columns>
       </TableView>
-      <Button fx:id="btnadd" layoutX="453.0" layoutY="335.0" mnemonicParsing="false" onAction="#addanimal" text="ADD" />
-      <Button fx:id="btnmod" layoutX="358.0" layoutY="335.0" mnemonicParsing="false" onAction="#updateAnimal" text="Modify" />
-      <Button fx:id="btndel" layoutX="265.0" layoutY="335.0" mnemonicParsing="false" onAction="#deleteAnimal" text="Delete" />
-      <TextField fx:id="tfsearch" layoutX="57.0" layoutY="14.0" />
-      <Button fx:id="btnref" layoutX="57.0" layoutY="335.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+      <Button fx:id="btnadd" layoutX="509.0" layoutY="348.0" mnemonicParsing="false" onAction="#addanimal" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: #32CD32;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btnmod" layoutX="368.0" layoutY="348.0" mnemonicParsing="false" onAction="#updateAnimal" prefHeight="31.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: #C0C0C0;" text="Update">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btndel" layoutX="221.0" layoutY="348.0" mnemonicParsing="false" onAction="#deleteAnimal" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TextField fx:id="tfsearch" layoutX="204.0" layoutY="21.0" promptText="Search..." style="-fx-background-radius: 20;" />
+      <Button fx:id="btnref" layoutX="520.0" layoutY="21.0" mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 20;" text="Refresh" />
    </children>
 </AnchorPane>

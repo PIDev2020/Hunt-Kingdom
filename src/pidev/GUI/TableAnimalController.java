@@ -5,6 +5,7 @@
  */
 package pidev.GUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -28,6 +29,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Animal;
@@ -64,10 +67,15 @@ public class TableAnimalController implements Initializable{
     private TextField tfsearch;
     @FXML
     private Button btnref;
+    @FXML
+    private ImageView imga;
     
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+             File file = new File("images/bow.jpg");
+        Image image = new Image(file.toURI().toString());
+        imga.setImage(image);
         refresh();
     }
     @FXML

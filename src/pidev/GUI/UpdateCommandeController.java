@@ -5,6 +5,7 @@
  */
 package pidev.GUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -13,9 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Animal;
 import pidev.Entite.Commande;
@@ -39,13 +44,17 @@ public class UpdateCommandeController implements Initializable {
     private TextField tfclient;
     @FXML
     private Button btnac;
+    @FXML
+    private ImageView imgcommande;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+              File file = new File("images/del.jpg");
+        Image image = new Image(file.toURI().toString());
+        imgcommande.setImage(image);
     }    
 
     public void setTfnumber(int tfnumber) {
@@ -74,15 +83,10 @@ public class UpdateCommandeController implements Initializable {
     private void updateCommande(ActionEvent event) throws SQLException, IOException {
         ServiceCommande sc=new ServiceCommande();
         sc.update(new Commande(Integer.parseInt(tfnumber.getText()),tfproduit.getText(),tfdate.getText(),Integer.parseInt(tfclient.getText())),Integer.parseInt(tfnumber.getText()));
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("TableCommande.fxml"));
-        Parent root=loader.load();
-        tfnumber.getScene().setRoot(root);
-
         JOptionPane.showMessageDialog(null, "Commande Updated");
-                // close window after adding
-                /*   final Node source = (Node) event.getSource();
+                final Node source = (Node) event.getSource();
                 final Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();*/
+                stage.close();
     }
     
     }

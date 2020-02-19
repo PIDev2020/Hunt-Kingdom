@@ -63,16 +63,7 @@ public class AjoutAnimalController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-  
-//        FXMLLoader loader=new FXMLLoader(getClass().getResource("DetailAnimal.fxml"));
-//        Parent root=loader.load();
-//        tfnumber.getScene().setRoot(root);
-//        
-//        DetailAnimalController dac=loader.getController();
-//        dac.setLbnumber(Integer.parseInt(tfnumber.getText()));
-//        dac.setLbrace(tfrace.getText());
-//        dac.setLbseason(tfseason.getText());
-//        dac.setLbplace(tfplace.getText());
+
 
     }
 

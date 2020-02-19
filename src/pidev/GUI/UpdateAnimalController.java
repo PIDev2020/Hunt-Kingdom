@@ -75,16 +75,13 @@ public class UpdateAnimalController implements Initializable{
         
         ServiceAnimal sa=new ServiceAnimal();
         sa.update(new Animal(Integer.parseInt(tfnumber.getText()),tfrace.getText(),tfseason.getText(),tfplace.getText()),Integer.parseInt(tfnumber.getText()));
-        
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("TableAnimal.fxml"));
-        Parent root=loader.load();
-        tfnumber.getScene().setRoot(root);
+       
 
         JOptionPane.showMessageDialog(null, "Animal Updated");
                 // close window after adding
-                /*   final Node source = (Node) event.getSource();
+                 final Node source = (Node) event.getSource();
                 final Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();*/
+                stage.close();
     }
     
 }

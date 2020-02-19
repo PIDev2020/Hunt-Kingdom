@@ -5,6 +5,7 @@
  */
 package pidev.GUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Commande;
@@ -61,9 +64,14 @@ public class TableCommandeController implements Initializable{
     @FXML
     private TextField searchc;
     ObservableList<Commande> listC = FXCollections.observableArrayList();
+    @FXML
+    private ImageView imgcommande;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+              File file = new File("images/he.jpg");
+        Image image = new Image(file.toURI().toString());
+        imgcommande.setImage(image);
         refresh();
     }
    
@@ -86,12 +94,12 @@ public class TableCommandeController implements Initializable{
         stage.setTitle("Update Animal");
         stage.setScene(new Scene(root1));
         stage.show();
-        
         UpdateCommandeController ucc=fxmlLoader.getController();
         ucc.setTfnumber(colnumber.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
         ucc.setTfproduit(colproduit.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
         ucc.setTfdate(coldate.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
         ucc.setTfclient(colclient.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
+        
     }
 
     @FXML

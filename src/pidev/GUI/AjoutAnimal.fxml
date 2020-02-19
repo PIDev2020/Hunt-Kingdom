@@ -11,17 +11,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D2B48C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.AjoutAnimalController">
    <children>
-      <ImageView fx:id="img" fitHeight="411.0" fitWidth="609.0" layoutY="-1.0" opacity="0.99" pickOnBounds="true">
+      <ImageView fx:id="img" fitHeight="411.0" fitWidth="609.0" opacity="0.99" pickOnBounds="true">
          <image>
             <Image url="@../../../images/a.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="348.0" layoutY="93.0" text="Number" textFill="WHITE" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="338.0" layoutY="83.0" prefHeight="35.0" prefWidth="69.0" text="Number" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="348.0" layoutY="152.0" prefHeight="25.0" prefWidth="37.0" text="Race" textFill="WHITE">
+      <Label layoutX="348.0" layoutY="152.0" prefHeight="35.0" prefWidth="51.0" text="Race" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -36,27 +36,27 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField id="tfnumber" fx:id="tfnumber" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="93.0" promptText="Enter Number..." style="-fx-background-color: #FfF; -fx-background-radius: 20;">
+      <TextField id="tfnumber" fx:id="tfnumber" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="83.0" prefHeight="35.0" prefWidth="149.0" promptText="Enter Number..." style="-fx-background-color: #FfF; -fx-background-radius: 20;">
          <effect>
             <Glow />
          </effect>
       </TextField>
-      <TextField id="tfrace" fx:id="tfrace" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="152.0" promptText="Enter Race" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
+      <TextField id="tfrace" fx:id="tfrace" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="152.0" prefHeight="35.0" prefWidth="149.0" promptText="Enter Race" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
          <effect>
             <Glow />
          </effect>
       </TextField>
-      <TextField id="tfseason" fx:id="tfseason" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="213.0" promptText="Enter Season" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
+      <TextField id="tfseason" fx:id="tfseason" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="213.0" prefHeight="35.0" prefWidth="149.0" promptText="Enter Season" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
          <effect>
             <Glow />
          </effect>
       </TextField>
-      <TextField id="tfplace" fx:id="tfplace" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="272.0" promptText="Enter Place" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
+      <TextField id="tfplace" fx:id="tfplace" cache="true" cacheHint="SPEED" layoutX="427.0" layoutY="272.0" prefHeight="35.0" prefWidth="149.0" promptText="Enter Place" style="-fx-background-color: #FfF; -fx-background-radius: 20;">
          <effect>
             <Glow />
          </effect>
       </TextField>
-      <Button id="btnaa" fx:id="btnaa" layoutX="398.0" layoutY="328.0" mnemonicParsing="false" onAction="#AjouterUnAnimal" prefHeight="14.0" prefWidth="78.0" style="-fx-background-color: #2E8B57; -fx-background-radius: 20;" text="Add Animal" />
+      <Button id="btnaa" fx:id="btnaa" layoutX="427.0" layoutY="338.0" mnemonicParsing="false" onAction="#AjouterUnAnimal" prefHeight="42.0" prefWidth="149.0" style="-fx-background-color: #32CD32; -fx-background-radius: 20;" text="Add Animal" textFill="WHITE" />
       <Label contentDisplay="CENTER" layoutX="250.0" layoutY="32.0" text="New Animal" textFill="WHITE">
          <font>
             <Font size="18.0" />

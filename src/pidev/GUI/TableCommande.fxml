@@ -4,22 +4,39 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.TableCommandeController">
    <children>
-      <TableView fx:id="tablevc" layoutX="99.0" layoutY="72.0" prefHeight="200.0" prefWidth="404.0">
+      <ImageView fx:id="imgcommande" fitHeight="409.0" fitWidth="681.0" layoutY="-7.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/he.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablevc" layoutX="291.0" layoutY="59.0" opacity="0.82" prefHeight="278.0" prefWidth="370.0" style="-fx-background-color: #808080;">
         <columns>
-            <TableColumn fx:id="colnumber" prefWidth="75.0" text="Number" />
-          <TableColumn fx:id="colproduit" prefWidth="75.0" text="Produit" />
-          <TableColumn fx:id="coldate" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="colclient" prefWidth="77.0" text="Client" />
+            <TableColumn fx:id="colnumber" prefWidth="68.0" text="Number" />
+          <TableColumn fx:id="colproduit" prefWidth="133.0" text="Produit" />
+          <TableColumn fx:id="coldate" prefWidth="100.0" text="Date" />
+            <TableColumn fx:id="colclient" prefWidth="75.0" text="Client" />
         </columns>
       </TableView>
-      <Button fx:id="btnaddc" layoutX="492.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajoutCommande" text="Add" />
-      <Button fx:id="btnmc" layoutX="382.0" layoutY="337.0" mnemonicParsing="false" onAction="#updateCommande" text="Modify" />
-      <Button fx:id="btndc" layoutX="282.0" layoutY="337.0" mnemonicParsing="false" onAction="#deleteCommande" text="Delete" />
-      <Button fx:id="refc" layoutX="99.0" layoutY="337.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
-      <TextField fx:id="searchc" layoutX="53.0" layoutY="28.0" />
+      <Button fx:id="btnaddc" layoutX="568.0" layoutY="350.0" mnemonicParsing="false" onAction="#ajoutCommande" prefHeight="38.0" prefWidth="93.0" style="-fx-background-radius: 20; -fx-background-color: #32CD32;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btnmc" layoutX="436.0" layoutY="350.0" mnemonicParsing="false" onAction="#updateCommande" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 20;" text="Update">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btndc" layoutX="304.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteCommande" prefHeight="38.0" prefWidth="93.0" style="-fx-background-radius: 20; -fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="refc" layoutX="605.0" layoutY="19.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #C0C0C0; -fx-background-radius: 20;" text="Refresh" />
+      <TextField fx:id="searchc" layoutX="294.0" layoutY="19.0" promptText="Search..." />
    </children>
 </AnchorPane>
