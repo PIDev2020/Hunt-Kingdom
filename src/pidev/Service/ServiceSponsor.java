@@ -24,6 +24,7 @@ public class ServiceSponsor implements IService<Sponsor>{
     private Connection con;
     private Statement ste ;
     
+    
     public ServiceSponsor(){
         con =DataBase.getInstance().getConnection();
     }

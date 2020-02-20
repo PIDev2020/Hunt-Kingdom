@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/Service/UserService.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/AddUserScreenController.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/Entite/Users.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/UserScreenController.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/MainFX.java</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/FXML/UsersScreen.fxml</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/FXML/SignUpScreen.fxml</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/Controllers/HomeScreenController.java</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/FXML/HomeScreen.fxml</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/FXML/LoginScreen.fxml</file>
         </group>
     </open-files>
 </project-private>
