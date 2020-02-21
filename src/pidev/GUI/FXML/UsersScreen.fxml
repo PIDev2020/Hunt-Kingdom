@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Home" textFill="#e7e5e5">
+            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Home" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Users">
+            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Users">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Groups">
+            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Groups">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Products">
+            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Products">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Orders">
+            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Orders">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -94,7 +94,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Events">
+            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Events">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -106,7 +106,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Annonces">
+            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Annonces">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -118,7 +118,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Sign Out">
+            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>

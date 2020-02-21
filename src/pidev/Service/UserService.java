@@ -104,6 +104,20 @@ public class UserService implements IService<Users> {
         PrepState.executeUpdate();
     }
 
+    /**
+     *
+     * @param u
+     * @param idUser
+     * @param statutUser
+     * @throws SQLException
+     */
+    public void update (Users u, int idUser, int statutUser) throws SQLException{
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET statutUser=? WHERE idUser=?");
+        PrepState.setInt(1,u.getStatutUser());
+        PrepState.setInt(2,idUser);
+        PrepState.executeUpdate();
+    }
+
     public void delete(ObservableList<Users> User) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

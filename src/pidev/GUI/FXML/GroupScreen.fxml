@@ -140,9 +140,9 @@
                      <children>
                         <TableView fx:id="TableGroups" layoutX="12.0" layoutY="64.0" prefHeight="422.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
                           <columns>
-                            <TableColumn fx:id="FnameUser" prefWidth="415.0" style="-fx-background-color: #e7e5e5;" text="Name" />
-                              <TableColumn fx:id="LnameUser" minWidth="0.0" prefWidth="310.0" style="-fx-background-color: #e7e5e5;" text="Type" />
-                            <TableColumn fx:id="IDUser" prefWidth="17.0" style="-fx-background-color: #e7e5e5;" text="ID" />
+                            <TableColumn fx:id="NameGroup" prefWidth="415.0" style="-fx-background-color: #e7e5e5;" text="Name" />
+                              <TableColumn fx:id="TypeGroup" minWidth="0.0" prefWidth="310.0" style="-fx-background-color: #e7e5e5;" text="Type" />
+                            <TableColumn fx:id="IDGroup" prefWidth="17.0" style="-fx-background-color: #e7e5e5;" text="ID" />
                           </columns>
                         </TableView>
                         <TextField fx:id="SearchTermTextFiled" layoutX="473.0" layoutY="23.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />

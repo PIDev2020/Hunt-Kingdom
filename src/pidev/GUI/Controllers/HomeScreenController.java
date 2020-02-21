@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import pidev.IService.Navigation;
+import pidev.GUI.Navigation;
 
 /**
  * FXML Controller class
@@ -71,13 +71,13 @@ public class HomeScreenController implements Initializable {
     }
 
     @FXML
-    private void goUsersScreen(ActionEvent event) throws IOException {
+    void goUsersScreen(ActionEvent event) throws IOException {
         Navigation nav = new Navigation();
         nav.navigateUserScreen(event);
     }
 
     @FXML
-    private void goGroupsScreen(ActionEvent event) throws IOException {
+    void goGroupsScreen(ActionEvent event) throws IOException {
         Navigation nav = new Navigation();
         nav.navigateGroupScreen(event);
     }

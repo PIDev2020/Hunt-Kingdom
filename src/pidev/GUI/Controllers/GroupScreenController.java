@@ -5,17 +5,24 @@
  */
 package pidev.GUI.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import pidev.Entite.Groups;
+import pidev.GUI.Navigation;
 
 /**
  * FXML Controller class
@@ -43,13 +50,13 @@ public class GroupScreenController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private TableView<?> TableGroups;
+    private TableView<Groups> TableGroups;
     @FXML
-    private TableColumn<?, ?> FnameUser;
+    private TableColumn<Groups, String> NameGroup;
     @FXML
-    private TableColumn<?, ?> LnameUser;
+    private TableColumn<Groups, String> TypeGroup;
     @FXML
-    private TableColumn<?, ?> IDUser;
+    private TableColumn<Groups, Integer> IDGroup;
     @FXML
     private TextField SearchTermTextFiled;
     @FXML
@@ -62,23 +69,30 @@ public class GroupScreenController implements Initializable {
     private Label FirstNameLabel;
 
     /**
-     * Initializes the controller class.
+     * initialises the controller class.
+     *
+     * @param url
+     * @param rb
      */
+    Navigation nav = new Navigation();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void goHomeScreen(ActionEvent event) {
     }
 
     @FXML
-    private void goUsersScreen(ActionEvent event) {
+    void goUsersScreen(ActionEvent event) throws IOException {
+        nav.navigateUserScreen(event);
     }
 
     @FXML
-    private void goGroupsScreen(ActionEvent event) {
+    void goGroupsScreen(ActionEvent event) throws IOException {
+        refresh();
     }
 
     @FXML
@@ -102,11 +116,16 @@ public class GroupScreenController implements Initializable {
     }
 
     @FXML
-    private void ShowUsersGroup(ActionEvent event) {
+    void ShowUsersGroup(ActionEvent event) throws IOException {
+        nav.navigationCheckGroupUserScreen(event);
     }
 
     @FXML
-    private void addGroup(ActionEvent event) {
+    void addGroup(ActionEvent event) throws IOException {
+        nav.navigationAddGroupScreen(event);
     }
-    
+
+    public void refresh() {
+
+    }
 }

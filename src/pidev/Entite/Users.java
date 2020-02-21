@@ -6,7 +6,6 @@
 package pidev.Entite;
 
 import java.util.Objects;
-import javafx.beans.property.IntegerProperty;
 
 /**
  *
@@ -21,6 +20,7 @@ public class Users {
     private String emailUser;
     private String passwordUser;
     private int idRole;
+    private int statutUser;
 
     public int idProperty() {
         return idUser;
@@ -108,6 +108,18 @@ public class Users {
 
     public int getidRole() {
         return idRole;
+    }
+
+    public int getIdRole() {
+        return idRole;
+    }
+
+    public int getStatutUser() {
+        return statutUser;
+    }
+
+    public void setStatutUser(int statutUser) {
+        this.statutUser = statutUser;
     }
 
     public void setIdUser(int idUser) {
