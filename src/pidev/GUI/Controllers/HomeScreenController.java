@@ -5,6 +5,7 @@
  */
 package pidev.GUI.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import pidev.IService.Navigation;
 
 /**
  * FXML Controller class
@@ -62,18 +64,22 @@ public class HomeScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+            }    
 
     @FXML
     private void goHomeScreen(ActionEvent event) {
     }
 
     @FXML
-    private void goUsersScreen(ActionEvent event) {
+    private void goUsersScreen(ActionEvent event) throws IOException {
+        Navigation nav = new Navigation();
+        nav.navigateUserScreen(event);
     }
 
     @FXML
-    private void goGroupsScreen(ActionEvent event) {
+    private void goGroupsScreen(ActionEvent event) throws IOException {
+        Navigation nav = new Navigation();
+        nav.navigateGroupScreen(event);
     }
 
     @FXML
