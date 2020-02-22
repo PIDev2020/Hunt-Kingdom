@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Home" textFill="#e7e5e5">
+            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Home" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Users">
+            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Users">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Groups">
+            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Groups">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Products">
+            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Products">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Orders">
+            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Orders">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -94,7 +94,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Events">
+            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Events">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -106,7 +106,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Annonces">
+            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Annonces">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -118,7 +118,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../Documents/GitHub/RestaurantMgtSampleUI/src/home/style.css" text="Sign Out">
+            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -138,7 +138,7 @@
                <children>
                   <Pane layoutX="15.0" layoutY="13.0" prefHeight="553.0" prefWidth="766.0">
                      <children>
-                        <TableView fx:id="TableGroups" layoutX="12.0" layoutY="64.0" prefHeight="422.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
+                        <TableView fx:id="TableGroups" layoutX="12.0" layoutY="64.0" prefHeight="409.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
                           <columns>
                             <TableColumn fx:id="NameGroup" prefWidth="415.0" style="-fx-background-color: #e7e5e5;" text="Name" />
                               <TableColumn fx:id="TypeGroup" minWidth="0.0" prefWidth="310.0" style="-fx-background-color: #e7e5e5;" text="Type" />
@@ -164,6 +164,26 @@
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Button>
+                        <Label layoutX="41.0" layoutY="484.0" text="Group Name" textFill="#2980f2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="NameGroupTextField" layoutX="28.0" layoutY="509.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group name ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="240.0" layoutY="482.0" text="Group Type" textFill="#2980f2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="TypeGroupTextField" layoutX="225.0" layoutY="509.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group type ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </Pane>
                   <Label fx:id="LastNameLabel" layoutX="736.0" layoutY="4.0" text="Testouri" textFill="#e7e5e5" />

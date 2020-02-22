@@ -25,9 +25,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
 import pidev.GUI.Navigation;
-import pidev.GUI.Controllers.UsersScreenController;
 import pidev.Service.GroupService;
 
 /**
@@ -81,8 +81,13 @@ public class GroupScreenController implements Initializable {
      * @param rb
      */
     Navigation nav = new Navigation();
-    
+    GroupService GS = new GroupService();
+
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
+    @FXML
+    private TextField NameGroupTextField;
+    @FXML
+    private TextField TypeGroupTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -129,12 +134,13 @@ public class GroupScreenController implements Initializable {
     }
 
     @FXML
-    void addGroup(ActionEvent event) throws IOException {
-        nav.navigationAddGroupScreen(event);
+    void addGroup(ActionEvent event) throws IOException, SQLException {
+        GS.add(new Groups(NameGroupTextField.getText(), TypeGroupTextField.getText()));
+        JOptionPane.showMessageDialog(null, "Group added");
+        refresh();
     }
 
     public void refresh() {
-        GroupService GS = new GroupService();
         listGroups.clear();
         try {
             listGroups.addAll(GS.readAll());
