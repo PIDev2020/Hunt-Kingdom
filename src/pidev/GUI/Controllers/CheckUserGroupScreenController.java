@@ -23,6 +23,7 @@ import pidev.Entite.Groups;
  * @author Testouri Mohamed
  */
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -55,20 +56,19 @@ public class CheckUserGroupScreenController implements Initializable {
      * @param IDUser
      */
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
-  ObservableList<Users> listUsers = FXCollections.observableArrayList();
-        private final Connection connexion;
+    ObservableList<Users> listUsers = FXCollections.observableArrayList();
+    private final Connection connexion;
     private Statement state;
     List<Groups> arrayGroup = new ArrayList<>();
+
     public CheckUserGroupScreenController() {
         connexion = DataBase.getInstance().getConnection();
     }
-    
 
     public void setIDUser(int IDUser) {
         this.IDUser.setText(String.valueOf(IDUser));
     }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -79,18 +79,23 @@ public class CheckUserGroupScreenController implements Initializable {
         }
 
     }
-public List<Groups> insertAll() throws SQLException {
-        state = connexion.createStatement();
-               String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=60)"; //"+this.IDUser.getText()+"
-        ResultSet rs = state.executeQuery(req);
-        while (rs.next()) {
-            arrayGroup.add(new Groups(rs.getString(1), rs.getInt(2) ));
-        }
+
+    public List<Groups> insertAll() throws SQLException {
+        String idu = this.IDUser.getText();
+        String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
         
+        PreparedStatement PrepState = connexion.prepareStatement(req);
+        PrepState.setString(1, idu);
+        ResultSet rs = PrepState.executeQuery();
+        while (rs.next()) {
+            arrayGroup.add(new Groups(rs.getString(1), rs.getInt(2)));
+        }
+
         return arrayGroup;
-}
+    }
+
     public void refresh() throws SQLException {
-               listGroups.addAll(insertAll());
+        listGroups.addAll(insertAll());
         IDGroup.setCellValueFactory(new PropertyValueFactory<>("idGroup"));
         NameGroup.setCellValueFactory(new PropertyValueFactory<>("nameGroup"));
         TableGroup.setItems(listGroups);

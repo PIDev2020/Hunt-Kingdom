@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="350.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.FXML.LoginScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="350.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.Controllers.LoginScreenController">
    <children>
       <Label layoutX="66.0" layoutY="269.0" text="Login" textFill="#2980f2">
          <font>
@@ -49,7 +49,7 @@
       </Hyperlink>
       <ImageView fitHeight="239.0" fitWidth="152.0" layoutX="99.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Documents/GitHub/Hunt-Kingdom/src/pidev/img/e7e5e5.png" />
+            <Image url="@../../img/e7e5e5.png" />
          </image>
       </ImageView>
    </children>
