@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class Navigation {
 
     public void navigateUserScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/UserScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/UsersScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Admin | Users");
@@ -36,16 +36,7 @@ public class Navigation {
         stage.show();
     }
 
-    public void navigationAddGroupScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/AddGroupScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Groups | Add Group");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
-    public void navigationCheckGroupUserScreen(ActionEvent event) throws IOException {
+    public void navigateCheckGroupUserScreen(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/CheckGroupUserScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -54,7 +45,7 @@ public class Navigation {
         stage.show();
     }
 
-    public void navigationCheckUserGroupScreen(ActionEvent event) throws IOException {
+    public void navigateCheckUserGroupScreen(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/CheckUserGroupScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -62,18 +53,31 @@ public class Navigation {
         stage.setScene(new Scene(root1));
         stage.show();
     }
-    public void navigationSignUpScreen (ActionEvent event) throws IOException{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/SignUpScreen.fxml"));
+
+    public void navigateSignUpScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/SignUpScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Users");
+        stage.setTitle("Hunt Kingdom | Admin | Signup");
         stage.setScene(new Scene(root1));
-        stage.show();}
-    public void navigationLoginScreen (ActionEvent event) throws IOException{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/LoginScreen.fxml"));
+        stage.show();
+    }
+
+    public void navigateLoginScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/LoginScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Admin | Users");
+        stage.setTitle("Hunt Kingdom | Admin | Login");
         stage.setScene(new Scene(root1));
-        stage.show();}
+        stage.show();
+    }
+
+    public void navigateHomeScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/HomeScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Home");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
 }

@@ -62,7 +62,7 @@ public class SignUpScreenController implements Initializable {
     }
 
     @FXML
-    private void goSignUp(ActionEvent event) throws SQLException {
+    void goSignUp(ActionEvent event) throws SQLException {
         int phone = Integer.parseInt(PhoneTextField.getText());
         String mailReciver = EmailTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -94,6 +94,7 @@ public class SignUpScreenController implements Initializable {
             } else {
                 JOptionPane.showMessageDialog(null, "Password is too short");
                 PasswordTextField.clear();
+                RePasswordTextField.clear();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Password doesn't match");
@@ -104,7 +105,7 @@ public class SignUpScreenController implements Initializable {
 
     @FXML
     void goSignInScreen(ActionEvent event) throws IOException {
-        nav.navigationLoginScreen(event);
+        nav.navigateLoginScreen(event);
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

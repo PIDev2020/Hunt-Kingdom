@@ -130,7 +130,7 @@ public class GroupScreenController implements Initializable {
 
     @FXML
     void ShowUsersGroup(ActionEvent event) throws IOException {
-        nav.navigationCheckGroupUserScreen(event);
+        nav.navigateCheckGroupUserScreen(event);
     }
 
     @FXML

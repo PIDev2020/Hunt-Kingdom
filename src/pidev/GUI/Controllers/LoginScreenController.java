@@ -69,7 +69,8 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws SQLException, IOException {
-        int idr = 0;
+        int idr = 3;
+        int sts = 3;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -99,22 +100,26 @@ public class LoginScreenController implements Initializable {
                 final Node node = (Node) event.getSource();
                 final Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
-                String req = "SELECT idRole FROM Users WHERE emailUser = ?";
+                String req = "SELECT idRole, statutUser FROM Users WHERE emailUser = ?";
                 PrepState = connexion.prepareStatement(req);
                 PrepState.setString(1, emailUser);
                 ResultSet RS = PrepState.executeQuery();
                 while (RS.next()) {
                     idr = RS.getInt(1);
+sts = RS.getInt(2);
                 }
-                if (idr == 0) {
+                if (sts==1){
+                if (idr == 1) {
                     System.out.println("admin " + idr);
-                    stage.setScene(FXMLLoader.load(getClass().getResource("FXML/HomeScreen.fxml")));
+                    nav.navigateHomeScreen(event);
                 } else {
                     System.out.println("clients " + idr);
-                    stage.setScene(FXMLLoader.load(getClass().getResource("FXML/HomeScreen.fxml")));
+                    System.out.println("Comming Soon");
+                }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Account is banned!");
                 }
 
-                stage.show();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Login or password is invalid");
@@ -126,7 +131,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void goSignUpScreen(ActionEvent event) throws IOException {
-        nav.navigationSignUpScreen(event);
+        nav.navigateSignUpScreen(event);
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
