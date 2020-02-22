@@ -26,7 +26,7 @@
       <TextField fx:id="SearchTermTextFiled" layoutX="181.0" layoutY="27.0" prefHeight="27.0" prefWidth="166.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
       <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="325.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Search_52px.png" />
+            <Image url="@../img/icons8_Search_52px.png" />
          </image>
       </ImageView>
    </children>

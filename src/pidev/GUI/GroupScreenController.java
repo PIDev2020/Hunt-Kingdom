@@ -17,13 +17,17 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
 import pidev.Service.GroupService;
@@ -72,18 +76,14 @@ public class GroupScreenController implements Initializable {
     }
 
 
-    void goUsersScreen(ActionEvent event) throws IOException {
-        nav.navigateUserScreen(event);
-    }
-
-    void goGroupsScreen(ActionEvent event) throws IOException {
-        refresh();
-    }
-
-
     @FXML
     void ShowUsersGroup(ActionEvent event) throws IOException {
-        nav.navigateCheckGroupUserScreen(event);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckGroupUserScreen.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Groups | Users List");
+        stage.setScene(new Scene(root2));
+        stage.show();
     }
 
     @FXML

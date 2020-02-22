@@ -63,7 +63,7 @@ public class SignUpScreenController implements Initializable {
     }
 
     @FXML
-    void goSignUp(ActionEvent event) throws SQLException {
+    void goSignUp(ActionEvent event) throws SQLException, IOException {
         int phone = Integer.parseInt(PhoneTextField.getText());
         String mailReciver = EmailTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -80,6 +80,12 @@ public class SignUpScreenController implements Initializable {
                         //API SMS
 
                         // close window after adding a user (it works dont ask because i dont know how 
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage1 = new Stage();
+        stage1.setTitle("Hunt Kingdom | Admin | Home");
+        stage1.setScene(new Scene(root2));
+        stage1.show();
                         final Node source = (Node) event.getSource();
                         final Stage stage = (Stage) source.getScene().getWindow();
                         JOptionPane.showMessageDialog(null, "Account successfully created");

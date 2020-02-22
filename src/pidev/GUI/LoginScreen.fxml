@@ -49,7 +49,7 @@
       </Hyperlink>
       <ImageView fitHeight="239.0" fitWidth="152.0" layoutX="99.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/e7e5e5.png" />
+            <Image url="@../img/e7e5e5.png" />
          </image>
       </ImageView>
    </children>

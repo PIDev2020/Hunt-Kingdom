@@ -112,10 +112,11 @@ public class LoginScreenController implements Initializable {
                     if (role == 0) {
                         System.out.println("admin " + role);
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
-                        Parent root1 = (Parent) fxmlLoader.load();
-                                                stage.setTitle("Hunt Kingdom | Login");
-                        stage.setScene(new Scene(root1));
-                        stage.show();
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage1 = new Stage();
+        stage1.setTitle("Hunt Kingdom | Admin | Home");
+        stage1.setScene(new Scene(root2));
+        stage1.show();
                         stage.close();
                     } else {
                         System.out.println("clients " + role);
@@ -136,7 +137,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void goSignUpScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Login");

@@ -78,15 +78,6 @@ public class UsersScreenController implements Initializable {
     }
 
 
-    void goUsersScreen(ActionEvent event) {
-        refresh();
-    }
-
-    void goGroupsScreen(ActionEvent event) throws IOException {
-        nav.navigateGroupScreen(event);
-    }
-
-
     @FXML
     void changeStatutUser(ActionEvent event) throws SQLException {
         int a = Integer.parseInt( StatutUser.getText());

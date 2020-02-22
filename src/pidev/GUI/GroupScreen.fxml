@@ -12,54 +12,54 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="GroupsAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="766.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.GroupScreenController">
+<AnchorPane fx:id="GroupsAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="794.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.GroupScreenController">
    <children>
-      <Pane prefHeight="554.0" prefWidth="766.0">
+      <Pane layoutX="14.0" layoutY="11.0" prefHeight="554.0" prefWidth="766.0">
          <children>
-            <TableView fx:id="TableGroups" layoutX="12.0" layoutY="64.0" prefHeight="409.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
+            <TableView fx:id="TableGroups" layoutX="12.0" layoutY="61.0" prefHeight="409.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
               <columns>
                 <TableColumn fx:id="NameGroup" prefWidth="415.0" style="-fx-background-color: #e7e5e5;" text="Name" />
                   <TableColumn fx:id="TypeGroup" minWidth="0.0" prefWidth="310.0" style="-fx-background-color: #e7e5e5;" text="Type" />
                 <TableColumn fx:id="IDGroup" prefWidth="17.0" style="-fx-background-color: #e7e5e5;" text="ID" />
               </columns>
             </TableView>
-            <TextField fx:id="SearchTermTextFiled" layoutX="473.0" layoutY="23.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-            <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="733.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="SearchTermTextFiled" layoutX="473.0" layoutY="20.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+            <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="733.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/icons8_Search_52px.png" />
+                  <Image url="@../img/icons8_Search_52px.png" />
                </image>
             </ImageView>
-            <Button fx:id="ShowUsersGroupButton" layoutX="612.0" layoutY="504.0" mnemonicParsing="false" onAction="#ShowUsersGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Check members" textFill="#e7e5e5">
+            <Button fx:id="ShowUsersGroupButton" layoutX="612.0" layoutY="501.0" mnemonicParsing="false" onAction="#ShowUsersGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Check members" textFill="#e7e5e5">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="28.0" layoutY="22.0" text="Groups" textFill="#e7e5e5">
+            <Label layoutX="28.0" layoutY="19.0" text="Groups" textFill="#e7e5e5">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="addButton" layoutX="459.0" layoutY="504.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #2980F2;" text="Add" textFill="#e7e5e5">
+            <Button fx:id="addButton" layoutX="459.0" layoutY="501.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #2980F2;" text="Add" textFill="#e7e5e5">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="41.0" layoutY="484.0" text="Group Name" textFill="#2980f2">
+            <Label layoutX="41.0" layoutY="481.0" text="Group Name" textFill="#2980f2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="NameGroupTextField" layoutX="28.0" layoutY="509.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group name ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+            <TextField fx:id="NameGroupTextField" layoutX="28.0" layoutY="506.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group name ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="240.0" layoutY="482.0" text="Group Type" textFill="#2980f2">
+            <Label layoutX="240.0" layoutY="479.0" text="Group Type" textFill="#2980f2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="TypeGroupTextField" layoutX="225.0" layoutY="509.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group type ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+            <TextField fx:id="TypeGroupTextField" layoutX="225.0" layoutY="506.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group type ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
                <font>
                   <Font size="14.0" />
                </font>

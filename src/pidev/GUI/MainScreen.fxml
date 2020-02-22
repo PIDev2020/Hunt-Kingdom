@@ -18,16 +18,16 @@
                <children>
                   <ImageView fitHeight="131.0" fitWidth="84.0" layoutX="83.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/Hunt-Kingdom/src/pidev/img/e7e5e5.png" />
+                        <Image url="@../img/e7e5e5.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Home" textFill="#e7e5e5">
+            <Button fx:id="HomeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHomeScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Home" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Home_32px.png" />
+                        <Image url="@../img/home.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -41,11 +41,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Users">
+            <Button fx:id="UserButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUsersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Users">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Person_32px.png" />
+                        <Image url="@../img/user.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -53,11 +53,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Groups">
+            <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Groups">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/group.png" />
+                        <Image url="@../img/group.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -65,11 +65,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Products">
+            <Button fx:id="ProductButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goProductsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Products">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Box_32px.png" />
+                        <Image url="@../img/product.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -77,11 +77,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Orders">
+            <Button fx:id="OrderButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goOrdersScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Orders">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Xbox_Menu_32px.png" />
+                        <Image url="@../img/order.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -89,11 +89,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Events">
+            <Button fx:id="EventButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goEventsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Events">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/event.png" />
+                        <Image url="@../img/event.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -101,11 +101,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Annonces">
+            <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="369.0" mnemonicParsing="false" onAction="#goAnnoncesScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Annonces">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/shout.png" />
+                        <Image url="@../img/announce.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -113,11 +113,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/style.css" text="Sign Out">
+            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#signOut" prefHeight="42.0" prefWidth="259.0" stylesheets="@../GUI/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Pictures/Hunt-Kingdom/src/pidev/GUI/Documents/GitHub/RestaurantMgtSampleUI/src/images/icons8_Sign_Out_32px.png" />
+                        <Image url="@../img/signout.gif" />
                      </image>
                   </ImageView>
                </graphic>
