@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="UsersAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.UsersScreenController">
+   <children>
+      <Pane prefHeight="553.0" prefWidth="766.0" style="-fx-background-color: #02030A;">
+         <children>
+            <TableView fx:id="TableUsers" layoutX="12.0" layoutY="64.0" prefHeight="422.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
+               <columns>
+                  <TableColumn fx:id="FnameUser" prefWidth="128.0" style="-fx-background-color: #e7e5e5;" text="First Name" />
+                  <TableColumn fx:id="LnameUser" minWidth="0.0" prefWidth="133.0" style="-fx-background-color: #e7e5e5;" text="Last Name" />
+                  <TableColumn fx:id="PhoneUser" prefWidth="146.0" style="-fx-background-color: #e7e5e5;" text="Phone" />
+                  <TableColumn fx:id="EmailUser" prefWidth="208.0" style="-fx-background-color: #e7e5e5;" text="E-mail" />
+                  <TableColumn fx:id="StatutUser" prefWidth="107.0" style="-fx-background-color: #e7e5e5;" text="Statut" />
+                  <TableColumn fx:id="IDUser" prefWidth="20.0" style="-fx-background-color: #e7e5e5;" text="ID" />
+               </columns>
+            </TableView>
+            <TextField fx:id="SearchTermTextFiled" layoutX="473.0" layoutY="23.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+            <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="733.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/icons8_Search_52px.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="ChangeButton" layoutX="612.0" layoutY="504.0" mnemonicParsing="false" onAction="#changeStatutUser" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Change Statut" textFill="#e7e5e5">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="CheckButton" layoutX="462.0" layoutY="504.0" mnemonicParsing="false" onAction="#goCheckUserGroupScreen" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #2980F2;" text="Check Groups" textFill="#e7e5e5">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="28.0" layoutY="22.0" text="Users" textFill="#e7e5e5">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

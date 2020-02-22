@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI.Controllers;
+package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import pidev.GUI.Navigation;
 
 /**
  * FXML Controller class
@@ -23,28 +26,6 @@ import pidev.GUI.Navigation;
  */
 public class HomeScreenController implements Initializable {
 
-    @FXML
-    private Label FirstNameLabel;
-    @FXML
-    private Label LastNameLabel;
-    @FXML
-    private Button HomeButton;
-    @FXML
-    private Button UserButton;
-    @FXML
-    private Button GroupButton;
-    @FXML
-    private Button ProductButton;
-    @FXML
-    private Button OrderButton;
-    @FXML
-    private Button EventButton;
-    @FXML
-    private Button AnnonceButton;
-    @FXML
-    private Button SignOutButton;
-    @FXML
-    private Pane pnlOverview;
     @FXML
     private Button UsersButton;
     @FXML
@@ -57,28 +38,40 @@ public class HomeScreenController implements Initializable {
     private Button EventsButton;
     @FXML
     private Button AnnoncesButton;
+    @FXML
+    private AnchorPane HomeAnchorPane;
 
     /**
      * Initializes the controller class.
      */
-    Navigation nav = new Navigation();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
             }    
 
-    @FXML
     void goHomeScreen(ActionEvent event) {
     }
 
     @FXML
     void goUsersScreen(ActionEvent event) throws IOException {
-                nav.navigateUserScreen(event);
+                AnchorPane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("UsersScreen"));
+        } catch (IOException ex) {
+            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        HomeAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
     void goGroupsScreen(ActionEvent event) throws IOException {
-        nav.navigateGroupScreen(event);
+        AnchorPane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("GroupScreen"));
+        } catch (IOException ex) {
+            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        HomeAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -97,8 +90,5 @@ public class HomeScreenController implements Initializable {
     private void goAnnoncesScreen(ActionEvent event) {
     }
 
-    @FXML
-    private void signOut(ActionEvent event) {
-    }
     
 }

@@ -3,16 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI.Controllers;
+package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,17 +22,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import pidev.DataBase.DataBase;
-import pidev.Entite.Groups;
 import pidev.Entite.Users;
-import pidev.GUI.Navigation;
 import pidev.Service.UserService;
 
 /**
@@ -47,24 +38,6 @@ import pidev.Service.UserService;
  */
 public class UsersScreenController implements Initializable {
 
-    @FXML
-    private Button HomeButton;
-    @FXML
-    private Button UserButton;
-    @FXML
-    private Button GroupButton;
-    @FXML
-    private Button ProductButton;
-    @FXML
-    private Button OrderButton;
-    @FXML
-    private Button EventButton;
-    @FXML
-    private Button AnnonceButton;
-    @FXML
-    private Button SignOutButton;
-    @FXML
-    private Pane pnlOverview;
     @FXML
     private TableView<Users> TableUsers;
     @FXML
@@ -85,17 +58,14 @@ public class UsersScreenController implements Initializable {
     private Button ChangeButton;
     @FXML
     private Button CheckButton;
-    @FXML
-    private Label LastNameLabel;
-    @FXML
-    private Label FirstNameLabel;
 
     /**
      * initialises the controller class.
      */
-    Navigation nav = new Navigation();
     UserService US = new UserService();
     ObservableList<Users> listUsers = FXCollections.observableArrayList();
+    @FXML
+    private AnchorPane UsersAnchorPane;
 //        private final Connection connexion;
 //    private Statement state;
 //    List<Groups> arrayGroup = new ArrayList<>();
@@ -107,39 +77,15 @@ public class UsersScreenController implements Initializable {
         refresh();
     }
 
-    @FXML
-    private void goHomeScreen(ActionEvent event) {
-    }
 
-    @FXML
     void goUsersScreen(ActionEvent event) {
         refresh();
     }
 
-    @FXML
     void goGroupsScreen(ActionEvent event) throws IOException {
         nav.navigateGroupScreen(event);
     }
 
-    @FXML
-    private void goProductsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goOrdersScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goEventsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goAnnoncesScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void signOut(ActionEvent event) {
-    }
 
     @FXML
     void changeStatutUser(ActionEvent event) throws SQLException {
@@ -167,7 +113,7 @@ public class UsersScreenController implements Initializable {
         stage.setScene(new Scene(root2));
         stage.show();
         // passer les parametres
-        pidev.GUI.Controllers.CheckUserGroupScreenController CUGSC = fxmlLoader.getController();
+        pidev.GUI.CheckUserGroupScreenController CUGSC = fxmlLoader.getController();
         CUGSC.setIDUser(IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()));
 //nav.navigationCheckUserGroupScreen(event);
     }

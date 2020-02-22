@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI.Controllers;
+package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,8 +13,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -23,7 +26,6 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.Entite.Users;
-import pidev.GUI.Navigation;
 import pidev.Service.UserService;
 
 /**
@@ -53,7 +55,6 @@ public class SignUpScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    Navigation nav = new Navigation();
     UserService US = new UserService();
 
     @Override
@@ -71,7 +72,7 @@ public class SignUpScreenController implements Initializable {
         Matcher controler = pattern.matcher(mailReciver);
         if (PasswordTextField.getText().equals(RePasswordTextField.getText())) {
             if (PasswordTextField.getText().length() >= 8 && RePasswordTextField.getText().length() >= 8) {
-                if (PhoneTextField.getText().length() >= 8) {
+                if (PhoneTextField.getText().length() == 8) {
                     if (controler.matches()) {
                         US.add(new Users(FnameTextField.getText(), LnameTextField.getText(), phone, EmailTextField.getText(), PasswordTextField.getText()));
                         //sending mail 
@@ -105,10 +106,15 @@ public class SignUpScreenController implements Initializable {
 
     @FXML
     void goSignInScreen(ActionEvent event) throws IOException {
-        nav.navigateLoginScreen(event);
+       FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Login");
+        stage.setScene(new Scene(root1));
+        stage.show();
         final Node source = (Node) event.getSource();
-        final Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        final Stage stages = (Stage) source.getScene().getWindow();
+        stages.close();
     }
 
 }

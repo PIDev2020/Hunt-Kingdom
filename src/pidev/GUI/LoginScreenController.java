@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI.Controllers;
+package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +20,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -28,7 +30,6 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
-import pidev.GUI.Navigation;
 
 /**
  * FXML Controller class
@@ -48,7 +49,6 @@ public class LoginScreenController implements Initializable {
     @FXML
     private Hyperlink ForgotPasswordHyperling;
 
-    Navigation nav = new Navigation();
     private final Connection connexion;
     private Statement state;
 
@@ -69,7 +69,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws SQLException, IOException {
-        int idr = 3;
+        int role = 3;
         int sts = 3;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
@@ -105,18 +105,23 @@ public class LoginScreenController implements Initializable {
                 PrepState.setString(1, emailUser);
                 ResultSet RS = PrepState.executeQuery();
                 while (RS.next()) {
-                    idr = RS.getInt(1);
-sts = RS.getInt(2);
+                    role = RS.getInt(1);
+                    sts = RS.getInt(2);
                 }
-                if (sts==1){
-                if (idr == 1) {
-                    System.out.println("admin " + idr);
-                    nav.navigateHomeScreen(event);
+                if (sts == 1) {
+                    if (role == 0) {
+                        System.out.println("admin " + role);
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+                        Parent root1 = (Parent) fxmlLoader.load();
+                                                stage.setTitle("Hunt Kingdom | Login");
+                        stage.setScene(new Scene(root1));
+                        stage.show();
+                        stage.close();
+                    } else {
+                        System.out.println("clients " + role);
+                        System.out.println("Comming Soon");
+                    }
                 } else {
-                    System.out.println("clients " + idr);
-                    System.out.println("Comming Soon");
-                }
-                }else{
                     JOptionPane.showMessageDialog(null, "Account is banned!");
                 }
 
@@ -131,10 +136,15 @@ sts = RS.getInt(2);
 
     @FXML
     void goSignUpScreen(ActionEvent event) throws IOException {
-        nav.navigateSignUpScreen(event);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Login");
+        stage.setScene(new Scene(root1));
+        stage.show();
         final Node source = (Node) event.getSource();
-        final Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        final Stage stages = (Stage) source.getScene().getWindow();
+        stages.close();
     }
 
     @FXML

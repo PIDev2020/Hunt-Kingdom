@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI.Controllers;
+package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,15 +19,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
-import pidev.GUI.Navigation;
 import pidev.Service.GroupService;
 
 /**
@@ -37,24 +35,6 @@ import pidev.Service.GroupService;
  */
 public class GroupScreenController implements Initializable {
 
-    @FXML
-    private Button HomeButton;
-    @FXML
-    private Button UserButton;
-    @FXML
-    private Button GroupButton;
-    @FXML
-    private Button ProductButton;
-    @FXML
-    private Button OrderButton;
-    @FXML
-    private Button EventButton;
-    @FXML
-    private Button AnnonceButton;
-    @FXML
-    private Button SignOutButton;
-    @FXML
-    private Pane pnlOverview;
     @FXML
     private TableView<Groups> TableGroups;
     @FXML
@@ -69,10 +49,6 @@ public class GroupScreenController implements Initializable {
     private Button ShowUsersGroupButton;
     @FXML
     private Button addButton;
-    @FXML
-    private Label LastNameLabel;
-    @FXML
-    private Label FirstNameLabel;
 
     /**
      * initialises the controller class.
@@ -80,7 +56,6 @@ public class GroupScreenController implements Initializable {
      * @param url
      * @param rb
      */
-    Navigation nav = new Navigation();
     GroupService GS = new GroupService();
 
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
@@ -88,45 +63,23 @@ public class GroupScreenController implements Initializable {
     private TextField NameGroupTextField;
     @FXML
     private TextField TypeGroupTextField;
+    @FXML
+    private AnchorPane GroupsAnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refresh();
     }
 
-    @FXML
-    private void goHomeScreen(ActionEvent event) {
-    }
 
-    @FXML
     void goUsersScreen(ActionEvent event) throws IOException {
         nav.navigateUserScreen(event);
     }
 
-    @FXML
     void goGroupsScreen(ActionEvent event) throws IOException {
         refresh();
     }
 
-    @FXML
-    private void goProductsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goOrdersScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goEventsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goAnnoncesScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void signOut(ActionEvent event) {
-    }
 
     @FXML
     void ShowUsersGroup(ActionEvent event) throws IOException {
