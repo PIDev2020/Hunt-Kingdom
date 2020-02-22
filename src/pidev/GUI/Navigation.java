@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pidev.GUI.Controllers.CheckUserGroupScreenController;
 
 /**
  *
@@ -63,4 +62,18 @@ public class Navigation {
         stage.setScene(new Scene(root1));
         stage.show();
     }
+    public void navigationSignUpScreen (ActionEvent event) throws IOException{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/SignUpScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Users");
+        stage.setScene(new Scene(root1));
+        stage.show();}
+    public void navigationLoginScreen (ActionEvent event) throws IOException{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Users");
+        stage.setScene(new Scene(root1));
+        stage.show();}
 }
