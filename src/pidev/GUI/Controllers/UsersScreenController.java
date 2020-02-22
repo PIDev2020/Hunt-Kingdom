@@ -7,7 +7,12 @@ package pidev.GUI.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +22,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -25,9 +33,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import pidev.DataBase.DataBase;
+import pidev.Entite.Groups;
 import pidev.Entite.Users;
 import pidev.GUI.Navigation;
-import pidev.GUI.UserScreenController;
 import pidev.Service.UserService;
 
 /**
@@ -84,8 +94,14 @@ public class UsersScreenController implements Initializable {
      * initialises the controller class.
      */
     Navigation nav = new Navigation();
+    UserService US = new UserService();
     ObservableList<Users> listUsers = FXCollections.observableArrayList();
-
+//        private final Connection connexion;
+//    private Statement state;
+//    List<Groups> arrayGroup = new ArrayList<>();
+//public UsersScreenController() {
+//        connexion = DataBase.getInstance().getConnection();
+//    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refresh();
@@ -126,31 +142,43 @@ public class UsersScreenController implements Initializable {
     }
 
     @FXML
-    void changeStatutUser(ActionEvent event) {
-        Integer a = Integer.parseInt( StatutUser.getText());
-        if (a==0){
-            setStatutUser(1);
-        } else {
-            setStatutUser(0);
-        }
-        refresh();
-System.out.println(a);
+    void changeStatutUser(ActionEvent event) throws SQLException {
+        int a = Integer.parseInt( StatutUser.getText());
+        System.out.println(a);
+        Integer b = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
+        System.out.println(b);
+//        if (Integer.parseInt( StatutUser.getText())==0){
+//            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), Integer.parseInt(StatutUser.getText())),IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()), 1);
+//        } else {
+//            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), Integer.parseInt(StatutUser.getText())),IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()), 0);
+//                    setStatutUser(0);
+//        }
+//        refresh();
 
     }
 
     @FXML
     void goCheckUserGroupScreen(ActionEvent event) throws IOException {
-        nav.navigationCheckUserGroupScreen(event);
+        // navigation
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckUserGroupScreen.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Admin | Groups | Groups List");
+        stage.setScene(new Scene(root2));
+        stage.show();
+        // passer les parametres
+        pidev.GUI.Controllers.CheckUserGroupScreenController CUGSC = fxmlLoader.getController();
+        CUGSC.setIDUser(IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()));
+//nav.navigationCheckUserGroupScreen(event);
     }
 
     public void refresh() {
-        UserService US = new UserService();
         listUsers.clear();
         try {
             listUsers.addAll(US.readAll());
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsersScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
         IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
         FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
@@ -205,5 +233,17 @@ System.out.println(a);
         this.StatutUser.setText(String.valueOf(StatutUser));
             }
 
+//    public List<Groups> insertAll() throws SQLException {
+//        state = connexion.createStatement();
+//        Users tmp = TableUsers.getSelectionModel().getSelectedItem();
+//               String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`="+tmp.getIdUser()/*this.IDUser.getText()*/+")";
+//        ResultSet rs = state.executeQuery(req);
+//        while (rs.next()) {
+//            arrayGroup.add(new Groups(rs.getString(1), rs.getInt(2) ));
+//        }
+//        
+//        return arrayGroup;
+    }
+
     
-}
+

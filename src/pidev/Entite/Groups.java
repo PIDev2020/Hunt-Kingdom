@@ -25,6 +25,11 @@ public class Groups {
         this.typeGroup = typeGroup;
     }
 
+    public Groups(String nameGroup, int idGroup) {
+        this.idGroup = idGroup;
+        this.nameGroup = nameGroup;
+    }
+
     public Groups(String nameGroup, String typeGroup) {
         this.nameGroup = nameGroup;
         this.typeGroup = typeGroup;

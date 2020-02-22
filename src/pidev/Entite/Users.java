@@ -56,6 +56,14 @@ public class Users {
 
     }
 
+    public Users(String fnameUser, String lnameUser, int phoneUser, String emailUser, int statutUser) {
+        this.fnameUser = fnameUser;
+        this.lnameUser = lnameUser;
+        this.phoneUser = phoneUser;
+        this.emailUser = emailUser;
+        this.statutUser = statutUser;
+    }
+
     public Users(String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser, String passwordUser) {
         this.fnameUser = fnameUser;
         this.lnameUser = lnameUser;

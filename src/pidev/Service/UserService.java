@@ -111,10 +111,10 @@ public class UserService implements IService<Users> {
      * @param statutUser
      * @throws SQLException
      */
-    public void update (Users u, int idUser, int statutUser) throws SQLException{
+    public void update(Users u, int idUser, int statutUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET statutUser=? WHERE idUser=?");
-        PrepState.setInt(1,u.getStatutUser());
-        PrepState.setInt(2,idUser);
+        PrepState.setInt(1, u.getStatutUser());
+        PrepState.setInt(2, idUser);
         PrepState.executeUpdate();
     }
 

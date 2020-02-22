@@ -61,24 +61,23 @@ public class HomeScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    Navigation nav = new Navigation();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
             }    
 
     @FXML
-    private void goHomeScreen(ActionEvent event) {
+    void goHomeScreen(ActionEvent event) {
     }
 
     @FXML
     void goUsersScreen(ActionEvent event) throws IOException {
-        Navigation nav = new Navigation();
-        nav.navigateUserScreen(event);
+                nav.navigateUserScreen(event);
     }
 
     @FXML
     void goGroupsScreen(ActionEvent event) throws IOException {
-        Navigation nav = new Navigation();
         nav.navigateGroupScreen(event);
     }
 
