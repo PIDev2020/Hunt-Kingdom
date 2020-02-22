@@ -12,28 +12,24 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import pidev.Entite.Animal;
 import pidev.Entite.Commande;
-import pidev.Service.ServiceAnimal;
 import pidev.Service.ServiceCommande;
 
 /**
- * FXML Controller class
  *
  * @author hp
  */
-public class UpdateCommandeController implements Initializable {
+public class UpdateCommandeController implements Initializable{
 
+    private ImageView imgcommande;
     @FXML
     private TextField tfnumber;
     @FXML
@@ -45,11 +41,24 @@ public class UpdateCommandeController implements Initializable {
     @FXML
     private Button btnac;
     @FXML
-    private ImageView imgcommande;
+    private Button HomeButton;
+    @FXML
+    private Button UserButton;
+    @FXML
+    private Button GroupButton;
+    @FXML
+    private Button ProductButton;
+    @FXML
+    private Button OrderButton;
+    @FXML
+    private Button EventButton;
+    @FXML
+    private Button AnnonceButton;
+    @FXML
+    private Button SignOutButton;
 
-    /**
-     * Initializes the controller class.
-     */
+ 
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
               File file = new File("images/del.jpg");
@@ -88,7 +97,39 @@ public class UpdateCommandeController implements Initializable {
                 final Stage stage = (Stage) source.getScene().getWindow();
                 stage.close();
     }
-    
-    }
-    
 
+    @FXML
+    private void goHomeScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goUsersScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goGroupsScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goProductsScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goOrdersScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goEventsScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void goAnnoncesScreen(ActionEvent event) {
+    }
+
+    @FXML
+    private void signOut(ActionEvent event) {
+    }
+
+    
+    
+}

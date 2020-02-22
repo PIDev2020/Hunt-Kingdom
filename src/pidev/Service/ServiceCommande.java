@@ -34,10 +34,18 @@ public class ServiceCommande implements IService<Commande> {
 
     @Override
     public void ajouter(Commande t) throws SQLException {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`, `date`, `idUser`) VALUES ( ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`,  `date`, `idUser`) VALUES ( ?, ?, ?);");
     pre.setString(1, t.getProduit());
     pre.setString(2, t.getDate());
     pre.setInt(3, t.getIdUser());
+    pre.executeUpdate();
+    }
+    public void ajouterpanier(Commande t) throws SQLException {
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`, `price`, `date`, `idUser`) VALUES ( ?, ?, ?);");
+    pre.setString(1, t.getProduit());
+    pre.setFloat(2, t.getPrice());
+    pre.setString(3, t.getDate());
+    pre.setInt(4, t.getIdUser());
     pre.executeUpdate();
     }
 
@@ -57,22 +65,52 @@ public class ServiceCommande implements IService<Commande> {
     pre.setInt(4, id);
     pre.executeUpdate();
     }
+   
+    public void updatepanier(int id) throws SQLException {
+        PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`commande` SET `State`=1 WHERE `idCommande`=?;");
+    pre.setInt(1, id);
+    pre.executeUpdate();
+    }
 
     @Override
     public List<Commande> readAll() throws SQLException {
         List<Commande> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from commande");
+    ResultSet rs=ste.executeQuery("select * from commande WHERE `State`=1");
+     while (rs.next()) {                
+               int idCommande=rs.getInt(1);
+               String produit = rs.getString(2);
+               float price = rs.getFloat(3);
+               String date=rs.getString(4);
+               int idUser=rs.getInt(5);
+               int state=rs.getInt(6);
+               Commande p=new Commande(idCommande, produit, date, idUser, price, state);
+     arr.add(p);
+     }
+    return arr;
+    
+
+    }
+
+    @Override
+    public List<Commande> readPanier(int id) throws SQLException {
+         List<Commande> arr=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select * from commande WHERE (`State`=0 And `idUser`=1) ");
      while (rs.next()) {                
                int idCommande=rs.getInt(1);
                String produit = rs.getString(2);
                String date=rs.getString(3);
-               int idUser=rs.getInt(4);          
+               int idUser=rs.getInt(4);  
+               
                Commande p=new Commande(idCommande, produit, date, idUser);
      arr.add(p);
      }
     return arr;
     }
+    
+   
+   
     }
     
 

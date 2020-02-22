@@ -20,7 +20,11 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("TableAnimal.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("UserPanier.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("TableAnimal.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("TableCommande.fxml"));
+        
         Scene scene=new Scene (root);
         primaryStage.setTitle("javaFX");
         primaryStage.setScene(scene);

@@ -27,10 +27,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.Entite.Animal;
 import pidev.Entite.Commande;
 import pidev.Entite.Commande;
 import pidev.Service.ServiceAnimal;
@@ -54,62 +56,24 @@ public class TableCommandeController implements Initializable{
     @FXML
     private TableColumn<Commande, Integer> colclient;
     @FXML
-    private Button btnaddc;
-    @FXML
-    private Button btnmc;
-    @FXML
     private Button btndc;
-    @FXML
-    private Button refc;
     @FXML
     private TextField searchc;
     ObservableList<Commande> listC = FXCollections.observableArrayList();
-    @FXML
     private ImageView imgcommande;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-              File file = new File("images/he.jpg");
-        Image image = new Image(file.toURI().toString());
-        imgcommande.setImage(image);
+//              File file = new File("images/he.jpg");
+//        Image image = new Image(file.toURI().toString());
+//        imgcommande.setImage(image);
         refresh();
+ 
     }
    
-    @FXML
-    private void ajoutCommande(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutCommande.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Add Commande");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        refresh();
-    }
-
-    @FXML
-    private void updateCommande(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateCommande.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Update Animal");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        UpdateCommandeController ucc=fxmlLoader.getController();
-        ucc.setTfnumber(colnumber.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
-        ucc.setTfproduit(colproduit.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
-        ucc.setTfdate(coldate.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
-        ucc.setTfclient(colclient.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
-        
-    }
-
-    @FXML
-    private void deleteCommande(ActionEvent event) throws SQLException {
-        ServiceCommande sa = new ServiceCommande();
-        sa.delete(colnumber.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
-        refresh();
-             JOptionPane.showMessageDialog(null, "Commande Deleted");
-    }
-    @FXML
+    ServiceCommande ser=new ServiceCommande();
+    
+    
     void refresh(){
        
         ServiceCommande sc = new ServiceCommande();
@@ -165,10 +129,52 @@ public class TableCommandeController implements Initializable{
 
         // 5. Add sorted (and filtered) data to the table.
         tablevc.setItems(sortedData);
-
-       
-       
     }
-    
+       
+       
+//    }
+//    @FXML
+//    private void ajoutCommande(ActionEvent event) throws IOException, SQLException {
+//        ServiceCommande sc = new ServiceCommande();
+//        sc.ajouter(new Commande(tfproduit.getText(), tfdate.getText(), Integer.parseInt(tfclient.getText())));
+//        JOptionPane.showMessageDialog(null, "Commande Added");
+//        refresh();
+//        
+//    }
+//
+//    @FXML
+//     private void updateProduit(TableColumn.CellEditEvent bb) throws SQLException {
+//                Commande commandeselected = tablevc.getSelectionModel().getSelectedItem();
+//                commandeselected.setProduit(bb.getNewValue().toString());
+//                ser.update(commandeselected, commandeselected.getIdCommande());
+//                
+//    }
+//     @FXML
+//     private void updateDate(TableColumn.CellEditEvent bb) throws SQLException {
+//                Commande commandeselected = tablevc.getSelectionModel().getSelectedItem();
+//                commandeselected.setProduit(bb.getNewValue().toString());
+//                ser.update(commandeselected, commandeselected.getIdCommande());
+//                
+//    }
+//     @FXML
+//     private void updateClient(TableColumn.CellEditEvent bb) throws SQLException {
+//                Commande commandeselected = tablevc.getSelectionModel().getSelectedItem();
+//                commandeselected.setProduit(bb.getNewValue().toString());
+//                ser.update(commandeselected, commandeselected.getIdCommande());
+//                
+//    }
+//
+//    @FXML
+//    private void deleteCommande(ActionEvent event) throws SQLException {
+//        ServiceCommande sa = new ServiceCommande();
+//        sa.delete(colnumber.getCellData(tablevc.getSelectionModel().getSelectedIndex()));
+//        refresh();
+//             JOptionPane.showMessageDialog(null, "Commande Deleted");
+//    }
+
+    @FXML
+    private void Imprimer(ActionEvent event) {
+    }
+
     
 }

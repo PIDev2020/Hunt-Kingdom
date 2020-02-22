@@ -16,6 +16,53 @@ public class Commande {
     private String produit;
     private String date;
     private int idUser;
+    private float price;
+    private int state;
+
+    public Commande(int idCommande, String produit, String date, int idUser, float price, int state) {
+        this.idCommande = idCommande;
+        this.produit = produit;
+        this.date = date;
+        this.idUser = idUser;
+        this.price = price;
+        this.state = state;
+    }
+    
+    
+
+    public Commande(String produit, String date, int idUser, float price, int state) {
+        this.produit = produit;
+        this.date = date;
+        this.idUser = idUser;
+        this.price = price;
+        this.state = state;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+   
+
+    
+    public Commande(String produit, String date, int idUser, float price) {
+        this.produit = produit;
+        this.date = date;
+        this.idUser = idUser;
+        this.price = price;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
 
     public Commande(int idCommande, String produit, String date, int idUser) {
         this.idCommande = idCommande;

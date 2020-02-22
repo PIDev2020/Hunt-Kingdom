@@ -79,4 +79,9 @@ public class ServiceAnimal implements IService<Animal>{
     
     }
 
+    @Override
+    public List<Animal> readPanier(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

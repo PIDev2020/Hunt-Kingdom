@@ -17,6 +17,7 @@ public interface IService<T> {
     void delete(int id) throws SQLException;
     void update(T t,int id) throws SQLException;
     List<T> readAll() throws SQLException;
+    List<T> readPanier(int id) throws SQLException;
 
 }
 
