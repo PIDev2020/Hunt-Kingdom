@@ -57,7 +57,10 @@ public class LoginScreenController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * initialises the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,13 +69,14 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws SQLException, IOException {
+        int idr = 0;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
                 + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
         Pattern pattern = Pattern.compile(masque);
         Matcher controler = pattern.matcher(emailUser);
-        
+
         if (emailUser.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter your email id");
             return;
@@ -80,33 +84,43 @@ public class LoginScreenController implements Initializable {
         if (passwordUser.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter password");
         }
-        if(passwordUser.length()>=8 && controler.matches()){
-              String sql = "SELECT * FROM Users WHERE emailUser = ? and passwordUser = ?";
-        PreparedStatement PrepState = connexion.prepareStatement(sql);
-        PrepState.setString(1, emailUser);
-        PrepState.setString(2, passwordUser);
-        ResultSet rs = PrepState.executeQuery();
-        if (!rs.next()) {
-            JOptionPane.showMessageDialog(null, "Please enter correct Email and Password");
+        if (passwordUser.length() >= 8 && controler.matches()) {
+            String sql = "SELECT * FROM Users WHERE emailUser = ? and passwordUser = ?";
+            PreparedStatement PrepState = connexion.prepareStatement(sql);
+            PrepState.setString(1, emailUser);
+            PrepState.setString(2, passwordUser);
+            ResultSet rs = PrepState.executeQuery();
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "Please enter correct Email and Password");
+                LoginTextField.clear();
+                PasswordTextField.clear();
+            } else {
+                JOptionPane.showMessageDialog(null, "Login Successfull");
+                final Node node = (Node) event.getSource();
+                final Stage stage = (Stage) node.getScene().getWindow();
+                stage.close();
+                String req = "SELECT idRole FROM Users WHERE emailUser = ?";
+                PrepState = connexion.prepareStatement(req);
+                PrepState.setString(1, emailUser);
+                ResultSet RS = PrepState.executeQuery();
+                while (RS.next()) {
+                    idr = RS.getInt(1);
+                }
+                if (idr == 0) {
+                    System.out.println("admin " + idr);
+                    stage.setScene(FXMLLoader.load(getClass().getResource("FXML/HomeScreen.fxml")));
+                } else {
+                    System.out.println("clients " + idr);
+                    stage.setScene(FXMLLoader.load(getClass().getResource("FXML/HomeScreen.fxml")));
+                }
+
+                stage.show();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Login or password is invalid");
             LoginTextField.clear();
             PasswordTextField.clear();
-        } else {
-            JOptionPane.showMessageDialog(null, "Login Successfull");
-            final Node node = (Node) event.getSource();
-            final Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-//            String req = "SELECT idRole FROM Users WHERE emailUser = ?";
-//            PrepState = connexion.prepareStatement(req);
-//            PrepState.setString(1, emailUser);
-//            ResultSet RS = PrepState.executeQuery();
-            stage.setScene(FXMLLoader.load(getClass().getResource("FXML/HomeScreen.fxml")));
-            stage.show();
-        } 
-        }else {
-                JOptionPane.showMessageDialog(null, "Login or password is invalid");
-                LoginTextField.clear();
-            PasswordTextField.clear();
-                }
+        }
 
     }
 

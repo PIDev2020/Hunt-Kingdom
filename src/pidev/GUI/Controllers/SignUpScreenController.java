@@ -75,7 +75,7 @@ public class SignUpScreenController implements Initializable {
                     if (controler.matches()) {
                         US.add(new Users(FnameTextField.getText(), LnameTextField.getText(), phone, EmailTextField.getText(), PasswordTextField.getText()));
                         //sending mail 
-                        //SendMail.sendMail(mailReciver, "Welcome", "you are now a member of HUNT Kingdom Community");
+                        SendMail.sendMail(mailReciver, "Welcome", "you are now a member of HUNT Kingdom Community");
                         //API SMS
 
                         // close window after adding a user (it works dont ask because i dont know how 
