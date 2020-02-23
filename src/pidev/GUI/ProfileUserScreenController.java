@@ -26,6 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
+import pidev.Entite.CurrentUser;
 import pidev.Service.GroupService;
 
 /**
@@ -70,16 +71,24 @@ public class ProfileUserScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+
+        try {
+                
+            load();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfileUserScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void load(int id) throws SQLException {
-                listGroups.clear();
-        listGroups.addAll(GS.readAll(id));
+    public void load() throws SQLException {
+
+        listGroups.clear();
+        listGroups.addAll(GS.readALL());
         IDGroup.setCellValueFactory(new PropertyValueFactory<>("idGroup"));
         NameGroup.setCellValueFactory(new PropertyValueFactory<>("nameGroup"));
         TypeGroup.setCellValueFactory(new PropertyValueFactory<>("typeGroup"));
@@ -118,7 +127,6 @@ public class ProfileUserScreenController implements Initializable {
 
     }
 
-    
     @FXML
     private void goUpdateProfileScreen(ActionEvent event) {
     }
@@ -138,7 +146,5 @@ public class ProfileUserScreenController implements Initializable {
     @FXML
     private void ShowUsersGroup(ActionEvent event) {
     }
-
-    
 
 }

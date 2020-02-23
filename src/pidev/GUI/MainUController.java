@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import pidev.Entite.CurrentUser;
 
 /**
  * FXML Controller class
@@ -49,10 +50,14 @@ public class MainUController implements Initializable {
      * @param rb
      */
     ProfileUserScreenController  PUSC = new ProfileUserScreenController();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       loadScreen();
-       getId(id);
+        try {
+            loadScreen();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainUController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

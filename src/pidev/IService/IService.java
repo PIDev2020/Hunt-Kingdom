@@ -24,13 +24,13 @@ public interface IService<T> {
     void delete(String email) throws SQLException;
     void update(T t, int id) throws SQLException;
     List<T> readAll() throws SQLException;
-
+List<T> readAll(int id) throws SQLException;
     /**
      *
      * @param id
      * @return
      * @throws SQLException
      */
-    List<T> readAll(int id) throws SQLException;
+    List<T> readALL() throws SQLException;
 }
 

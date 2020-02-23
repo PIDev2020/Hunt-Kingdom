@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
+import pidev.Entite.CurrentUser;
 
 /**
  * FXML Controller class
@@ -130,6 +131,10 @@ public class LoginScreenController implements Initializable {
                         stage1.setTitle("Hunt Kingdom | Home");
                         stage1.setScene(new Scene(root2));
                        //mu.loadScreen(id);
+                       
+                       CurrentUser.getInstance().setUser_id(id);
+                       
+                       
                         stage1.show();
                         stage.close();
                     }
