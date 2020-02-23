@@ -61,9 +61,6 @@ public class CheckUserGroupScreenController implements Initializable {
     private Statement state;
     private int a;
 
-    public void setA(int a) {
-        this.a = a;
-    }
     List<Groups> arrayGroup = new ArrayList<>();
 
 //    public void setIdu(int idu) {
@@ -89,8 +86,7 @@ public class CheckUserGroupScreenController implements Initializable {
     }
 
     public List<Groups> insertAll(int a) throws SQLException { 
-  
-        System.out.println("idu:"+a);
+          System.out.println("idu:"+a);
     String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
                 PreparedStatement PrepState = connexion.prepareStatement(req);
         PrepState.setInt(1, a);

@@ -80,17 +80,19 @@ public class UsersScreenController implements Initializable {
 
     @FXML
     void changeStatutUser(ActionEvent event) throws SQLException {
-        int a = Integer.parseInt( StatutUser.getText());
-        System.out.println(a);
-        Integer b = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
-        System.out.println(b);
-//        if (Integer.parseInt( StatutUser.getText())==0){
-//            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), Integer.parseInt(StatutUser.getText())),IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()), 1);
-//        } else {
-//            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), Integer.parseInt(StatutUser.getText())),IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()), 0);
-//                    setStatutUser(0);
-//        }
-//        refresh();
+        
+        int idU = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
+        System.out.println("idu: "+idU);
+        int stU = StatutUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
+        System.out.println("stU: "+stU);
+        if (stU==0){
+            System.out.println("hello 0");
+           US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU),idU, 1);
+        } else {
+            System.out.println("hello 1");
+          US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU),idU, 0);
+        }
+        refresh();
 
     }
 

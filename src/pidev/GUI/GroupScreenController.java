@@ -77,13 +77,19 @@ public class GroupScreenController implements Initializable {
 
 
     @FXML
-    void ShowUsersGroup(ActionEvent event) throws IOException {
+    void ShowUsersGroup(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckGroupUserScreen.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Admin | Groups | Users List");
         stage.setScene(new Scene(root2));
         stage.show();
+        pidev.GUI.CheckGroupUserScreenController CUGSC = fxmlLoader.getController();
+        int a = IDGroup.getCellData(TableGroups.getSelectionModel().getSelectedIndex());
+//        CUGSC.insertAll(a);
+//        CUGSC.setA(a);
+CUGSC.refresh(a);
+        System.out.println("hello"+a);
     }
 
     @FXML

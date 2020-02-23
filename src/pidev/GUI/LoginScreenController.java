@@ -109,7 +109,7 @@ public class LoginScreenController implements Initializable {
                     sts = RS.getInt(2);
                 }
                 if (sts == 1) {
-                    if (role == 0) {
+                    if (role == 1) {
                         System.out.println("admin " + role);
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
@@ -121,6 +121,7 @@ public class LoginScreenController implements Initializable {
                     } else {
                         System.out.println("clients " + role);
                         System.out.println("Comming Soon");
+                        stage.close();
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Account is banned!");
