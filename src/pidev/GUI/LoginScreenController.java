@@ -129,7 +129,7 @@ public class LoginScreenController implements Initializable {
                         Stage stage1 = new Stage();
                         stage1.setTitle("Hunt Kingdom | Home");
                         stage1.setScene(new Scene(root2));
-                        mu.loadScreen(id);
+                       //mu.loadScreen(id);
                         stage1.show();
                         stage.close();
                     }

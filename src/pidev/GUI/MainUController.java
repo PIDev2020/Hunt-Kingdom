@@ -7,6 +7,7 @@ package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,17 +48,11 @@ public class MainUController implements Initializable {
      * @param url
      * @param rb
      */
+    ProfileUserScreenController  PUSC = new ProfileUserScreenController();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //loadScreen(id);
-        AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        LoaderPane.getChildren().setAll(pane);
-        // TODO
+       loadScreen();
+       getId(id);
     }
 
     @FXML
@@ -88,14 +83,13 @@ public class MainUController implements Initializable {
     private void goAnnoncesScreen(ActionEvent event) {
     }
 
-    public void loadScreen(int id) {
-//AnchorPane pane = null;
-//        try {
-//            pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
-//        } catch (IOException ex) {
-//            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        LoaderPane.getChildren().setAll(pane);
-//        // TODO
+    public void loadScreen() throws SQLException {
+AnchorPane pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        LoaderPane.getChildren().setAll(pane);
     }
 }

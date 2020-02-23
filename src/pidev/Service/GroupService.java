@@ -78,7 +78,16 @@ public class GroupService implements IService<Groups> {
 
     @Override
     public List<Groups> readAll(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Groups> arrayGroup = new ArrayList<>();
+        String sql = "SELECT `idGroup`,`nameGroup`,`typeGroup` FROM `groups` WHERE `idGroup` NOT IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)";
+        PreparedStatement PrepState = connexion.prepareStatement(sql);
+        ResultSet rs = PrepState.executeQuery();
+        PrepState.setInt(1, id);
+        while (rs.next()) {
+            arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
+            System.out.println(arrayGroup);
+        }
+        return arrayGroup;
     }
 
 }

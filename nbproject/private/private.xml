@@ -5,9 +5,8 @@
         <group>
             <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/MainUController.java</file>
             <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/ProfileUserScreenController.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/GroupUserScreenController.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/MainScreenController.java</file>
-            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/MainU.fxml</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/LoginScreenController.java</file>
+            <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/Service/GroupService.java</file>
             <file>file:/C:/Users/Testouri%20Mohamed/Documents/GitHub/Hunt-Kingdom/src/pidev/GUI/MainFX.java</file>
         </group>
     </open-files>
