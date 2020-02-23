@@ -25,7 +25,7 @@ public class MainFX extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Hunt Kingdom | Admin");
+        primaryStage.setTitle("Hunt Kingdom");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

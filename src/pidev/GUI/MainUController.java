@@ -53,11 +53,16 @@ public class MainUController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         AnchorPane pane = null;        
+          
         try {
-            loadScreen();
-        } catch (SQLException ex) {
+            pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
+        } catch (IOException ex) {
             Logger.getLogger(MainUController.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+           
+        LoaderPane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -86,15 +91,5 @@ public class MainUController implements Initializable {
 
     @FXML
     private void goAnnoncesScreen(ActionEvent event) {
-    }
-
-    public void loadScreen() throws SQLException {
-AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        LoaderPane.getChildren().setAll(pane);
     }
 }

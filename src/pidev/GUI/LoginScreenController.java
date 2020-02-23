@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
 import pidev.Entite.CurrentUser;
+import pidev.Service.GroupService;
 
 /**
  * FXML Controller class
@@ -63,8 +64,8 @@ public class LoginScreenController implements Initializable {
      * @param url
      * @param rb
      */
-    MainUController mu = new MainUController();
-    
+    ProfileUserScreenController PUSC = new ProfileUserScreenController();
+    GroupService GS = new GroupService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -130,9 +131,10 @@ public class LoginScreenController implements Initializable {
                         Stage stage1 = new Stage();
                         stage1.setTitle("Hunt Kingdom | Home");
                         stage1.setScene(new Scene(root2));
+                        //PUSC.getID(id);
                        //mu.loadScreen(id);
-                       
-                       CurrentUser.getInstance().setUser_id(id);
+                       GS.readAll(id);
+                       //CurrentUser.getInstance().setUser_id(id);
                        
                        
                         stage1.show();
