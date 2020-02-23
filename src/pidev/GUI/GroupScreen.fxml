@@ -16,11 +16,11 @@
    <children>
       <Pane layoutX="14.0" layoutY="11.0" prefHeight="554.0" prefWidth="766.0">
          <children>
-            <TableView fx:id="TableGroups" layoutX="12.0" layoutY="61.0" prefHeight="409.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
+            <TableView fx:id="TableGroups" layoutX="12.0" layoutY="61.0" prefHeight="429.0" prefWidth="497.0" style="-fx-background-radius: 1em;">
               <columns>
-                <TableColumn fx:id="NameGroup" prefWidth="415.0" style="-fx-background-color: #e7e5e5;" text="Name" />
-                  <TableColumn fx:id="TypeGroup" minWidth="0.0" prefWidth="310.0" style="-fx-background-color: #e7e5e5;" text="Type" />
-                <TableColumn fx:id="IDGroup" prefWidth="17.0" style="-fx-background-color: #e7e5e5;" text="ID" />
+                <TableColumn fx:id="NameGroup" prefWidth="339.0" text="Name" />
+                  <TableColumn fx:id="TypeGroup" minWidth="0.0" prefWidth="152.0" text="Type" />
+                <TableColumn fx:id="IDGroup" minWidth="0.0" prefWidth="5.0" style="-fx-background-color: #e7e5e5;" text="ID" />
               </columns>
             </TableView>
             <TextField fx:id="SearchTermTextFiled" layoutX="473.0" layoutY="20.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
@@ -29,7 +29,7 @@
                   <Image url="@../img/icons8_Search_52px.png" />
                </image>
             </ImageView>
-            <Button fx:id="ShowUsersGroupButton" layoutX="612.0" layoutY="501.0" mnemonicParsing="false" onAction="#ShowUsersGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Check members" textFill="#e7e5e5">
+            <Button fx:id="ShowUsersGroupButton" layoutX="369.0" layoutY="505.0" mnemonicParsing="false" onAction="#ShowUsersGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Check members" textFill="#e7e5e5">
                <font>
                   <Font size="14.0" />
                </font>
@@ -39,27 +39,27 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="addButton" layoutX="459.0" layoutY="501.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #2980F2;" text="Add" textFill="#e7e5e5">
+            <Button fx:id="addButton" layoutX="576.0" layoutY="340.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #2980F2;" text="Add" textFill="#e7e5e5">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="41.0" layoutY="481.0" text="Group Name" textFill="#2980f2">
+            <Label layoutX="571.0" layoutY="179.0" text="Group Name" textFill="#2980f2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="NameGroupTextField" layoutX="28.0" layoutY="506.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group name ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+            <TextField fx:id="NameGroupTextField" layoutX="558.0" layoutY="204.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group name ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="240.0" layoutY="479.0" text="Group Type" textFill="#2980f2">
+            <Label layoutX="573.0" layoutY="249.0" text="Group Type" textFill="#2980f2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="TypeGroupTextField" layoutX="225.0" layoutY="506.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group type ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
+            <TextField fx:id="TypeGroupTextField" layoutX="558.0" layoutY="276.0" prefHeight="30.0" prefWidth="175.0" promptText="Enter group type ..." style="-fx-background-color: #e7e5e5; -fx-background-radius: 2em;">
                <font>
                   <Font size="14.0" />
                </font>

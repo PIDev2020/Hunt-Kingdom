@@ -15,14 +15,14 @@
    <children>
       <Pane prefHeight="576.0" prefWidth="794.0" style="-fx-background-color: #02030A;">
          <children>
-            <TableView fx:id="TableUsers" layoutX="26.0" layoutY="72.0" prefHeight="422.0" prefWidth="743.0" style="-fx-background-color: #070B26; -fx-background-radius: 1em;">
+            <TableView fx:id="TableUsers" layoutX="26.0" layoutY="72.0" prefHeight="422.0" prefWidth="743.0" style="-fx-background-radius: 1em;">
                <columns>
-                  <TableColumn fx:id="FnameUser" prefWidth="128.0" style="-fx-background-color: #e7e5e5;" text="First Name" />
-                  <TableColumn fx:id="LnameUser" minWidth="0.0" prefWidth="133.0" style="-fx-background-color: #e7e5e5;" text="Last Name" />
-                  <TableColumn fx:id="PhoneUser" prefWidth="146.0" style="-fx-background-color: #e7e5e5;" text="Phone" />
-                  <TableColumn fx:id="EmailUser" prefWidth="208.0" style="-fx-background-color: #e7e5e5;" text="E-mail" />
-                  <TableColumn fx:id="StatutUser" prefWidth="107.0" style="-fx-background-color: #e7e5e5;" text="Statut" />
-                  <TableColumn fx:id="IDUser" prefWidth="20.0" style="-fx-background-color: #e7e5e5;" text="ID" />
+                  <TableColumn fx:id="FnameUser" prefWidth="149.0" text="First Name" />
+                  <TableColumn fx:id="LnameUser" minWidth="0.0" prefWidth="151.0" text="Last Name" />
+                  <TableColumn fx:id="PhoneUser" prefWidth="115.0" text="Phone" />
+                  <TableColumn fx:id="EmailUser" prefWidth="210.0" text="E-mail" />
+                  <TableColumn fx:id="StatutUser" prefWidth="106.0" text="Statut" />
+                  <TableColumn fx:id="IDUser" minWidth="4.0" prefWidth="11.0" style="-fx-background-color: #e7e5e5;" text="ID" />
                </columns>
             </TableView>
             <TextField fx:id="SearchTermTextFiled" layoutX="487.0" layoutY="31.0" prefHeight="27.0" prefWidth="282.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
