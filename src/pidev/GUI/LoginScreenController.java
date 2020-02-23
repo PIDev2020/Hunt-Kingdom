@@ -62,15 +62,18 @@ public class LoginScreenController implements Initializable {
      * @param url
      * @param rb
      */
+    MainUController mu = new MainUController();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
     @FXML
-    void login(ActionEvent event) throws SQLException, IOException {
+    void login(ActionEvent event) throws IOException, SQLException {
         int role = 3;
         int sts = 3;
+        int id = 0;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -100,27 +103,34 @@ public class LoginScreenController implements Initializable {
                 final Node node = (Node) event.getSource();
                 final Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
-                String req = "SELECT idRole, statutUser FROM Users WHERE emailUser = ?";
+                String req = "SELECT idRole, statutUser, idUser FROM Users WHERE emailUser = ?";
                 PrepState = connexion.prepareStatement(req);
                 PrepState.setString(1, emailUser);
                 ResultSet RS = PrepState.executeQuery();
                 while (RS.next()) {
                     role = RS.getInt(1);
                     sts = RS.getInt(2);
+                    id = RS.getInt(3);
                 }
                 if (sts == 1) {
                     if (role == 1) {
                         System.out.println("admin " + role);
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        Stage stage1 = new Stage();
-        stage1.setTitle("Hunt Kingdom | Admin | Home");
-        stage1.setScene(new Scene(root2));
-        stage1.show();
+                        Parent root2 = (Parent) fxmlLoader.load();
+                        Stage stage1 = new Stage();
+                        stage1.setTitle("Hunt Kingdom | Admin | Home");
+                        stage1.setScene(new Scene(root2));
+                        stage1.show();
                         stage.close();
                     } else {
                         System.out.println("clients " + role);
-                        System.out.println("Comming Soon");
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainU.fxml"));
+                        Parent root2 = (Parent) fxmlLoader.load();
+                        Stage stage1 = new Stage();
+                        stage1.setTitle("Hunt Kingdom | Home");
+                        stage1.setScene(new Scene(root2));
+                        mu.loadScreen(id);
+                        stage1.show();
                         stage.close();
                     }
                 } else {

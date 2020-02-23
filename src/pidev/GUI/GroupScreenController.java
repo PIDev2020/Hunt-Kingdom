@@ -39,7 +39,6 @@ import pidev.Service.GroupService;
  */
 public class GroupScreenController implements Initializable {
 
-    @FXML
     private TableView<Groups> TableGroups;
     @FXML
     private TableColumn<Groups, String> NameGroup;
@@ -51,8 +50,6 @@ public class GroupScreenController implements Initializable {
     private TextField SearchTermTextFiled;
     @FXML
     private Button ShowUsersGroupButton;
-    @FXML
-    private Button addButton;
 
     /**
      * initialises the controller class.
@@ -63,12 +60,18 @@ public class GroupScreenController implements Initializable {
     GroupService GS = new GroupService();
 
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
-    @FXML
     private TextField NameGroupTextField;
-    @FXML
     private TextField TypeGroupTextField;
     @FXML
-    private AnchorPane GroupsAnchorPane;
+    private TableView<?> Table;
+    @FXML
+    private Button DeleteButton;
+    @FXML
+    private Button UpdateButton;
+    @FXML
+    private Button AddButton;
+    @FXML
+    private Button refreshButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,6 +102,7 @@ CUGSC.refresh(a);
         refresh();
     }
 
+    @FXML
     public void refresh() {
         listGroups.clear();
         try {
@@ -142,5 +146,13 @@ CUGSC.refresh(a);
         // 3.3. Add sorted (and filtered) data to the table.
         TableGroups.setItems(sortedData);
 
+    }
+
+    @FXML
+    private void deleteGroup(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateGroup(ActionEvent event) {
     }
 }

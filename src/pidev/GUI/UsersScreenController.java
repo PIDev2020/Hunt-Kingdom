@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 
@@ -72,25 +73,25 @@ public class UsersScreenController implements Initializable {
 //public UsersScreenController() {
 //        connexion = DataBase.getInstance().getConnection();
 //    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refresh();
     }
 
-
     @FXML
     void changeStatutUser(ActionEvent event) throws SQLException {
-        
+
         int idU = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
-        System.out.println("idu: "+idU);
+        System.out.println("idu: " + idU);
         int stU = StatutUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
-        System.out.println("stU: "+stU);
-        if (stU==0){
+        System.out.println("stU: " + stU);
+        if (stU == 0) {
             System.out.println("hello 0");
-           US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU),idU, 1);
+            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU), idU, 1);
         } else {
             System.out.println("hello 1");
-          US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU),idU, 0);
+            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU), idU, 0);
         }
         refresh();
 
@@ -110,8 +111,8 @@ public class UsersScreenController implements Initializable {
         int a = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
 //        CUGSC.insertAll(a);
 //        CUGSC.setA(a);
-CUGSC.refresh(a);
-        System.out.println("hello"+a);
+        CUGSC.refresh(a);
+        System.out.println("hello" + a);
 //nav.navigationCheckUserGroupScreen(event);
 //        CUGSC.setIdu(IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()));
     }
@@ -120,9 +121,8 @@ CUGSC.refresh(a);
         listUsers.clear();
         try {
             listUsers.addAll(US.readAll());
-
         } catch (SQLException ex) {
-            Logger.getLogger(UsersScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         }
         IDUser.setCellValueFactory(new PropertyValueFactory<>("idUser"));
         FnameUser.setCellValueFactory(new PropertyValueFactory<>("fnameUser"));
@@ -175,7 +175,7 @@ CUGSC.refresh(a);
 
     public void setStatutUser(int StatutUser) {
         this.StatutUser.setText(String.valueOf(StatutUser));
-            }
+    }
 
 //    public List<Groups> insertAll() throws SQLException {
 //        state = connexion.createStatement();
@@ -187,7 +187,4 @@ CUGSC.refresh(a);
 //        }
 //        
 //        return arrayGroup;
-    }
-
-    
-
+}
