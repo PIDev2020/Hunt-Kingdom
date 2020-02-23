@@ -16,6 +16,10 @@ public class Groups {
     private String nameGroup;
     private String typeGroup;
 
+    public Groups(String nameGroup) {
+        this.nameGroup = nameGroup;
+    }
+
     public Groups() {
     }
 

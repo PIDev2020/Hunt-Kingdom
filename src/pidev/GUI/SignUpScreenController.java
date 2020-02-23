@@ -81,11 +81,11 @@ public class SignUpScreenController implements Initializable {
 
                         // close window after adding a user (it works dont ask because i dont know how 
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        Stage stage1 = new Stage();
-        stage1.setTitle("Hunt Kingdom | Admin | Home");
-        stage1.setScene(new Scene(root2));
-        stage1.show();
+                        Parent root2 = (Parent) fxmlLoader.load();
+                        Stage stage1 = new Stage();
+                        stage1.setTitle("Hunt Kingdom | Admin | Home");
+                        stage1.setScene(new Scene(root2));
+                        stage1.show();
                         final Node source = (Node) event.getSource();
                         final Stage stage = (Stage) source.getScene().getWindow();
                         JOptionPane.showMessageDialog(null, "Account successfully created");
@@ -112,7 +112,7 @@ public class SignUpScreenController implements Initializable {
 
     @FXML
     void goSignInScreen(ActionEvent event) throws IOException {
-       FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Hunt Kingdom | Login");

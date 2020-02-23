@@ -95,7 +95,7 @@ public class UsersScreenController implements Initializable {
     }
 
     @FXML
-    void goCheckUserGroupScreen(ActionEvent event) throws IOException {
+    void goCheckUserGroupScreen(ActionEvent event) throws IOException, SQLException {
         // navigation
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckUserGroupScreen.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
@@ -105,8 +105,13 @@ public class UsersScreenController implements Initializable {
         stage.show();
         // passer les parametres
         pidev.GUI.CheckUserGroupScreenController CUGSC = fxmlLoader.getController();
-        CUGSC.setIDUser(IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()));
+        int a = IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
+//        CUGSC.insertAll(a);
+//        CUGSC.setA(a);
+CUGSC.refresh(a);
+        System.out.println("hello"+a);
 //nav.navigationCheckUserGroupScreen(event);
+//        CUGSC.setIdu(IDUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex()));
     }
 
     public void refresh() {

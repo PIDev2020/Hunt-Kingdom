@@ -59,20 +59,28 @@ public class CheckUserGroupScreenController implements Initializable {
     ObservableList<Users> listUsers = FXCollections.observableArrayList();
     private final Connection connexion;
     private Statement state;
+    private int a;
+
+    public void setA(int a) {
+        this.a = a;
+    }
     List<Groups> arrayGroup = new ArrayList<>();
 
+//    public void setIdu(int idu) {
+//        this.idu = idu;
+//    }
+
+    
     public CheckUserGroupScreenController() {
         connexion = DataBase.getInstance().getConnection();
     }
 
-    public void setIDUser(int IDUser) {
-        this.IDUser.setText(String.valueOf(IDUser));
-    }
 
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            refresh();
+            refresh(a);
 //            readAll();
         } catch (SQLException ex) {
             Logger.getLogger(CheckUserGroupScreenController.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,22 +88,45 @@ public class CheckUserGroupScreenController implements Initializable {
 
     }
 
-    public List<Groups> insertAll() throws SQLException {
-        String idu = this.IDUser.getText();
-        String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
-        
-        PreparedStatement PrepState = connexion.prepareStatement(req);
-        PrepState.setString(1, idu);
+    public List<Groups> insertAll(int a) throws SQLException { 
+  
+        System.out.println("idu:"+a);
+    String req = "SELECT `nameGroup` FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
+                PreparedStatement PrepState = connexion.prepareStatement(req);
+        PrepState.setInt(1, a);
         ResultSet rs = PrepState.executeQuery();
         while (rs.next()) {
-            arrayGroup.add(new Groups(rs.getString(1), rs.getInt(2)));
+            arrayGroup.add(new Groups(rs.getString(1)));
         }
 
         return arrayGroup;
     }
+    /*@Override
+    // Use UserService To Fetch User Intel Instead
+    public List<Event> displayAll() {
+        List<Event> events = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM events";
+            statement = connection.createStatement();
+            results = statement.executeQuery(query);
+            while (results.next()) {
+                Event event = new Event(results.getInt("id"), results.getString("name"), results.getString("description"), results.getString("poster"), CategoryEvent.valueOf(results.getString("category")), results.getTimestamp("date"), new GeoCoordinates(results.getDouble("location_x"), results.getDouble("location_y")), results.getDouble("price"), results.getInt("max_places"));
+                String membersQuery = "SELECT B.id FROM event_members A, users B WHERE A.id_event = '" + event.getId() + "' AND A.id_user = B.id";
+                membersStatement = connection.createStatement();
+                membersResults = membersStatement.executeQuery(membersQuery);
+                while (membersResults.next()) {
+                    event.addMember(new User(membersResults.getInt("id")));
+                }
+                events.add(event);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }*/
 
-    public void refresh() throws SQLException {
-        listGroups.addAll(insertAll());
+    public void refresh(int a) throws SQLException {
+        listGroups.addAll(insertAll(a));
         IDGroup.setCellValueFactory(new PropertyValueFactory<>("idGroup"));
         NameGroup.setCellValueFactory(new PropertyValueFactory<>("nameGroup"));
         TableGroup.setItems(listGroups);
