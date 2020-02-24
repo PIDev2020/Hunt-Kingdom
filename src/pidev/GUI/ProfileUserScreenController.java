@@ -7,7 +7,11 @@ package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.DataBase.DataBase;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
 import pidev.Entite.CurrentUser;
@@ -78,6 +83,12 @@ public class ProfileUserScreenController implements Initializable {
     UserService US = new UserService();
     GroupUserService GUS = new GroupUserService();
     Users U = new Users();
+    private final Connection connexion;
+    private Statement state;
+
+    public ProfileUserScreenController() {
+        connexion = DataBase.getInstance().getConnection();
+    }
     @FXML
     private Button JoinGroupButton;
     @FXML
@@ -138,7 +149,8 @@ public class ProfileUserScreenController implements Initializable {
 
         // 3.3. Add sorted (and filtered) data to the table.
         TableGroups.setItems(sortedData);
-
+        
+show();
     }
 
 
@@ -180,6 +192,7 @@ public class ProfileUserScreenController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stages = (Stage) source.getScene().getWindow();
         stages.close();
+        CurrentUser.disConnect();
     }
 
        @FXML
@@ -190,6 +203,34 @@ public class ProfileUserScreenController implements Initializable {
            System.out.println("id_user"+CurrentUser.getUser_id()+"a"+a);
            JOptionPane.showMessageDialog(null, "You joined this group");
            load();
+    }
+public void show() throws SQLException{
+    String req = "SELECT `fnameUser`, `lnameUser`, `phoneUser`, `emailUser` FROM users WHERE `idUser` = ?"; //"+this.IDUser.getText()+"
+        PreparedStatement PrepState = connexion.prepareStatement(req);
+        PrepState.setInt(1, CurrentUser.getUser_id());
+        ResultSet rs = PrepState.executeQuery();
+        while (rs.next()) {
+            setFirstName(rs.getString(1));
+            setLastName(rs.getString(2));
+            setPhone(rs.getInt(3));
+            setEmail(rs.getString(4));
+            
+        }
+}
+    public void setFirstName(String FirstName) {
+        this.FirstName.setText(FirstName);
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName.setText(LastName);
+    }
+
+    public void setEmail(String Email) {
+        this.Email.setText(Email);
+    }
+
+    public void setPhone(int Phone) {
+        this.Phone.setText(String.valueOf(Phone));
     }
 
 }

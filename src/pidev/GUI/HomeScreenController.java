@@ -56,7 +56,7 @@ public class HomeScreenController implements Initializable {
     void goUsersScreen(ActionEvent event) throws IOException {
                 AnchorPane pane = null;
         try {
-            pane = FXMLLoader.load(getClass().getResource("UsersScreen"));
+            pane = FXMLLoader.load(getClass().getResource("UsersScreen.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,7 +67,7 @@ public class HomeScreenController implements Initializable {
     void goGroupsScreen(ActionEvent event) throws IOException {
         AnchorPane pane = null;
         try {
-            pane = FXMLLoader.load(getClass().getResource("GroupScreen"));
+            pane = FXMLLoader.load(getClass().getResource("GroupScreen.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }

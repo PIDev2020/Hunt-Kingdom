@@ -14,8 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import pidev.Entite.CurrentUser;
 
 /**
  * FXML Controller class
@@ -141,7 +146,17 @@ void goProductsScreen(ActionEvent event) {
     }
 
     @FXML
-    private void signOut(ActionEvent event) {
+    private void signOut(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Login");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        final Node source = (Node) event.getSource();
+        final Stage stages = (Stage) source.getScene().getWindow();
+        stages.close();
+        CurrentUser.disConnect();
     }
 
 }

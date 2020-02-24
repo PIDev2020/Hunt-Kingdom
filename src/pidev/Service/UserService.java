@@ -32,11 +32,10 @@ public class UserService implements IService<Users> {
 
     @Override
     public void add(Users u) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,idRole,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
+        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,idRole,emailUser,passwordUser) VALUES (?, ?, ?, 0, ?, ?);");
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
-        PrepState.setInt(4, u.getidRole());
         PrepState.setString(5, u.getEmailUser());
         PrepState.setString(6, u.getPasswordUser());
         PrepState.executeUpdate();

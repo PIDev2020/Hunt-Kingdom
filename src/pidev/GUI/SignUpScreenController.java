@@ -7,7 +7,11 @@ package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +29,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
+import pidev.DataBase.DataBase;
+import pidev.Entite.CurrentUser;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 
@@ -56,6 +62,12 @@ public class SignUpScreenController implements Initializable {
      * Initializes the controller class.
      */
     UserService US = new UserService();
+    private final Connection connexion;
+    private Statement state;
+int id;
+    public SignUpScreenController() {
+        connexion = DataBase.getInstance().getConnection();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,16 +92,25 @@ public class SignUpScreenController implements Initializable {
                         //API SMS
 
                         // close window after adding a user (it works dont ask because i dont know how 
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainU.fxml"));
                         Parent root2 = (Parent) fxmlLoader.load();
                         Stage stage1 = new Stage();
-                        stage1.setTitle("Hunt Kingdom | Admin | Home");
+                        stage1.setTitle("Hunt Kingdom |Home");
                         stage1.setScene(new Scene(root2));
                         stage1.show();
                         final Node source = (Node) event.getSource();
                         final Stage stage = (Stage) source.getScene().getWindow();
                         JOptionPane.showMessageDialog(null, "Account successfully created");
                         stage.close();
+                        String req = "SELECT idUser FROM Users WHERE emailUser = ?";
+                        PreparedStatement PrepState = connexion.prepareStatement(req);
+                PrepState.setString(1, EmailTextField.getText());
+                ResultSet RS = PrepState.executeQuery();
+                while (RS.next()) {
+                    id = RS.getInt(1);
+                }
+                        CurrentUser.setUser_id(id);
+                        System.out.println("test id signup"+id);
                     } else {
                         JOptionPane.showMessageDialog(null, "E-mail is invalid");
                         EmailTextField.clear();
