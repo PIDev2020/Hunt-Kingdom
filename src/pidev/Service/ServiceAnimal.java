@@ -86,7 +86,7 @@ public class ServiceAnimal implements IService<Animal> {
     }
 
     @Override
-    public List<Animal> readALL() throws SQLException {
+    public List<Animal> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

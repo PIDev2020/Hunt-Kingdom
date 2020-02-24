@@ -82,7 +82,7 @@ public class ServiceCommande implements IService<Commande> {
     }
 
     @Override
-    public List<Commande> readALL() throws SQLException {
+    public List<Commande> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

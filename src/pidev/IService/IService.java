@@ -31,6 +31,6 @@ List<T> readAll(int id) throws SQLException;
      * @return
      * @throws SQLException
      */
-    List<T> readALL() throws SQLException;
+    List<T> readALL(int id) throws SQLException;
 }
 

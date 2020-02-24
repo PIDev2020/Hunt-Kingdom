@@ -99,7 +99,7 @@ public class ServiceSponsor implements IService<Sponsor>{
     }
 
     @Override
-    public List<Sponsor> readALL() throws SQLException {
+    public List<Sponsor> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

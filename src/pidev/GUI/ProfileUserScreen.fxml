@@ -30,7 +30,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="ShowUsersGroupButton" layoutX="35.0" layoutY="516.0" mnemonicParsing="false" onAction="#ShowUsersGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Join" textFill="#e7e5e5">
+            <Button fx:id="JoinGroupButton" layoutX="35.0" layoutY="516.0" mnemonicParsing="false" onAction="#joinGroup" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 2em; -fx-background-color: #D90416;" text="Join" textFill="#e7e5e5">
                <font>
                   <Font size="14.0" />
                </font>
@@ -51,6 +51,7 @@
                         <Image url="@../img/e7e5e5.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="ID" layoutX="214.0" layoutY="6.0" text="Label" textFill="#02030a" />
                </children>
             </Pane>
             <Pane prefHeight="156.0" prefWidth="256.0">
@@ -61,18 +62,6 @@
                   <Label fx:id="Phone" layoutX="112.0" layoutY="103.0" text="Label" textFill="#e7e5e5" />
                </children>
             </Pane>
-            <Button fx:id="UpdateProfileButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goUpdateProfileScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Update Profile">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/user.gif" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
             <Button fx:id="GroupButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goMyGroupsScreen" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="My Groups">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">

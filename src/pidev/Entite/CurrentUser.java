@@ -10,27 +10,18 @@ package pidev.Entite;
  * @author Testouri Mohamed
  */
 public class CurrentUser {
-    private static CurrentUser instance;
-    
-    private int user_id;
 
-    public int getUser_id() {
-        return user_id;
+    private static int id;
+
+    public static int getUser_id() {
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public static void setUser_id(int id) {
+        CurrentUser.id = id;
     }
-
-     public static CurrentUser getInstance() {
-         if (instance == null) {
-             return instance;
-         }
-         return instance;
+    public static void disConnect(){
+        CurrentUser.id= -1 ;
+        
     }
-     
-     
-    
-
-
 }

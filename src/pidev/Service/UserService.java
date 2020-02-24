@@ -127,8 +127,7 @@ public class UserService implements IService<Users> {
     }
 
     @Override
-    public List<Users> readALL() throws SQLException {
+    public List<Users> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

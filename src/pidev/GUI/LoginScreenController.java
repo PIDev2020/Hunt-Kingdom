@@ -31,7 +31,9 @@ import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
 import pidev.Entite.CurrentUser;
+import pidev.Entite.Users;
 import pidev.Service.GroupService;
+import pidev.Service.UserService;
 
 /**
  * FXML Controller class
@@ -40,6 +42,9 @@ import pidev.Service.GroupService;
  */
 public class LoginScreenController implements Initializable {
 
+    Users U = new Users();
+    UserService US = new UserService();
+    int id;
     @FXML
     private TextField LoginTextField;
     @FXML
@@ -66,6 +71,8 @@ public class LoginScreenController implements Initializable {
      */
     ProfileUserScreenController PUSC = new ProfileUserScreenController();
     GroupService GS = new GroupService();
+    CurrentUser CU = new CurrentUser();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -75,7 +82,6 @@ public class LoginScreenController implements Initializable {
     void login(ActionEvent event) throws IOException, SQLException {
         int role = 3;
         int sts = 3;
-        int id = 0;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -125,18 +131,24 @@ public class LoginScreenController implements Initializable {
                         stage1.show();
                         stage.close();
                     } else {
+                        CurrentUser.setUser_id(id);
                         System.out.println("clients " + role);
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainU.fxml"));
                         Parent root2 = (Parent) fxmlLoader.load();
                         Stage stage1 = new Stage();
                         stage1.setTitle("Hunt Kingdom | Home");
                         stage1.setScene(new Scene(root2));
+                        
+                        System.out.println("logincontroller:"+id);
                         //PUSC.getID(id);
-                       //mu.loadScreen(id);
-                       GS.readAll(id);
-                       //CurrentUser.getInstance().setUser_id(id);
-                       
-                       
+                        //mu.loadScreen(id);
+//            //            US.delete(id);
+                       // GS.readAll(id);
+                     // GS.readALL(id);
+                        //U.setIdUser(id);
+                        //PUSC.setID(id);
+                                        
+//CurrentUser.getInstance().setUser_id(id);
                         stage1.show();
                         stage.close();
                     }

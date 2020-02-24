@@ -42,6 +42,12 @@ public class GroupUserService implements IService<GroupUser>{
         PrepState.setInt(1, idGroupUser);
         PrepState.executeUpdate();
     }
+    public void delete(int idUser, int idGroup) throws SQLException{
+        PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Groupuser WHERE idUser=? AND idGroup=? ");
+        PrepState.setInt(1, idUser);
+        PrepState.setInt(2, idGroup);
+        PrepState.executeUpdate();
+    }
 
     @Override
     public void update(GroupUser gu, int idGroupUser) throws SQLException {
@@ -82,7 +88,7 @@ public class GroupUserService implements IService<GroupUser>{
     }
 
     @Override
-    public List<GroupUser> readALL() throws SQLException {
+    public List<GroupUser> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -89,7 +89,7 @@ public class ServiceAnnonce implements IService<Annonce> {
     }
 
     @Override
-    public List<Annonce> readALL() throws SQLException {
+    public List<Annonce> readALL(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
