@@ -52,6 +52,15 @@ public class Users {
         this.passwordUser = passwordUser;
     }
 
+    public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, String emailUser, int statutUser) {
+        this.idUser = idUser;
+        this.fnameUser = fnameUser;
+        this.lnameUser = lnameUser;
+        this.phoneUser = phoneUser;
+        this.emailUser = emailUser;
+        this.statutUser = statutUser;
+    }
+
     public Users(int idUser, String fnameUser, String lnameUser, int phoneUser, int idRole, String emailUser, String passwordUser) {
         this.idUser = idUser;
         this.fnameUser = fnameUser;

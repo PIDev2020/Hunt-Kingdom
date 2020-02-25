@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -86,10 +86,10 @@ public class UsersScreenController implements Initializable {
         System.out.println("stU: " + stU);
         if (stU == 0) {
             System.out.println("hello 0");
-            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU), idU, 1);
+            US.update(idU, 1);
         } else {
             System.out.println("hello 1");
-            US.update(new Users(FnameUser.getText(), LnameUser.getText(), Integer.parseInt(PhoneUser.getText()), EmailUser.getText(), stU), idU, 0);
+            US.update(idU, 0);
         }
         refresh();
 

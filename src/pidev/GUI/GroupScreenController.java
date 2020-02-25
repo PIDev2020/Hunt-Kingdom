@@ -26,6 +26,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Entite.Groups;
@@ -38,6 +39,7 @@ import pidev.Service.GroupService;
  */
 public class GroupScreenController implements Initializable {
 
+    @FXML
     private TableView<Groups> TableGroups;
     @FXML
     private TableColumn<Groups, String> NameGroup;
@@ -59,18 +61,14 @@ public class GroupScreenController implements Initializable {
     GroupService GS = new GroupService();
 
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
+    @FXML
     private TextField NameGroupTextField;
+    @FXML
     private TextField TypeGroupTextField;
     @FXML
-    private TableView<?> Table;
+    private AnchorPane GroupsAnchorPane;
     @FXML
-    private Button DeleteButton;
-    @FXML
-    private Button UpdateButton;
-    @FXML
-    private Button AddButton;
-    @FXML
-    private Button refreshButton;
+    private Button addButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,7 +99,6 @@ CUGSC.refresh(a);
         refresh();
     }
 
-    @FXML
     public void refresh() {
         listGroups.clear();
         try {
@@ -147,11 +144,4 @@ CUGSC.refresh(a);
 
     }
 
-    @FXML
-    private void deleteGroup(ActionEvent event) {
-    }
-
-    @FXML
-    private void updateGroup(ActionEvent event) {
-    }
 }

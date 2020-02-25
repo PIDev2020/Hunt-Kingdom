@@ -64,7 +64,8 @@ public class SignUpScreenController implements Initializable {
     UserService US = new UserService();
     private final Connection connexion;
     private Statement state;
-int id;
+    int id;
+
     public SignUpScreenController() {
         connexion = DataBase.getInstance().getConnection();
     }
@@ -89,10 +90,17 @@ int id;
                         US.add(new Users(FnameTextField.getText(), LnameTextField.getText(), phone, EmailTextField.getText(), PasswordTextField.getText()));
                         //sending mail 
                         SendMail.sendMail(mailReciver, "Welcome", "you are now a member of HUNT Kingdom Community");
-                        //API SMS
-
+//                        //API SMS
+//String sql = "SELECT idUser FROM Users WHERE emailUser = ?";
+//                        PreparedStatement PrepState = connexion.prepareStatement(sql);
+//                        PrepState.setString(1, EmailTextField.getText());
+//                        ResultSet RS = PrepState.executeQuery();
+//                        while (RS.next()) {
+//                            id = RS.getInt(1);
+//                        }
+//                        CurrentUser.setUser_id(id);
                         // close window after adding a user (it works dont ask because i dont know how 
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainU.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
                         Parent root2 = (Parent) fxmlLoader.load();
                         Stage stage1 = new Stage();
                         stage1.setTitle("Hunt Kingdom |Home");
@@ -102,15 +110,7 @@ int id;
                         final Stage stage = (Stage) source.getScene().getWindow();
                         JOptionPane.showMessageDialog(null, "Account successfully created");
                         stage.close();
-                        String req = "SELECT idUser FROM Users WHERE emailUser = ?";
-                        PreparedStatement PrepState = connexion.prepareStatement(req);
-                PrepState.setString(1, EmailTextField.getText());
-                ResultSet RS = PrepState.executeQuery();
-                while (RS.next()) {
-                    id = RS.getInt(1);
-                }
-                        CurrentUser.setUser_id(id);
-                        System.out.println("test id signup"+id);
+
                     } else {
                         JOptionPane.showMessageDialog(null, "E-mail is invalid");
                         EmailTextField.clear();

@@ -12,6 +12,15 @@ package pidev.Entite;
 public class CurrentUser {
 
     private static int id;
+    private static String mail;
+
+    public static void setMail(String mail) {
+        CurrentUser.mail = mail;
+    }
+
+    public static String getMail() {
+        return mail;
+    }
 
     public static int getUser_id() {
         return id;
@@ -20,8 +29,10 @@ public class CurrentUser {
     public static void setUser_id(int id) {
         CurrentUser.id = id;
     }
-    public static void disConnect(){
-        CurrentUser.id= -1 ;
-        
+
+    public static void disConnect() {
+        CurrentUser.id = -1;
+        CurrentUser.mail = null;
+
     }
 }

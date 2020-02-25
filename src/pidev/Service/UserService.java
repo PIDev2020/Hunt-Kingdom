@@ -36,8 +36,8 @@ public class UserService implements IService<Users> {
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
-        PrepState.setString(5, u.getEmailUser());
-        PrepState.setString(6, u.getPasswordUser());
+        PrepState.setString(4, u.getEmailUser());
+        PrepState.setString(5, u.getPasswordUser());
         PrepState.executeUpdate();
     }
 
@@ -64,9 +64,9 @@ public class UserService implements IService<Users> {
     public List<Users> readAll() throws SQLException {
         List<Users> arrayUsers = new ArrayList<>();
         state = connexion.createStatement();
-        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, statutUser, emailUser from Users WHERE idRole=0");
+        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, emailUser, statutUser from Users WHERE idRole=0");
         while (rs.next()) {
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
         }
         return arrayUsers;
     }
@@ -109,9 +109,9 @@ public class UserService implements IService<Users> {
      * @param statutUser
      * @throws SQLException
      */
-    public void update(Users u, int idUser, int statutUser) throws SQLException {
+    public void update(int idUser, int statutUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET statutUser=? WHERE idUser=?");
-        PrepState.setInt(1, u.getStatutUser());
+        PrepState.setInt(1, statutUser);
         PrepState.setInt(2, idUser);
         PrepState.executeUpdate();
     }

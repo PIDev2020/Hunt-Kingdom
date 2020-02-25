@@ -71,7 +71,6 @@ public class LoginScreenController implements Initializable {
      */
     ProfileUserScreenController PUSC = new ProfileUserScreenController();
     GroupService GS = new GroupService();
-    CurrentUser CU = new CurrentUser();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,6 +81,7 @@ public class LoginScreenController implements Initializable {
     void login(ActionEvent event) throws IOException, SQLException {
         int role = 3;
         int sts = 3;
+        String mail = null;
         String emailUser = LoginTextField.getText();
         String passwordUser = PasswordTextField.getText();
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
@@ -111,7 +111,7 @@ public class LoginScreenController implements Initializable {
                 final Node node = (Node) event.getSource();
                 final Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
-                String req = "SELECT idRole, statutUser, idUser FROM Users WHERE emailUser = ?";
+                String req = "SELECT idRole, statutUser, idUser, emailUser FROM Users WHERE emailUser = ?";
                 PrepState = connexion.prepareStatement(req);
                 PrepState.setString(1, emailUser);
                 ResultSet RS = PrepState.executeQuery();
@@ -119,6 +119,7 @@ public class LoginScreenController implements Initializable {
                     role = RS.getInt(1);
                     sts = RS.getInt(2);
                     id = RS.getInt(3);
+                    mail = RS.getString(4);
                 }
                 if (sts == 1) {
                     if (role == 1) {
@@ -132,6 +133,7 @@ public class LoginScreenController implements Initializable {
                         stage.close();
                     } else {
                         CurrentUser.setUser_id(id);
+                        CurrentUser.setMail(mail);
                         System.out.println("clients " + role);
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainU.fxml"));
                         Parent root2 = (Parent) fxmlLoader.load();
