@@ -86,13 +86,14 @@ public class UsersScreenController implements Initializable {
         System.out.println("idu: " + idU);
         int stU = StatutUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
         System.out.println("stU: " + stU);
+        String mailreciver = EmailUser.getCellData(TableUsers.getSelectionModel().getSelectedIndex());
         if (stU == 0) {
             System.out.println("hello 0");
-            SendMail.sendMail(CurrentUser.getMail(), "Unbanned", "you have been unbanned from HUNT Kingdom Community");
+            SendMail.sendMail(mailreciver, "Unbanned", "you have been unbanned from HUNT Kingdom Community");
             US.update(idU, 1);
         } else {
             System.out.println("hello 1");
-            SendMail.sendMail(CurrentUser.getMail(), "Banned", "you have been banned from HUNT Kingdom Community");
+            SendMail.sendMail(mailreciver, "Banned", "you have been banned from HUNT Kingdom Community");
             US.update(idU, 0);
             
         }
