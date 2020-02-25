@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 import pidev.Entite.Commentaire;
+import pidev.Entite.CurrentUser;
 import pidev.Service.ServiceCommentaire;
 
 /**
@@ -72,8 +73,6 @@ public class AddCommentUserController implements Initializable {
 
     @FXML
     private Label idARS;
-    @FXML
-    private TextField tfCurrentUser;
 
     public void setIdARS(int idARS) {
         this.idARS.setText(String.valueOf(idARS));
@@ -181,7 +180,7 @@ public class AddCommentUserController implements Initializable {
     private void AjouterCommentaire(ActionEvent event) throws SQLException {
         ServiceCommentaire sc = new ServiceCommentaire();
         //idUser`,`idAnnonceRS`,`idCommentaireRS`,`champCommentaire`
-        sc.ajouterCom(new Commentaire(Integer.parseInt(tfCurrentUser.getText()),lbidAnnonce,tfUserComment.getText()));
+        sc.ajouterCom(new Commentaire(CurrentUser.getUser_id(),lbidAnnonce,tfUserComment.getText()));
         JOptionPane.showMessageDialog(null, "Comment Added");
     }
 

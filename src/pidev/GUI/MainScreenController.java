@@ -91,14 +91,9 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML
-    void goGroupsScreen(ActionEvent event) {
-        AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(getClass().getResource("GroupScreen.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        LoaderAnchorPane.getChildren().setAll(pane);
+    void goGroupsScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("GroupScreen.fxml"));
+                LoaderAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -135,18 +130,14 @@ void goProductsScreen(ActionEvent event) {
     }
 
     @FXML
-    void goAnnoncesScreen(ActionEvent event) {
-//        AnchorPane pane = null;
-//        try {
-//            pane = FXMLLoader.load(getClass().getResource("FXML/HomeScreen"));
-//        } catch (IOException ex) {
-//            Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        LoaderAnchorPane.getChildren().setAll(pane);
+    void goAnnoncesScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherAnnonce.fxml"));
+                LoaderAnchorPane.getChildren().setAll(pane);
+        
     }
 
     @FXML
-    private void signOut(ActionEvent event) throws IOException {
+    void signOut(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();

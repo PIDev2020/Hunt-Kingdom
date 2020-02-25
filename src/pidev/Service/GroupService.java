@@ -105,4 +105,9 @@ public class GroupService implements IService<Groups> {
         return arrayGroup;
     }
 
+    @Override
+    public void ajouter(Groups t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

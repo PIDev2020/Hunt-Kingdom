@@ -5,7 +5,6 @@
  */
 package pidev.Service;
 
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import pidev.Entite.Annonce;
@@ -27,14 +26,10 @@ import org.apache.poi.ss.usermodel.Row;
  *
  * @author Testouri Mohamed
  */
-
-
 /*
 import java.util.logging.Level;
 import java.util.logging.Logger;
-*/
-
-
+ */
 public class ServiceAnnonce implements IService<Annonce> {
 
     private Connection con;
@@ -43,9 +38,7 @@ public class ServiceAnnonce implements IService<Annonce> {
     public ServiceAnnonce() {
         con = DataBase.getInstance().getConnection();
     }
-    
-    
-    
+
     @Override
     public void ajouter(Annonce t) throws SQLException {
         PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonce`.`annonce` (`idAnnonceRS`,`nomAnnonce`, `descriptionAnnonce`) VALUES (?, ?, ?);");
@@ -53,11 +46,11 @@ public class ServiceAnnonce implements IService<Annonce> {
         PS.setString(2, t.getNomAnnonce());
         PS.setString(3, t.getDescriptionAnnonce());
         PS.executeUpdate();
-    } 
-    
+    }
+
     public void ajouter1(Annonce a) throws SQLException {
         PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonce`.`annonce` (`idAnnonceRS`, `idUser`,`nomAnnonce`, `descriptionAnnonce`) VALUES (?, ?, ?, ?);");
-        PS.setInt(1,a.getIdAnnonceRS());
+        PS.setInt(1, a.getIdAnnonceRS());
         PS.setInt(2, a.getIdUser());
         PS.setString(3, a.getNomAnnonce());
         PS.setString(4, a.getDescriptionAnnonce());
@@ -67,16 +60,16 @@ public class ServiceAnnonce implements IService<Annonce> {
     @Override
     public void delete(int id) throws SQLException {
         PreparedStatement PS = con.prepareStatement("DELETE FROM `testannonce`.`annonce` WHERE `idAnnonceRS`=?");
-        PS.setInt(1,id);
+        PS.setInt(1, id);
         PS.executeUpdate();
     }
 
     @Override
-    public void update(Annonce a,int id) throws SQLException {
-        PreparedStatement PS=con.prepareStatement("UPDATE `testannonce`.`annonce` SET `nomAnnonce`=?,`descriptionAnnonce`=? WHERE `idAnnonceRS`=?");
-        PS.setString(1,a.getNomAnnonce());
-        PS.setString(2,a.getDescriptionAnnonce());
-        PS.setInt(3,id);
+    public void update(Annonce a, int id) throws SQLException {
+        PreparedStatement PS = con.prepareStatement("UPDATE `testannonce`.`annonce` SET `nomAnnonce`=?,`descriptionAnnonce`=? WHERE `idAnnonceRS`=?");
+        PS.setString(1, a.getNomAnnonce());
+        PS.setString(2, a.getDescriptionAnnonce());
+        PS.setInt(3, id);
         PS.executeUpdate();
     }
 
@@ -91,66 +84,66 @@ public class ServiceAnnonce implements IService<Annonce> {
             String nomAnnonce = rs.getString("nomAnnonce");
             String descriptionAnnonce = rs.getString("descriptionAnnonce");
             int idUser = rs.getInt("idUser");
-            Annonce a = new Annonce(idAnnonce,idAnnonceRS,nomAnnonce,descriptionAnnonce , idUser );
+            Annonce a = new Annonce(idAnnonce, idAnnonceRS, nomAnnonce, descriptionAnnonce, idUser);
             AL.add(a);
         }
-        
+
         return AL;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-public void getDefendants( String tab) throws Exception  { 
-        
-        
+    public void getDefendants(String tab) throws Exception {
+
         @SuppressWarnings("unused")
-        Workbook readWorkbook = WorkbookFactory.create(new FileInputStream("D:\\Text.xls") );
+        Workbook readWorkbook = WorkbookFactory.create(new FileInputStream("D:\\Text.xls"));
         @SuppressWarnings("resource")
         Workbook writeWorkbook = new HSSFWorkbook();
         Sheet desSheet = writeWorkbook.createSheet("new sheet");
 
+       
+            Statement ste = null;
+            ResultSet rs = null;
+            try {
+                String req = "SELECT * FROM annonce";
+
+                ste = con.createStatement();
+                rs = ste.executeQuery(req);
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int columnsNumber = rsmd.getColumnCount();
+
+                Row desRow1 = desSheet.createRow(0);
+                for (int col = 0; col < columnsNumber; col++) {
+                    Cell newpath = desRow1.createCell(col);
+                    newpath.setCellValue(rsmd.getColumnLabel(col + 1));
+                }
+                while (rs.next()) {
+                    System.out.println("Row number" + rs.getRow());
+                    Row desRow = desSheet.createRow(rs.getRow());
+                    for (int col = 0; col < columnsNumber; col++) {
+                        Cell newpath = desRow.createCell(col);
+                        newpath.setCellValue(rs.getString(col + 1));
+                    }
+                    FileOutputStream fileOut = new FileOutputStream("D:\\Text.xls");
+                    writeWorkbook.write(fileOut);
+                    fileOut.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Failed to get data from database");
+            }
+        }
+
+    @Override
+    public void add(Annonce t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(String mail) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public List<Annonce> readAll(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Statement ste = null;
-        ResultSet rs = null;
-        try{
-            String req ="SELECT * FROM annonce";
-
-            ste = con.createStatement();
-            rs = ste.executeQuery(req);
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnsNumber = rsmd.getColumnCount();
-
-            Row desRow1 = desSheet.createRow(0);
-            for(int col=0 ;col < columnsNumber;col++) {
-                Cell newpath = desRow1.createCell(col);
-                newpath.setCellValue(rsmd.getColumnLabel(col+1));
-            }
-            while(rs.next()) {
-                System.out.println("Row number" + rs.getRow() );
-                Row desRow = desSheet.createRow(rs.getRow());
-                for(int col=0 ;col < columnsNumber;col++) {
-                    Cell newpath = desRow.createCell(col);
-                    newpath.setCellValue(rs.getString(col+1));  
-                }
-                FileOutputStream fileOut = new FileOutputStream("D:\\Text.xls");
-                writeWorkbook.write(fileOut);
-                fileOut.close();
-            }
-        }
-        catch (SQLException e) {
-            System.out.println("Failed to get data from database");
-        }
     }
 
     @Override
@@ -158,7 +151,5 @@ public void getDefendants( String tab) throws Exception  {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 
-    
-}
+    }

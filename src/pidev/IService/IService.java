@@ -19,7 +19,9 @@ import java.util.List;
  */
 public interface IService<T> {
     void ajouter(T t) throws SQLException;
+    void add(T t) throws SQLException;
     void delete(int id) throws SQLException;
+    void delete (String mail) throws SQLException;
     void update(T t, int id) throws SQLException;
     List<T> readAll() throws SQLException;
 List<T> readAll(int id) throws SQLException;

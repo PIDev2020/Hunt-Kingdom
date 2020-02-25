@@ -27,8 +27,6 @@ import pidev.Entite.CurrentUser;
 public class MainUController implements Initializable {
 
     @FXML
-    private Button HomeButton;
-    @FXML
     private Button UserButton;
     @FXML
     private Button GroupButton;
@@ -49,28 +47,25 @@ public class MainUController implements Initializable {
      * @param url
      * @param rb
      */
-    ProfileUserScreenController  PUSC = new ProfileUserScreenController();
-    
+    ProfileUserScreenController PUSC = new ProfileUserScreenController();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         AnchorPane pane = null;        
-          
+        AnchorPane pane = null;
+
         try {
             pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(MainUController.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-           
+
         LoaderPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void goHomeScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goUsersScreen(ActionEvent event) {
+    private void goUsersScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ProfileUserScreen.fxml"));
+        LoaderPane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -90,6 +85,8 @@ public class MainUController implements Initializable {
     }
 
     @FXML
-    private void goAnnoncesScreen(ActionEvent event) {
+    private void goAnnoncesScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherAnnonceUser.fxml"));
+        LoaderPane.getChildren().setAll(pane);
     }
 }

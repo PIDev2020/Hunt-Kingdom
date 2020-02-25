@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author Amel
+ * @author Testouri Mohamed
  */
 public class SendMail {
     public static void sendMail(String receveursList,String object,String corps) {
