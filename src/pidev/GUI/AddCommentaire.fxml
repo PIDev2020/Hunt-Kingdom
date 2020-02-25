@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.AddCommentaireController">
+   <children>
+      <TextArea fx:id="tfUserAnnonce" layoutX="297.0" layoutY="84.0" opacity="0.9" prefHeight="418.0" prefWidth="381.0" promptText="Announce User " />
+      <TableView fx:id="tableCommentaires" layoutX="704.0" layoutY="84.0" opacity="0.9" prefHeight="204.0" prefWidth="327.0">
+        <columns>
+          <TableColumn fx:id="columnIdUser" prefWidth="70.0" text="User" />
+          <TableColumn fx:id="columnChampCommentaire" prefWidth="256.0" text="Comment " />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfUserComment" layoutX="704.0" layoutY="349.0" opacity="0.9" prefHeight="66.0" prefWidth="327.0" promptText="Comment" />
+      <VBox prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;">
+         <children>
+            <Pane prefHeight="149.0" prefWidth="256.0">
+               <children>
+                  <ImageView fitHeight="131.0" fitWidth="84.0" layoutX="83.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TextField fx:id="tfIdAnnonce" opacity="0.23" prefHeight="30.0" prefWidth="180.0" promptText="Announcement id.." style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfUserId1" opacity="0.28" prefHeight="30.0" prefWidth="180.0" promptText="User Id .." style="-fx-background-radius: 20;" />
+            <TextField fx:id="tfUserId" opacity="0.93" promptText="User" />
+         </children>
+      </VBox>
+      <Button fx:id="deleteCommentaire" layoutX="876.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteCommentaire" opacity="0.91" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #D90416; -fx-background-radius: 20;" text="Discard" textAlignment="CENTER" textFill="#e7e5e5">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="addCommentaire" layoutX="723.0" layoutY="441.0" mnemonicParsing="false" onAction="#addCommentaire" opacity="0.91" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #2980F2; -fx-background-radius: 20;" text="Add" textAlignment="CENTER" textFill="#e7e5e5">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelLastNameCurrentUser" layoutX="960.0" layoutY="14.0" prefHeight="17.0" prefWidth="76.0" text="Last name" textFill="#e7e5e5" />
+      <Label fx:id="labelNameCurrentUser" layoutX="922.0" layoutY="14.0" prefWidth="32.0" text="Name" textFill="#e7e5e5" />
+      <Label layoutX="297.0" layoutY="55.0" prefHeight="17.0" prefWidth="178.0" text="labelNameUser" textFill="#e7e5e5" />
+      <Label layoutX="704.0" layoutY="324.0" prefHeight="17.0" prefWidth="178.0" text="Your comment : " textFill="#e7e5e5" />
+   </children>
+</AnchorPane>
