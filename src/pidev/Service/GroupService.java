@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.DataBase.DataBase;
+import pidev.Entite.CurrentUser;
 import pidev.Entite.Groups;
 import pidev.IService.IService;
 
@@ -20,6 +21,7 @@ import pidev.IService.IService;
  *
  * @author Testouri Mohamed
  */
+
 public class GroupService implements IService<Groups> {
 
     private final Connection connexion;
@@ -76,31 +78,31 @@ public class GroupService implements IService<Groups> {
         PrepState.executeUpdate();
     }
 
-    /**
-     *
-     * @param orderType 
-     * @return
-     * @throws SQLException
-     */
     @Override
-    public List<Groups> orderByName( int orderType) throws SQLException {
+    public List<Groups> readALL(int id) throws SQLException {
         List<Groups> arrayGroup = new ArrayList<>();
-        state = connexion.createStatement();
-        ResultSet rs = null;
-        switch (orderType) {
-            case 0:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup ASC");
-                break;
-            case 1:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY nameGroup DESC");
-                break;
-            default:
-                System.out.println("Choose Sorting Type");
-                break;
-        }
+        String req = "SELECT * FROM `groups` WHERE `idGroup` IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
+        PreparedStatement PrepState = connexion.prepareStatement(req);
+        PrepState.setInt(1, id);
+        ResultSet rs = PrepState.executeQuery();
         while (rs.next()) {
             arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
         }
         return arrayGroup;
     }
+
+    @Override
+    public List<Groups> readAll(int id) throws SQLException {
+        System.out.println(id);
+        List<Groups> arrayGroup = new ArrayList<>();
+        String req = "SELECT * FROM `groups` WHERE `idGroup` NOT IN (SELECT `idGroup` FROM `groupuser` WHERE `idUser`=?)"; //"+this.IDUser.getText()+"
+        PreparedStatement PrepState = connexion.prepareStatement(req);
+        PrepState.setInt(1, id);
+        ResultSet rs = PrepState.executeQuery();
+        while (rs.next()) {
+            arrayGroup.add(new Groups(rs.getInt(1), rs.getString(2), rs.getString(3)));
+        }
+        return arrayGroup;
+    }
+
 }

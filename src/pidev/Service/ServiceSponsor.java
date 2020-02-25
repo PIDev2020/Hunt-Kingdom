@@ -24,6 +24,7 @@ public class ServiceSponsor implements IService<Sponsor>{
     private Connection con;
     private Statement ste ;
     
+    
     public ServiceSponsor(){
         con =DataBase.getInstance().getConnection();
     }
@@ -93,9 +94,16 @@ public class ServiceSponsor implements IService<Sponsor>{
     }
 
     @Override
-    public List<Sponsor> orderByName(int orderType) throws SQLException {
+    public List<Sponsor> readAll(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Sponsor> readALL(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
 

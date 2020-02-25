@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.ObservableList;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Users;
 import pidev.IService.IService;
@@ -31,13 +32,12 @@ public class UserService implements IService<Users> {
 
     @Override
     public void add(Users u) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,roleUser,emailUser,passwordUser) VALUES (?, ?, ?, ?, ?, ?);");
+        PreparedStatement PrepState = connexion.prepareStatement("INSERT INTO Users (fnameUser,lnameUser,phoneUser,idRole,emailUser,passwordUser) VALUES (?, ?, ?, 0, ?, ?);");
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
-        PrepState.setInt(4, u.getRoleUser());
-        PrepState.setString(5, u.getEmailUser());
-        PrepState.setString(6, u.getPasswordUser());
+        PrepState.setString(4, u.getEmailUser());
+        PrepState.setString(5, u.getPasswordUser());
         PrepState.executeUpdate();
     }
 
@@ -48,6 +48,11 @@ public class UserService implements IService<Users> {
         PrepState.executeUpdate();
     }
 
+    /**
+     *
+     * @param emailUser
+     * @throws SQLException
+     */
     @Override
     public void delete(String emailUser) throws SQLException {
         PreparedStatement PrepState = connexion.prepareStatement("DELETE FROM Users WHERE emailUser=?");
@@ -59,10 +64,9 @@ public class UserService implements IService<Users> {
     public List<Users> readAll() throws SQLException {
         List<Users> arrayUsers = new ArrayList<>();
         state = connexion.createStatement();
-        ResultSet rs = state.executeQuery("select * from Users");
+        ResultSet rs = state.executeQuery("select idUser, fnameUser, lnameUser, phoneUser, emailUser, statutUser from Users WHERE idRole=0");
         while (rs.next()) {
-
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
         }
         return arrayUsers;
     }
@@ -88,37 +92,41 @@ public class UserService implements IService<Users> {
 
     @Override
     public void update(Users u, int idUser) throws SQLException {
-        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? , passwordUser=? WHERE idUser= ?");
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET fnameUser=? , lnameUser=? , phoneUser=? , emailUser=? WHERE idUser= ?");
 
         PrepState.setString(1, u.getFnameUser());
         PrepState.setString(2, u.getLnameUser());
         PrepState.setInt(3, u.getPhoneUser());
         PrepState.setString(4, u.getEmailUser());
-        PrepState.setString(5, u.getPasswordUser());
-        PrepState.setInt(6, idUser);
+        PrepState.setInt(5, idUser);
         PrepState.executeUpdate();
     }
 
+    /**
+     *
+     * @param u
+     * @param idUser
+     * @param statutUser
+     * @throws SQLException
+     */
+    public void update(int idUser, int statutUser) throws SQLException {
+        PreparedStatement PrepState = connexion.prepareStatement("UPDATE Users SET statutUser=? WHERE idUser=?");
+        PrepState.setInt(1, statutUser);
+        PrepState.setInt(2, idUser);
+        PrepState.executeUpdate();
+    }
+
+    public void delete(ObservableList<Users> User) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
-    public List<Users> orderByName(int orderType) throws SQLException{
-        List<Users> arrayUsers = new ArrayList<>();
-        state = connexion.createStatement();
-        ResultSet rs = null;
-        switch (orderType) {
-            case 0:
-                rs = state.executeQuery("SELECT * FROM Groups ORDER BY fnameUser ASC");
-                break;
-            case 1:
-                rs = state.executeQuery("SELECT * FROM Users ORDER BY fnameUser DESC");
-                break;
-            default:
-                System.out.println("Choose Sorting Type");
-                break;
-        }
-        while (rs.next()) {
-            arrayUsers.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
-        }
-        return arrayUsers;
-        
+    public List<Users> readAll(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Users> readALL(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
