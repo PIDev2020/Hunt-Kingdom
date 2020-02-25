@@ -42,6 +42,17 @@ public class MenuController implements Initializable {
     private AnchorPane AnchorMain;
     @FXML
     private Button AnimalButton;
+    @FXML
+    private Button btns;
+    @FXML
+    private Button btnms;
+
+    public void setAnchorMain(AnchorPane pane) {
+        this.AnchorMain.getChildren().setAll(pane);
+    }
+    
+    
+    
 
     /**
      * Initializes the controller class.
@@ -54,10 +65,14 @@ public class MenuController implements Initializable {
     @FXML
     private void goHomeScreen(ActionEvent event) throws IOException {
        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("UserAnimal.fxml"));
+        AnchorMain.getChildren().setAll(pane);  
     }
 
     @FXML
-    private void goUsersScreen(ActionEvent event) {
+    private void goUsersScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("UserPanier.fxml"));
+        AnchorMain.getChildren().setAll(pane);  
     }
 
     @FXML
@@ -72,7 +87,9 @@ public class MenuController implements Initializable {
     }
     
     @FXML
-    private void goProductsScreen(ActionEvent event) {
+    private void goProductsScreen(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("listProducts.fxml"));
+        AnchorMain.getChildren().setAll(pane);  
     }
 
     @FXML
@@ -93,6 +110,18 @@ public class MenuController implements Initializable {
 
     @FXML
     private void signOut(ActionEvent event) {
+    }
+
+    @FXML
+    private void loadall(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("userShopList.fxml"));
+        AnchorMain.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void loadmyshop(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("userShop.fxml"));
+        AnchorMain.getChildren().setAll(pane); 
     }
     
 }

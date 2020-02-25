@@ -50,22 +50,6 @@ public class UserPanierController implements Initializable {
     ObservableList<Commande> listC = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Commande, Float> colprice;
-    @FXML
-    private Button HomeButton;
-    @FXML
-    private Button UserButton;
-    @FXML
-    private Button GroupButton;
-    @FXML
-    private Button ProductButton;
-    @FXML
-    private Button OrderButton;
-    @FXML
-    private Button EventButton;
-    @FXML
-    private Button AnnonceButton;
-    @FXML
-    private Button SignOutButton;
 
     /**
      * Initializes the controller class.
@@ -149,37 +133,6 @@ public class UserPanierController implements Initializable {
         tablecom.setItems(sortedData);
     }
 
-    @FXML
-    private void goHomeScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goUsersScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goGroupsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goProductsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goOrdersScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goEventsScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void goAnnoncesScreen(ActionEvent event) {
-    }
-
-    @FXML
-    private void signOut(ActionEvent event) {
-    }
 
   
     

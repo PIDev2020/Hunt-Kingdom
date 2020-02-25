@@ -18,6 +18,12 @@ public interface IService<T> {
     void update(T t,int id) throws SQLException;
     List<T> readAll() throws SQLException;
     List<T> readPanier(int id) throws SQLException;
+    void insert(T t);
+    List<T> searchByIDuser(int idu) throws SQLException;
+    List<T> sortByPrice();
+    List<T> test(String a);
+    List<T> getuserprod(int id);
+    
 
 }
 

@@ -14,12 +14,23 @@ import java.sql.Date;
 public class Commande {
     private int idCommande;
     private String produit;
-    private String date;
+    private java.sql.Date date;
     private int idUser;
     private float price;
     private int state;
 
-    public Commande(int idCommande, String produit, String date, int idUser, float price, int state) {
+    public Commande(String produit,float price,  int idUser,int state) {
+        this.produit = produit;
+        this.price = price;
+        this.idUser = idUser;
+        this.state = state;
+    }
+    
+    
+    
+    
+
+    public Commande(int idCommande, String produit, Date date, int idUser, float price, int state) {
         this.idCommande = idCommande;
         this.produit = produit;
         this.date = date;
@@ -27,10 +38,13 @@ public class Commande {
         this.price = price;
         this.state = state;
     }
-    
-    
 
-    public Commande(String produit, String date, int idUser, float price, int state) {
+    
+   
+
+    
+    
+    public Commande(String produit, Date date, int idUser, float price, int state) {
         this.produit = produit;
         this.date = date;
         this.idUser = idUser;
@@ -38,6 +52,18 @@ public class Commande {
         this.state = state;
     }
 
+    public Commande(int idCommande, String produit, Date date, int idUser, float price) {
+        this.idCommande = idCommande;
+        this.produit = produit;
+        this.date = date;
+        this.idUser = idUser;
+        this.price = price;
+    }
+
+   
+
+    
+    
     public int getState() {
         return state;
     }
@@ -45,15 +71,7 @@ public class Commande {
     public void setState(int state) {
         this.state = state;
     }
-   
-
-    
-    public Commande(String produit, String date, int idUser, float price) {
-        this.produit = produit;
-        this.date = date;
-        this.idUser = idUser;
-        this.price = price;
-    }
+  
 
     public float getPrice() {
         return price;
@@ -63,22 +81,6 @@ public class Commande {
         this.price = price;
     }
     
-
-    public Commande(int idCommande, String produit, String date, int idUser) {
-        this.idCommande = idCommande;
-        this.produit = produit;
-        this.date = date;
-        this.idUser = idUser;
-    }
-
-    
-    
-    public Commande(String produit, String date, int idUser) {
-        this.produit = produit;
-        this.date = date;
-        this.idUser = idUser;
-    }
-
     public Commande() {
     }
 
@@ -95,9 +97,6 @@ public class Commande {
         return idCommande;
     }
 
-    public String getDate() {
-        return date;
-    }
 
     public int getIdUser() {
         return idUser;
@@ -107,13 +106,21 @@ public class Commande {
         this.idCommande = idCommande;
     }
 
-    public void setDate(String date) {
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
         this.date = date;
     }
+
+  
+    
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
 
     @Override
     public String toString() {

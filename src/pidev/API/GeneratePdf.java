@@ -29,7 +29,7 @@ import pidev.Service.ServiceCommande;
 public class GeneratePdf {
     
     public static void main(String[] args) throws FileNotFoundException, DocumentException, SQLException{
-    String file_name="C:\\Users\\hp\\Documents\\NetBeansProjects\\testcommande2\\test.pdf";
+    String file_name="C:\\Users\\hp\\Downloads\\testcommandeMezyen\\testcommandeMezyen\\testcommandeMezyen.pdf";
     ServiceCommande se= new ServiceCommande();
     try{
    List<Commande> listC = se.readAll();
@@ -54,4 +54,4 @@ public class GeneratePdf {
 
 
     }
-}
+

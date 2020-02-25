@@ -110,8 +110,6 @@ public class TableCommandeController implements Initializable{
                     return true; // Filter matches first name.
                 } else if (commande.getProduit().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
-                } else if (commande.getDate().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
                 } else if (String.valueOf(commande.getIdUser()).contains(lowerCaseFilter)) {
                     return true;
                 } else {

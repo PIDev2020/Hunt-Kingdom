@@ -5,6 +5,9 @@
  */
 package pidev.Entite;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author hp
@@ -16,6 +19,74 @@ public class Animal {
     private String race ;
     private String saison ;
     private String place ;
+    private String image;
+    private ImageView im;
+    private int hunted;
+
+    public Animal(int idAnimal, int idA, String race, String saison, String place, String image, int hunted) {
+        this.idAnimal = idAnimal;
+        this.idA = idA;
+        this.race = race;
+        this.saison = saison;
+        this.place = place;
+        this.image = image;
+        this.hunted = hunted;
+    }
+
+    
+    
+    
+    public int getHunted() {
+        return hunted;
+    }
+
+    public Animal(int hunted) {
+        this.hunted = hunted;
+    }
+
+    
+    
+    public void setHunted(int hunted) {
+        this.hunted = hunted;
+    }
+    
+    
+
+    public ImageView getIm() {
+        return im;
+    }
+
+    public void setIm(ImageView im) {
+        this.im = im;
+    }
+    
+
+    public Animal(int idAnimal, int idA, String race, String saison, String place, ImageView im) {
+        this.idAnimal = idAnimal;
+        this.idA = idA;
+        this.race = race;
+        this.saison = saison;
+        this.place = place;
+        this.im = im;
+    }
+
+    
+    public Animal(int idA, String race, String saison, String place, String image) {
+        this.idA = idA;
+        this.race = race;
+        this.saison = saison;
+        this.place = place;
+        this.image = image;
+    }
+
+    public Animal(int idAnimal, int idA, String race, String saison, String place, String image) {
+        this.idAnimal = idAnimal;
+        this.idA = idA;
+        this.race = race;
+        this.saison = saison;
+        this.place = place;
+        this.image = image;
+    }
 
     public Animal(int idAnimal, int idA, String race, String saison, String place) {
         this.idAnimal = idAnimal;
@@ -74,6 +145,16 @@ public class Animal {
         this.idA = idA;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Animal{" + "idAnimal=" + idAnimal + ", idA=" + idA + ", race=" + race + ", saison=" + saison + ", place=" + place + '}';

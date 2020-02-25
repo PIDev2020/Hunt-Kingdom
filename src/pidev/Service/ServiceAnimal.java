@@ -32,11 +32,12 @@ public class ServiceAnimal implements IService<Animal>{
 
     @Override
     public void ajouter(Animal t) throws SQLException {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`animal` ( `idA`, `race`, `saison`, `place`) VALUES ( ?, ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`animal` ( `idA`, `race`, `saison`, `place`, `image`) VALUES ( ?, ?, ?, ?, ?);");
     pre.setInt(1, t.getIdA());
     pre.setString(2, t.getRace());
     pre.setString(3, t.getSaison());
     pre.setString(4, t.getPlace());
+    pre.setString(5, t.getImage());
     pre.executeUpdate();
     }
 
@@ -51,12 +52,13 @@ public class ServiceAnimal implements IService<Animal>{
     @Override
     public void update(Animal t, int id) throws SQLException {
 
-        PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`animal` SET `idA`=?, `race`=?, `saison`=?, `place`=?  WHERE `idA`=?;");
+        PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`animal` SET `idA`=?, `race`=?, `saison`=?, `place`=?, `image`=?  WHERE `idA`=?;");
     pre.setInt(1, t.getIdA());
     pre.setString(2, t.getRace());
     pre.setString(3, t.getSaison());
     pre.setString(4, t.getPlace());
-    pre.setInt(5, id);
+    pre.setString(5, t.getImage());
+    pre.setInt(6, id);
     pre.executeUpdate();
     }
 
@@ -72,7 +74,9 @@ public class ServiceAnimal implements IService<Animal>{
                String race=rs.getString(3);
                String saison=rs.getString(4);  
                String place=rs.getString(5);
-               Animal p=new Animal(idAnimal, idA, race, saison, place);
+               String image=rs.getString(6);
+               int hunted=rs.getInt(7);
+               Animal p=new Animal(idAnimal, idA, race, saison, place, image, hunted);
      arr.add(p);
      }
      return arr;
@@ -84,4 +88,81 @@ public class ServiceAnimal implements IService<Animal>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+    public void updateh(int id) throws SQLException {
+
+        PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`animal` SET `hunted`=hunted+1  WHERE `idA`=?;");
+
+    pre.setInt(1, id);
+
+    pre.executeUpdate();
+    }
+     public int read() throws SQLException {
+ 
+         
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select hunted from animal where `race`='bear'");
+     while (rs.next()) {    
+
+               int hunted=rs.getInt(1);
+               rs.close();
+               return hunted;
+  
+     }
+   return 0;
+     }
+      public int readd() throws SQLException {
+ 
+         
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select hunted from animal where `race`='fish'");
+     while (rs.next()) {    
+
+               int hunted=rs.getInt(1);
+               rs.close();
+               return hunted;
+  
+     }
+   return 0;
+     }
+            public int readdd() throws SQLException {
+ 
+         
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select hunted from animal where `race`='deer'");
+     while (rs.next()) {    
+
+               int hunted=rs.getInt(1);
+               rs.close();
+               return hunted;
+  
+     }
+   return 0;
+     }
+
+    @Override
+    public void insert(Animal t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Animal> searchByIDuser(int idu) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Animal> sortByPrice() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Animal> test(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Animal> getuserprod(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

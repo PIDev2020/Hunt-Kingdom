@@ -34,18 +34,20 @@ public class ServiceCommande implements IService<Commande> {
 
     @Override
     public void ajouter(Commande t) throws SQLException {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`,  `date`, `idUser`) VALUES ( ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`,  `date`, `idUser`, `price`, `State`) VALUES ( ?, ?, ?, ?, ?);");
     pre.setString(1, t.getProduit());
-    pre.setString(2, t.getDate());
+    pre.setDate(2, t.getDate());
     pre.setInt(3, t.getIdUser());
+    pre.setDouble(4, t.getPrice());
+    pre.setInt(5, t.getState());
     pre.executeUpdate();
     }
     public void ajouterpanier(Commande t) throws SQLException {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`, `price`, `date`, `idUser`) VALUES ( ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `esprit`.`commande` (`produit`, `price`, `idUser`, `State`) VALUES ( ?, ?, ?, ?);");
     pre.setString(1, t.getProduit());
-    pre.setFloat(2, t.getPrice());
-    pre.setString(3, t.getDate());
-    pre.setInt(4, t.getIdUser());
+    pre.setDouble(2, t.getPrice());
+    pre.setInt(3, t.getIdUser());
+    pre.setInt(4, t.getState());
     pre.executeUpdate();
     }
 
@@ -60,7 +62,7 @@ public class ServiceCommande implements IService<Commande> {
     public void update(Commande t, int id) throws SQLException {
         PreparedStatement pre=con.prepareStatement("UPDATE  `esprit`.`commande` SET `produit`=?, `date`=?, `idUser`=? WHERE `idCommande`=?;");
     pre.setString(1, t.getProduit());
-    pre.setString(2, t.getDate());
+    pre.setDate(2, t.getDate());
     pre.setInt(3, t.getIdUser());
     pre.setInt(4, id);
     pre.executeUpdate();
@@ -80,11 +82,12 @@ public class ServiceCommande implements IService<Commande> {
      while (rs.next()) {                
                int idCommande=rs.getInt(1);
                String produit = rs.getString(2);
-               float price = rs.getFloat(3);
-               String date=rs.getString(4);
-               int idUser=rs.getInt(5);
+               Date date=rs.getDate(3);
+               int idUser=rs.getInt(4);
+               float price = rs.getFloat(5);
                int state=rs.getInt(6);
                Commande p=new Commande(idCommande, produit, date, idUser, price, state);
+
      arr.add(p);
      }
     return arr;
@@ -100,13 +103,39 @@ public class ServiceCommande implements IService<Commande> {
      while (rs.next()) {                
                int idCommande=rs.getInt(1);
                String produit = rs.getString(2);
-               String date=rs.getString(3);
+               Date date=rs.getDate(3);
                int idUser=rs.getInt(4);  
-               
-               Commande p=new Commande(idCommande, produit, date, idUser);
+               float price=rs.getFloat(5);
+               Commande p=new Commande(idCommande, produit, date, idUser, price);
      arr.add(p);
      }
     return arr;
+    }
+    
+
+    @Override
+    public void insert(Commande t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commande> searchByIDuser(int idu) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commande> sortByPrice() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commande> test(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commande> getuserprod(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
    

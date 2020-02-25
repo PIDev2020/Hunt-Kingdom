@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hp/Downloads/testcommandeMezyen/testcommandeMezyen/testcommandeMezyen/src/pidev/GUI/TableAnimalController.java</file>
-            <file>file:/C:/Users/hp/Downloads/testcommandeMezyen/testcommandeMezyen/testcommandeMezyen/src/pidev/GUI/MainFX.java</file>
-            <file>file:/C:/Users/hp/Downloads/testcommandeMezyen/testcommandeMezyen/testcommandeMezyen/src/pidev/GUI/Menu.fxml</file>
-            <file>file:/C:/Users/hp/Downloads/testcommandeMezyen/testcommandeMezyen/testcommandeMezyen/src/pidev/GUI/MenuController.java</file>
-            <file>file:/C:/Users/hp/Downloads/testcommandeMezyen/testcommandeMezyen/testcommandeMezyen/src/pidev/GUI/TableCommandeController.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/Service/ServiceCommande.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/Entite/Commande.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/Entite/productEntity.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/Service/ProductService.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/GUI/UserPanierController.java</file>
+            <file>file:/C:/Users/hp/Desktop/INTEGRATION/testcommandeMezyen/src/pidev/GUI/UserShopListController.java</file>
         </group>
     </open-files>
 </project-private>

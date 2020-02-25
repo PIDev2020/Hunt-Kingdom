@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,39 +9,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="588.0" maxWidth="865.0" prefHeight="465.0" prefWidth="755.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.TableAnimalController">
+<AnchorPane id="AnchorPane" maxHeight="588.0" maxWidth="865.0" prefHeight="569.0" prefWidth="837.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.TableAnimalController">
    <children>
-      <TableView fx:id="tablev" layoutX="14.0" layoutY="105.0" prefHeight="353.0" prefWidth="384.0" style="-fx-background-radius: 20; -fx-background-color: efeaea;">
+      <TableView fx:id="tablev" layoutX="14.0" layoutY="105.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="459.0" prefWidth="533.0" style="-fx-background-radius: 20; -fx-background-color: efeaea; -fx-fixed-cell-size: 1080px;">
         <columns>
-            <TableColumn fx:id="coln" prefWidth="69.0" text="Reference" />
-          <TableColumn fx:id="colr" onEditCommit="#updateRace" prefWidth="108.0" text="Race" />
-          <TableColumn fx:id="cols" onEditCommit="#updateSeason" prefWidth="97.0" text="Season" />
-            <TableColumn fx:id="colp" onEditCommit="#updatePlace" prefWidth="109.0" text="Place" />
+            <TableColumn fx:id="coln" prefWidth="32.0" text="Reference" />
+          <TableColumn fx:id="colr" onEditCommit="#updateRace" prefWidth="37.0" text="Race" />
+          <TableColumn fx:id="cols" onEditCommit="#updateSeason" prefWidth="10.0" text="Season" />
+            <TableColumn fx:id="colp" minWidth="4.0" onEditCommit="#updatePlace" prefWidth="10.0" text="Place" />
+            <TableColumn fx:id="colpic" maxWidth="1.7976931348623157E308" minWidth="0.0" onEditCommit="#updatePlace" prefWidth="380.0" text="Picture" />
+            <TableColumn fx:id="colhunted" minWidth="4.0" prefWidth="63.0" text="Hunted" />
         </columns>
       </TableView>
       <TextField fx:id="tfsearch" layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="191.0" promptText="Search..." style="-fx-border-radius: 20; -fx-background-color: #02030A; -fx-border-color: #B7C3D7;" />
-      <TextField fx:id="tfnumber" layoutX="544.0" layoutY="97.0" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
-      <TextField fx:id="tfrace" layoutX="544.0" layoutY="161.0" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
-      <TextField fx:id="tfseason" layoutX="544.0" layoutY="223.0" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
-      <TextField fx:id="tfplace" layoutX="545.0" layoutY="283.0" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
-      <Label layoutX="447.0" layoutY="104.0" text="Reference" textFill="WHITE" />
-      <Label layoutX="448.0" layoutY="168.0" text="Race" textFill="WHITE" />
-      <Label layoutX="442.0" layoutY="230.0" text="Season" textFill="WHITE" />
-      <Label layoutX="447.0" layoutY="290.0" text="Place" textFill="WHITE" />
+      <TextField fx:id="tfnumber" layoutX="621.0" layoutY="255.0" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
+      <TextField fx:id="tfrace" layoutX="621.0" layoutY="308.0" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
+      <TextField fx:id="tfseason" layoutX="621.0" layoutY="358.0" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
+      <TextField fx:id="tfplace" layoutX="618.0" layoutY="413.0" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
+      <TextField fx:id="tfimg" layoutX="618.0" layoutY="467.0" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: efeaea; -fx-background-radius: 20;" />
+      <Label layoutX="556.0" layoutY="262.0" text="Reference" textFill="WHITE" />
+      <Label layoutX="569.0" layoutY="315.0" text="Race" textFill="WHITE" />
+      <Label layoutX="564.0" layoutY="365.0" text="Season" textFill="WHITE" />
+      <Label layoutX="568.0" layoutY="420.0" text="Place" textFill="WHITE" />
+      <Label layoutX="566.0" layoutY="474.0" text="Image" textFill="WHITE" />
       <Label layoutX="277.0" layoutY="22.0" prefHeight="35.0" prefWidth="287.0" text="Animal Management" textFill="#e7e5e5">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnadd" layoutX="570.0" layoutY="338.0" mnemonicParsing="false" onAction="#addanimal" opacity="0.91" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #2980F2; -fx-background-radius: 20;" text="Add" textAlignment="CENTER" textFill="#e7e5e5">
+      <Button fx:id="btnadd" layoutX="618.0" layoutY="520.0" mnemonicParsing="false" onAction="#addanimal" opacity="0.91" prefHeight="35.0" prefWidth="159.0" style="-fx-background-color: #2980F2; -fx-background-radius: 20;" text="Add" textAlignment="CENTER" textFill="#e7e5e5">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btndel" layoutX="571.0" layoutY="397.0" mnemonicParsing="false" onAction="#deleteAnimal" opacity="0.91" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #D90416; -fx-background-radius: 20;" text="Discard" textAlignment="CENTER" textFill="#e7e5e5">
+      <Button fx:id="btndel" layoutX="334.0" layoutY="58.0" mnemonicParsing="false" onAction="#deleteAnimal" opacity="0.91" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #D90416; -fx-background-radius: 20;" text="Delete" textAlignment="CENTER" textFill="#e7e5e5">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="btnhunted" layoutX="589.0" layoutY="204.0" mnemonicParsing="false" onAction="#ajoutermurder" prefHeight="31.0" prefWidth="79.0" style="-fx-background-radius: 20; -fx-background-color: grey;" text="Hunted" />
+      <PieChart fx:id="mypiechart" layoutX="574.0" layoutY="1.0" prefHeight="190.0" prefWidth="248.0" />
+      <Button fx:id="btnp" layoutX="738.0" layoutY="204.0" mnemonicParsing="false" onAction="#PieChartSample" prefHeight="31.0" prefWidth="79.0" style="-fx-background-radius: 20; -fx-background-color: green;" text="Chart" />
    </children>
 </AnchorPane>
