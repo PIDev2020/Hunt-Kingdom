@@ -12,6 +12,10 @@ import pidev.Entite.Users;
 import pidev.GUI.CheckUserGroupScreenController;
 import pidev.Service.GroupService;
 import pidev.Service.UserService;
+import pidev.Entite.Annonce;
+import pidev.Entite.Commentaire;
+import pidev.Service.ServiceAnnonce;
+import pidev.Service.ServiceCommentaire;
 
 /**
  *
@@ -58,37 +62,44 @@ public class Test {
 //      sera.add(p1);
         //      ser.add(p2);
         //US.delete("mohamed.testouri@esprit.tn");
+        ServiceAnnonce SA = new ServiceAnnonce();
+        ServiceCommentaire SC = new ServiceCommentaire();
+        
+        System.out.println(SC.readCom(428));
+        
+//
+//        Annonce a1 = new Annonce(428,2,"Bon Plan ", "Annonce bon plan modifiéé ");
+//               
+//        
+//        
+//        
+//
+//        Commentaire c1 = new Commentaire(2,428,25,"commentaire modifiéé");
+//        Commentaire c2 = new Commentaire(2,428,25,"commentaire jdiiiiddd");
+//
 //        try {
 //            
-//          /*SA.ajouter1(a2);
-//            SA.ajouter1(a1);
+//            
+//            //SA.ajouter1(a1);      //(`idAnnonce`,`nomAnnonce`,`descriptionAnnonce`,`idUser`)
+//
+//            //SA.update(a1,428);        
+//            //SA.delete(428);
 //            
 //            
+//            //SC.ajouter(c2);       //(`idUser`,`idAnnonce`,`idCommentaireRS`,`champCommentaire`)
+//            //SC.update(c1, 1);
+//            //SC.delete(25);
 //            
-//            SA.ajouter1(a4);    */         //works perfectly
-//            
-//            //SA.delete(7);                 //works perfectly
-//            
-//            //SA.update(a4, 7);             //works perfectly
-//            
-//        List<Animal> lista = sera.readAll();
-//      List<Commande> listc = ser.readAll();
 //            List<Annonce> list = SA.readAll();
 //            System.out.println(list);
-//      System.out.println(lista);
-//      System.out.println(listc);
-//            
-//           
-//            
-//            
+//
+//            List<Commentaire> listC = SC.readAll();
+//            System.out.println(listC);  
+//
+//
 //        } catch (SQLException ex) {
 //            System.out.println(ex);
 //        }
-    }
-//ServiceEvent SE = new ServiceEvent();
-//Event e1 = new Event(123, 7, "chasse lapin", 25, "testour", 8, 18, 90);
+//    }
 
-    //SE.ajouter1(e1);
-    //SE.update(e1,123);
-    // SE.delete(123);
-}
+}}

@@ -11,34 +11,58 @@ package pidev.Entite;
  */
 public class Annonce {
     private int idAnnonce;
+    private int idAnnonceRS;
     private String nomAnnonce;
     private String descriptionAnnonce;
     private int idUser;
 
     public Annonce() {
     }
-
-    public Annonce(int idAnnonce, String nomAnnonce, String descriptionAnnonce, int idUser) {
-        this.idAnnonce = idAnnonce;
-        this.nomAnnonce = nomAnnonce;
-        this.descriptionAnnonce = descriptionAnnonce;
-        this.idUser = idUser;
-    }
     
-    
-  /*  
-
+    //add fxml
     public Annonce(String nomAnnonce, String descriptionAnnonce) {
         this.nomAnnonce = nomAnnonce;
         this.descriptionAnnonce = descriptionAnnonce;
     }
-*/
+
+    //ajout fxml
+    public Annonce(int idAnnonceRS, String nomAnnonce, String descriptionAnnonce) {
+        this.idAnnonceRS = idAnnonceRS;
+        this.nomAnnonce = nomAnnonce;
+        this.descriptionAnnonce = descriptionAnnonce;
+    }
+    
+    
+
+    public Annonce(int idAnnonce, int idAnnonceRS, String nomAnnonce, String descriptionAnnonce, int idUser) {
+        this.idAnnonce = idAnnonce;
+        this.idAnnonceRS = idAnnonceRS;
+        this.nomAnnonce = nomAnnonce;
+        this.descriptionAnnonce = descriptionAnnonce;
+        this.idUser = idUser;
+    }
+
+    public Annonce(int idAnnonceRS, int idUser, String nomAnnonce, String descriptionAnnonce) {
+        this.idAnnonceRS = idAnnonceRS;
+        this.idUser = idUser;
+        this.nomAnnonce = nomAnnonce;
+        this.descriptionAnnonce = descriptionAnnonce;
+    }
+
     public int getIdAnnonce() {
         return idAnnonce;
     }
 
     public void setIdAnnonce(int idAnnonce) {
         this.idAnnonce = idAnnonce;
+    }
+
+    public int getIdAnnonceRS() {
+        return idAnnonceRS;
+    }
+
+    public void setIdAnnonceRS(int idAnnonceRS) {
+        this.idAnnonceRS = idAnnonceRS;
     }
 
     public String getNomAnnonce() {
@@ -65,12 +89,13 @@ public class Annonce {
         this.idUser = idUser;
     }
 
-    
-       
     @Override
     public String toString() {
-        return "Annonce{" + "id annonce=" + idAnnonce + ", nomAnnonce=" + nomAnnonce + ", descriptionAnnonce=" + descriptionAnnonce + ", idUser=" + idUser + '}';
+        return "Annonce{" + "idAnnonce=" + idAnnonce + ", idAnnonceRS=" + idAnnonceRS + ", nomAnnonce=" + nomAnnonce + ", descriptionAnnonce=" + descriptionAnnonce + ", idUser=" + idUser + '}';
     }
     
+    
+    
+
     
 }
