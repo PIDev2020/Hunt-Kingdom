@@ -7,27 +7,27 @@ package pidev.Test;
 
 import java.sql.SQLException;
 import java.util.List;
-import pidev.Entite.Animal;
-import pidev.Entite.Commande;
-import pidev.Entite.Event;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
+import pidev.GUI.CheckUserGroupScreenController;
 import pidev.Service.GroupService;
-import pidev.Service.ServiceAnimal;
-import pidev.Service.ServiceCommande;
-import pidev.Service.ServiceEvent;
 import pidev.Service.UserService;
 
 /**
  *
- * @author elhak
+ * @author Testouri Mohamed
  */
 public class Test {
 
     public static void main(String[] args) throws SQLException {
+        CheckUserGroupScreenController CUGC = new CheckUserGroupScreenController();
+        List<Groups> arraytest = CUGC.insertAll(55);
+        System.out.println(arraytest);
+//        SendMail.sendMail("m.testoury@outlook.fr", "ll ", "test");
+//        SendMail.sendMail("amel.khelifa@esprit.tn", "ll ", "test");
 //        ServiceAnnonce SA = new ServiceAnnonce();
-        UserService US = new UserService();
-        GroupService GS = new GroupService();
+//        UserService US = new UserService();
+//        GroupService GS = new GroupService();
 //        ServiceAnimal sera = new ServiceAnimal();
 //        ServiceCommande ser = new ServiceCommande();
 
@@ -35,15 +35,15 @@ public class Test {
 //        Annonce a2 = new Annonce(789, "Bon plan !! ", " voici une liste de bon plans qu'on a voulu partager avec vous ! ", 1011);
 //
 //        Annonce a4 = new Annonce(12, "updated ", "yeaaaaaas ! ", 1314);
-        List<Groups> listGroup = GS.readAll();
-        List<Users> listUser = US.readAll();
+//        List<Groups> listGroup = GS.readAll();
+//        List<Users> listUser = US.readAll();
 //        Animal p1 = new Animal(1, "fish", "all", "bizerte");
 //        Commande p2 = new Commande(2, "09-02-2020", 2);
-
-        Users u1 = new Users("test100", "test100", 22222860, 1, "mohamed.testouri@esprit.tn", "HelloJava");
-        Users u2 = new Users("3a", "3a", 0, "3a2@esprit.tn", "Hello Java");
-        Groups g1 = new Groups("Test 100", "test 100");
-        Groups g2 = new Groups("TEst", "teST");
+//
+//        Users u1 = new Users("test100", "test100", 22222860, 1, "mohamed.testouri@esprit.tn", "HelloJava");
+//        Users u2 = new Users("3a", "3a", 0, "3a2@esprit.tn", "Hello Java");
+//        Groups g1 = new Groups("Test 100", "test 100");
+//        Groups g2 = new Groups("TEst", "teST");
         //US.add(u2);
         //US.add(u1);
         //US.update(u2, 37);
@@ -51,13 +51,12 @@ public class Test {
         //GS.add(g2);
         //GS.update(g2, 10);
         //GS.add(g2);
-        US.delete(37);
-GS.delete(10);
-        System.out.println(listUser);
-        System.out.println(listGroup);
+//        US.delete(37);
+//GS.delete(10);
+//        System.out.println(listUser);
+//        System.out.println(listGroup);
 //      sera.add(p1);
-  //      ser.add(p2);
-
+        //      ser.add(p2);
         //US.delete("mohamed.testouri@esprit.tn");
 //        try {
 //            

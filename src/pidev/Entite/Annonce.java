@@ -7,7 +7,7 @@ package pidev.Entite;
 
 /**
  *
- * @author elhak
+ * @author Testouri Mohamed
  */
 public class Annonce {
     private int idAnnonce;

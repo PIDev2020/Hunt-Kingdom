@@ -16,6 +16,10 @@ public class Groups {
     private String nameGroup;
     private String typeGroup;
 
+    public Groups(String nameGroup) {
+        this.nameGroup = nameGroup;
+    }
+
     public Groups() {
     }
 
@@ -23,6 +27,11 @@ public class Groups {
         this.idGroup = idGroup;
         this.nameGroup = nameGroup;
         this.typeGroup = typeGroup;
+    }
+
+    public Groups(String nameGroup, int idGroup) {
+        this.idGroup = idGroup;
+        this.nameGroup = nameGroup;
     }
 
     public Groups(String nameGroup, String typeGroup) {
