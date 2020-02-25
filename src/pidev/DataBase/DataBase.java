@@ -8,16 +8,16 @@ import java.sql.SQLException;
 
 
 public class DataBase {
-    String url = "jdbc:mysql://127.0.0.1/hunt kingdom";
+    String url = "jdbc:mysql://localhost:3306/testannonce";
     String login = "root";
-    String password = "";
+    String pwd = "";
     
-    public static DataBase database;
-    public Connection connexion;
+    public static DataBase db;
+    public Connection con;
     
     private DataBase() {
          try {
-             connexion=DriverManager.getConnection(url, login, password);
+             con=DriverManager.getConnection(url, login, pwd);
              System.out.println("connexion etablie");
          } catch (SQLException ex) {
              System.out.println(ex);
@@ -25,12 +25,27 @@ public class DataBase {
     }
     
     public Connection  getConnection(){
-    return connexion;
+    return con;
     }     
     
     public static DataBase getInstance(){
-        if(database==null)
-        database=new DataBase();
-    return database;
-    }         
+        if(db==null)
+        db=new DataBase();
+    return db;
+    }     
+     
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     
 }

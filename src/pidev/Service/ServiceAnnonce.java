@@ -5,6 +5,7 @@
  */
 package pidev.Service;
 
+
 import pidev.Entite.Annonce;
 import pidev.IService.IService;
 import pidev.DataBase.DataBase;
@@ -13,16 +14,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
-import pidev.Entite.Users;
+/*
+import java.util.logging.Level;
+import java.util.logging.Logger;
+*/
 
 
-/**
- *
- * @author elhak
- */
 public class ServiceAnnonce implements IService<Annonce> {
 
-    private final Connection con;
+    private Connection con;
     private Statement ste;
 
     public ServiceAnnonce() {
@@ -31,32 +31,34 @@ public class ServiceAnnonce implements IService<Annonce> {
     
     
     
+    @Override
     public void ajouter(Annonce t) throws SQLException {
-        ste = con.createStatement();
-        String requestInsert = "INSERT INTO `testannonces`.`annonce` (`nomAnnonce`, `descriptionAnnonce`) VALUES ('" + t.getNomAnnonce() + "', '" + t.getDescriptionAnnonce() + "');";
-        ste.executeUpdate(requestInsert);
+        PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonce`.`annonce` (`idAnnonceRS`,`nomAnnonce`, `descriptionAnnonce`) VALUES (?, ?, ?);");
+        PS.setInt(1, t.getIdAnnonceRS());
+        PS.setString(2, t.getNomAnnonce());
+        PS.setString(3, t.getDescriptionAnnonce());
+        PS.executeUpdate();
     } 
     
-    @Override
-    public void add(Annonce a) throws SQLException {
-        PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonces`.`annonce` (`idAnnonce`,`nomAnnonce`, `descriptionAnnonce`, `idUser`) VALUES (?, ?, ?, ?);");
-        PS.setInt(1,a.getIdAnnonce());
-        PS.setString(2, a.getNomAnnonce());
-        PS.setString(3, a.getDescriptionAnnonce());
-        PS.setInt(4, a.getIdUser());
+    public void ajouter1(Annonce a) throws SQLException {
+        PreparedStatement PS = con.prepareStatement("INSERT INTO `testannonce`.`annonce` (`idAnnonceRS`, `idUser`,`nomAnnonce`, `descriptionAnnonce`) VALUES (?, ?, ?, ?);");
+        PS.setInt(1,a.getIdAnnonceRS());
+        PS.setInt(2, a.getIdUser());
+        PS.setString(3, a.getNomAnnonce());
+        PS.setString(4, a.getDescriptionAnnonce());
         PS.executeUpdate();
     }
 
     @Override
     public void delete(int id) throws SQLException {
-        PreparedStatement PS = con.prepareStatement("DELETE FROM `testannonces`.`annonce` WHERE `idAnnonce`=?");
+        PreparedStatement PS = con.prepareStatement("DELETE FROM `testannonce`.`annonce` WHERE `idAnnonceRS`=?");
         PS.setInt(1,id);
         PS.executeUpdate();
     }
 
     @Override
     public void update(Annonce a,int id) throws SQLException {
-        PreparedStatement PS=con.prepareStatement("UPDATE `testannonces`.`annonce` SET `nomAnnonce`=?,`descriptionAnnonce`=? WHERE `idAnnonce`=?");
+        PreparedStatement PS=con.prepareStatement("UPDATE `testannonce`.`annonce` SET `nomAnnonce`=?,`descriptionAnnonce`=? WHERE `idAnnonceRS`=?");
         PS.setString(1,a.getNomAnnonce());
         PS.setString(2,a.getDescriptionAnnonce());
         PS.setInt(3,id);
@@ -70,25 +72,16 @@ public class ServiceAnnonce implements IService<Annonce> {
         ResultSet rs = ste.executeQuery("select * from annonce");
         while (rs.next()) {
             int idAnnonce = rs.getInt(1);
+            int idAnnonceRS = rs.getInt(2);
             String nomAnnonce = rs.getString("nomAnnonce");
-            String descriptionAnnonce = rs.getString(3);
+            String descriptionAnnonce = rs.getString("descriptionAnnonce");
             int idUser = rs.getInt("idUser");
-            Annonce a = new Annonce(idAnnonce, nomAnnonce,descriptionAnnonce , idUser );
+            Annonce a = new Annonce(idAnnonce,idAnnonceRS,nomAnnonce,descriptionAnnonce , idUser );
             AL.add(a);
         }
+        
         return AL;
     }
 
-    @Override
-    public void delete(String email) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Annonce> orderByName(int orderType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
     
 }
