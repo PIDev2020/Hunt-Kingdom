@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import pidev.Entite.CurrentUser;
 import pidev.Entite.Groups;
@@ -54,6 +55,8 @@ public class GroupUserScreenController implements Initializable {
     ObservableList<Groups> listGroups = FXCollections.observableArrayList();
     GroupService GS = new GroupService();
     GroupUserService GUS = new GroupUserService();
+    @FXML
+    private AnchorPane MyGroupsPane;
 
     /**
      * Initializes the controller class.
@@ -113,5 +116,6 @@ public class GroupUserScreenController implements Initializable {
         // 3.3. Add sorted (and filtered) data to the table.
         TableGroup.setItems(sortedData);
     }
+
 
 }

@@ -35,6 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Groups;
 import pidev.Entite.Users;
@@ -53,16 +54,6 @@ public class ProfileUserScreenController implements Initializable {
 
     @FXML
     private AnchorPane LoaderAnchorPane;
-    @FXML
-    private TableView<Groups> TableGroups;
-    @FXML
-    private TableColumn<Groups, String> NameGroup;
-    @FXML
-    private TableColumn<Groups, String> TypeGroup;
-    @FXML
-    private TableColumn<Groups, Integer> IDGroup;
-    @FXML
-    private TextField SearchTermTextFiled;
     @FXML
     private Label FirstName;
     @FXML
@@ -90,8 +81,6 @@ public class ProfileUserScreenController implements Initializable {
         connexion = DataBase.getInstance().getConnection();
     }
     @FXML
-    private Button JoinGroupButton;
-    @FXML
     private Label ID;
 
     /**
@@ -102,109 +91,14 @@ public class ProfileUserScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("ps"+CurrentUser.getUser_id());
         try {
-            load();
-        } catch (SQLException ex) {
+            show();
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(ProfileUserScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+ }
 
-    }
-
-    public void load() throws SQLException {
-        listGroups.clear();
-        listGroups.addAll(GS.readAll(CurrentUser.getUser_id()));
-        IDGroup.setCellValueFactory(new PropertyValueFactory<>("idGroup"));
-        NameGroup.setCellValueFactory(new PropertyValueFactory<>("nameGroup"));
-        TypeGroup.setCellValueFactory(new PropertyValueFactory<>("typeGroup"));
-        TableGroups.setItems(listGroups);
-        FilteredList<Groups> filteredData = new FilteredList<>(listGroups, lu -> true);
-        SearchTermTextFiled.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate((Groups group) -> {
-                // 2.1. If filter text is empty, display all persons.
-
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                // 2.2. Compare id name and type of every group with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-                if (group.getNameGroup().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // 2.2.1. Filter matches  name.
-                } else if (group.getTypeGroup().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // 2.2.2. Filter matches type.
-                } else if (String.valueOf(group.getIdGroup()).contains(lowerCaseFilter)) {
-                    return true; // 2.2.3. Filter matches id
-                } else {
-                    return false; // Does not match.
-                }
-            });
-        });
-        //3. sorted list
-        // 3.1. Wrap the FilteredList in a SortedList. 
-        SortedList<Groups> sortedData = new SortedList<>(filteredData);
-
-        // 3.2. Bind the SortedList comparator to the TableView comparator.
-        // 	  Otherwise, sorting the TableView would have no effect.
-        sortedData.comparatorProperty().bind(TableGroups.comparatorProperty());
-
-        // 3.3. Add sorted (and filtered) data to the table.
-        TableGroups.setItems(sortedData);
-        
-show();
-    }
-
-
-    @FXML
-    void goMyGroupsScreen(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GroupUserScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Login");
-        stage.setScene(new Scene(root1));
-        GS.readALL(CurrentUser.getUser_id());
-        stage.show();
-    }
-
-    @FXML
-    void signOut(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Login");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        final Node source = (Node) event.getSource();
-        final Stage stages = (Stage) source.getScene().getWindow();
-        stages.close();
-        CurrentUser.disConnect();
-    }
-
-    @FXML
-    void deleteAccount(ActionEvent event) throws SQLException, IOException {
-        US.delete(CurrentUser.getUser_id());
-        JOptionPane.showMessageDialog(null, "Account deleted");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Hunt Kingdom | Login");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        final Node source = (Node) event.getSource();
-        final Stage stages = (Stage) source.getScene().getWindow();
-        stages.close();
-        CurrentUser.disConnect();
-    }
-
-       @FXML
-    void joinGroup(ActionEvent event) throws SQLException {
-        Integer a = IDGroup.getCellData(TableGroups.getSelectionModel().getSelectedIndex());
-        //System.out.println("a:"+a);
-        GUS.add(new GroupUser(CurrentUser.getUser_id(),a));
-           System.out.println("id_user"+CurrentUser.getUser_id()+"a"+a);
-           JOptionPane.showMessageDialog(null, "You joined this group");
-           load();
-    }
-public void show() throws SQLException{
+    public void show() throws SQLException, IOException{
     String req = "SELECT `fnameUser`, `lnameUser`, `phoneUser`, `emailUser` FROM users WHERE `idUser` = ?"; //"+this.IDUser.getText()+"
         PreparedStatement PrepState = connexion.prepareStatement(req);
         PrepState.setInt(1, CurrentUser.getUser_id());
@@ -214,6 +108,9 @@ public void show() throws SQLException{
             setLastName(rs.getString(2));
             setPhone(rs.getInt(3));
             setEmail(rs.getString(4));
+             AnchorPane pane; 
+            pane = FXMLLoader.load(getClass().getResource("GroupsScreen.fxml"));
+            LoaderAnchorPane.getChildren().setAll(pane);
             
         }
 }
@@ -231,6 +128,48 @@ public void show() throws SQLException{
 
     public void setPhone(int Phone) {
         this.Phone.setText(String.valueOf(Phone));
+    }
+
+    @FXML
+    void goMyGroupsScreen(ActionEvent event) throws IOException {
+ 
+             AnchorPane pane; 
+            pane = FXMLLoader.load(getClass().getResource("GroupUserScreen.fxml"));
+            LoaderAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void deleteAccount(ActionEvent event) throws SQLException, IOException {
+        int idDelete = CurrentUser.getUser_id();         
+        US.delete(idDelete);
+        JOptionPane.showMessageDialog(null, "Account deleted");
+                
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Login");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        final Node source = (Node) event.getSource();
+        final Stage stages = (Stage) source.getScene().getWindow();
+                stages.close();
+    CurrentUser.disConnect();
+        SendMail.sendMail(CurrentUser.getMail(), "Deleted", "you deleted your account from HUNT Kingdom Community");
+    
+    }
+
+    @FXML
+    void signOut(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Hunt Kingdom | Login");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        final Node source = (Node) event.getSource();
+        final Stage stages = (Stage) source.getScene().getWindow();
+        stages.close();
+        CurrentUser.disConnect();
     }
 
 }

@@ -8,8 +8,6 @@ package pidev.GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -30,7 +28,6 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.API.SendMail;
 import pidev.DataBase.DataBase;
-import pidev.Entite.CurrentUser;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
 

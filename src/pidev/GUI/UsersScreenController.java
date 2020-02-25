@@ -27,8 +27,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import pidev.API.SendMail;
 import pidev.Entite.Users;
 import pidev.Service.UserService;
+import pidev.Entite.CurrentUser;
 
 /**
  * FXML Controller class
@@ -86,11 +88,15 @@ public class UsersScreenController implements Initializable {
         System.out.println("stU: " + stU);
         if (stU == 0) {
             System.out.println("hello 0");
+            SendMail.sendMail(CurrentUser.getMail(), "Unbanned", "you have been unbanned from HUNT Kingdom Community");
             US.update(idU, 1);
         } else {
             System.out.println("hello 1");
+            SendMail.sendMail(CurrentUser.getMail(), "Banned", "you have been banned from HUNT Kingdom Community");
             US.update(idU, 0);
+            
         }
+        //                        
         refresh();
 
     }
@@ -169,10 +175,6 @@ public class UsersScreenController implements Initializable {
 
         // 5. Add sorted (and filtered) data to the table.
         TableUsers.setItems(sortedData);
-    }
-
-    public void setStatutUser(int StatutUser) {
-        this.StatutUser.setText(String.valueOf(StatutUser));
     }
 
 //    public List<Groups> insertAll() throws SQLException {
