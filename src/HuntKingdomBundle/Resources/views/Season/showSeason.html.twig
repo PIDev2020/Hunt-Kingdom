@@ -1,0 +1,22 @@
+<h2> List of Seasons </h2>
+
+<table border="2">
+
+    <tr>
+        <th> Season </th>
+        <th> Start Time </th>
+        <th> Finish Time </th>
+        <th> Informartion </th>
+
+    </tr>
+    {% for s in season %}
+        <tr>
+            <td> {{ s.nom }} </td>
+            <td> {{ s.start | date("Y/m/d") }} </td>
+            <td> {{ s.finish |date }} </td>
+            <td> {{ s.description }} </td>
+            <td> <a href="{{ path("hunt_kingdom_updateSeason",{'id':s.id })}}">Modifier </a> </td>
+            <td> <a href="{{ path("hunt_kingdom_deleteSeason",{'id':s.id })}}"> Supprimer </a> </td>
+        </tr>
+    {% endfor %}
+</table>
