@@ -17,8 +17,7 @@ class SeasonType extends AbstractType
         $builder->add('nom')
             ->add('start')
             ->add('finish')
-            ->add('description')
-            ->add('Add Season',SubmitType::class);
+            ->add('description');
     }/**
      * {@inheritdoc}
      */

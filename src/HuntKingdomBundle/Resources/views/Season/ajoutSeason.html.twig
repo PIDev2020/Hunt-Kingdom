@@ -1,1 +1,17 @@
-{{ form (form) }}
+{% extends 'base.html.twig' %}
+{% block home %}
+
+    <h1> Add Season</h1>
+    Name:  <div class="col-sm-6 mb-3 mb-sm-0">
+    {{ form_widget (form.nom , { 'attr': {'class' : "form-control form-control-user" }}) }} </div>
+    Description:  <div class="col-sm-6 mb-3 mb-sm-0">
+    {{ form_widget (form.description , { 'attr': {'class' : "form-control form-control-user" }}) }} </div>
+    Start Date:  <div class="col-sm-6 mb-3 mb-sm-0">
+    {{ form_widget (form.start) }} </div>
+    Finish Date: <div class="col-sm-6 mb-3 mb-sm-0">
+    {{ form_widget (form.finish) }} </div>
+    <br>
+    <div class="col-sm-3 mb-3 mb-sm-0" >
+        <input type="submit" class="btn btn-success btn-user btn-block" value="Add Season"/> </div>
+
+{% endblock %}

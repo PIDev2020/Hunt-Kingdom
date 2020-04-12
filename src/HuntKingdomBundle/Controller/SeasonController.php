@@ -1,7 +1,7 @@
 <?php
 
 namespace HuntKingdomBundle\Controller;
-
+use HuntKingdomBundle\Entity\Animal;
 use HuntKingdomBundle\Entity\Season;
 use HuntKingdomBundle\Form\SeasonType;
 use HuntKingdomBundle\HuntKingdomBundle;
@@ -56,6 +56,13 @@ class SeasonController extends Controller
         $em= $this->getDoctrine()->getManager();
         $season =$em->getRepository('HuntKingdomBundle:Season')->findAll();
         return $this->render('@HuntKingdom/Season/showSeason.html.twig',array(
+            'season'=> $season));
+    }
+    public function frontSeasonAction()
+    {
+        $em= $this->getDoctrine()->getManager();
+        $season =$em->getRepository('HuntKingdomBundle:Season')->findAll();
+        return $this->render('@HuntKingdom/Season/frontSeason.html.twig',array(
             'season'=> $season));
     }
 }

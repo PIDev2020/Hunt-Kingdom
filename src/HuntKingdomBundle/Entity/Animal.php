@@ -3,7 +3,7 @@
 namespace HuntKingdomBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Entity\Season;
+
 
 /**
  * Animal
@@ -44,7 +44,7 @@ class Animal
     private $saison;
 
     /**
-     * @ORM\ManyToOne(targetEntity="HuntKingdomBundle\Entity\Season")
+     * @ORM\ManyToOne(targetEntity="HuntKingdomBundle\Entity\Season", inversedBy="Animal")
      * @ORM\JoinColumn(name="season_id",referencedColumnName="id")
      */
     private $Season;
@@ -85,7 +85,6 @@ class Animal
      * @ORM\Column(name="hunted", type="integer")
      */
     private $hunted;
-
 
     /**
      * Get id
@@ -239,6 +238,9 @@ class Animal
     public function getHunted()
     {
         return $this->hunted;
+    }
+    public function __toString() {
+        return (String) $this->race;
     }
 }
 

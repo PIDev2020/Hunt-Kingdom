@@ -2,9 +2,12 @@
 
 namespace HuntKingdomBundle\Form;
 
+use Doctrine\ORM\Mapping\Entity;
+use HuntKingdomBundle\Entity\Season;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
@@ -16,9 +19,17 @@ class AnimalType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
          $builder->add('idA')
                  ->add('race')
-                 ->add('saison',ChoiceType::class,array(
+                 ->add('saison',EntityType::class, [
+
+                 'class' => Season::class,
+
+                 // season the season.nom property as the visible option string
+                 'choice_label' => 'nom',
+             ])
+                /* ->add('saison',ChoiceType::class,array(
                      'choices'=>array(
                          'fall'=>'fall',
                          'summer'=>'summer',
@@ -26,11 +37,11 @@ class AnimalType extends AbstractType
                          'spring'=>'spring',
                          'all'=>'all'
                      )
-                 ))
+                 ))*/
                  ->add('place')
                  ->add('image')
-                 ->add('hunted')
-                 ->add('Add Animal',SubmitType::class);
+                 ->add('hunted');
+
 
     }/**
      * {@inheritdoc}

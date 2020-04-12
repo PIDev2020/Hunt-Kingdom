@@ -2,6 +2,7 @@
 
 namespace HuntKingdomBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -140,6 +141,33 @@ class Season
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="HuntKingdomBundle\Entity\Animal", mappedBy="Season")
+     * @ORM\JoinColumn(name="animal_id",referencedColumnName="id")
+     */
+    private $Animal;
+    public function __construct()
+    {
+        $this->Animal = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAnimal()
+    {
+        return $this->Animal;
+    }
+
+    /**
+     * @param mixed $Animal
+     */
+    public function setAnimal($Animal)
+    {
+        $this->Animal = $Animal;
+    }
+
+
+    /**
      * Get finish
      *
      * @return \DateTime
@@ -147,6 +175,9 @@ class Season
     public function getFinish()
     {
         return $this->finish;
+    }
+    public function __toString() {
+        return (String) $this->nom;
     }
 }
 

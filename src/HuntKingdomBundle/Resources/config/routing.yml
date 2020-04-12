@@ -1,6 +1,8 @@
 hunt_kingdom_homepage:
     path:     /
     defaults: { _controller: HuntKingdomBundle:Default:index }
+
+    #Animal
 hunt_kingdom_ajoutAnimal:
     path:     /ajoutAnimal
     defaults: { _controller: HuntKingdomBundle:Animal:ajoutAnimal }
@@ -13,6 +15,11 @@ hunt_kingdom_deleteAnimal:
 hunt_kingdom_showAnimal:
     path:     /showAnimal
     defaults: { _controller: HuntKingdomBundle:Animal:showAnimal }
+hunt_kingdom_frontAnimal:
+    path:     /frontAnimal
+    defaults: { _controller: HuntKingdomBundle:Animal:frontAnimal }
+
+    #Season
 hunt_kingdom_ajoutSeason:
     path:     /ajoutSeason
     defaults: { _controller: HuntKingdomBundle:Season:ajoutSeason }
@@ -25,3 +32,14 @@ hunt_kingdom_deleteSeason:
 hunt_kingdom_showSeason:
     path:     /showSeason
     defaults: { _controller: HuntKingdomBundle:Season:showSeason }
+hunt_kingdom_frontSeason:
+    path:     /frontSeason
+    defaults: { _controller: HuntKingdomBundle:Season:frontSeason }
+
+    #Commande
+hunt_kingdom_showCommande:
+    path:     /showCommande
+    defaults: { _controller: HuntKingdomBundle:Commande:showCommande }
+hunt_kingdom_showCommandeUser:
+    path:     /showCommandeUser
+    defaults: { _controller: HuntKingdomBundle:Commande:showCommandeUser }
